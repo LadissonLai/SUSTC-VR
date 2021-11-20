@@ -37,23 +37,30 @@
             if (ForwardPressed())
             {
                 nextSceneIndex++;
-                if (nextSceneIndex >= lastSceneIndex)
+                if (nextSceneIndex > lastSceneIndex)
                 {
                     nextSceneIndex = firstSceneIndex;
                 }
+                Debug.Log("forward");
+                 Debug.Log(SceneManager.sceneCountInBuildSettings);
             }
             else if (BackPressed())
             {
                 nextSceneIndex--;
                 if (nextSceneIndex < firstSceneIndex)
                 {
-                    nextSceneIndex = lastSceneIndex - 1;
+                    nextSceneIndex = lastSceneIndex;
                 }
+                Debug.Log("backward");
             }
 
+                // Debug.Log(nextSceneIndex);
+                // Debug.Log(lastSceneIndex);
+                
             if (nextSceneIndex != currentSceneIndex)
             {
                 SceneManager.LoadScene(nextSceneIndex);
+                Debug.Log("switch");
             }
         }
 
