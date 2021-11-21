@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using LitJson;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class EngineModule{
     public List<string> assembly;
@@ -19,10 +20,10 @@ public class MainPanelManager : MonoBehaviour
     void Start()
     {
         Modules = ReadJson("/Data/module.json");
-        CurrentPanel = this.transform.Find("EntryCanvas");
         foreach(Transform child in transform){
             HidePanel(child);
         }
+        CurrentPanel = transform.Find("EntryCanvas");
         ShowPanel(CurrentPanel);
     }
 
@@ -68,16 +69,18 @@ public class MainPanelManager : MonoBehaviour
 
     public void OnExerciseBtnClicked(){
         SwitchPanel(this.transform.Find("AssAndDisSelectionCanvas"));
-        
+        EntrySetting.Instance.runMode = EntrySetting.RunMode.Exercise;
     }
 
     public void OnTeachingBtnClicked(){
         SwitchPanel(this.transform.Find("AssAndDisSelectionCanvas"));
+        EntrySetting.Instance.runMode = EntrySetting.RunMode.Teaching;
     }
 
     public void OnExamBtnClicked(){
         //TODO
         Debug.Log("Under Development");
+        EntrySetting.Instance.runMode = EntrySetting.RunMode.Exam;
     }
 
     public void OnSettingBtnClicked(){
@@ -97,17 +100,25 @@ public class MainPanelManager : MonoBehaviour
             GameObject ButtonInst = Instantiate(ModuleListItem, ModuleListItemContainer);
             Text txt = ButtonInst.transform.GetChild(0).GetComponent<Text>();
             txt.text = str;
+            
+            ButtonInst.GetComponent<Button>().onClick.AddListener( 
+                () => { 
+                    EntrySetting.Instance.module = ButtonInst.transform.GetSiblingIndex(); 
+                    SceneManager.LoadScene(1);
+                    } );
         }
     }
 
     public void OnAssemblyBtnClicked(){
         SwitchPanel(this.transform.Find("ModuleSelectionCanvas"));
         SetModuleListContent(Modules.assembly);
+        EntrySetting.Instance.behaviour = EntrySetting.Behaviour.Assembly;
     }
 
     public void OnDisAssemblyBtnClicked(){
         SwitchPanel(this.transform.Find("ModuleSelectionCanvas"));
         SetModuleListContent(Modules.disassembly);
+        EntrySetting.Instance.behaviour = EntrySetting.Behaviour.Disassembly;
     }
 
     public void OnExitBtnClicked(){
