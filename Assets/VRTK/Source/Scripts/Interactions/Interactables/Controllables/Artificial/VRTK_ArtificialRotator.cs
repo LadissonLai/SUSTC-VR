@@ -394,6 +394,7 @@ namespace VRTK.Controllables.ArtificialBased
         protected virtual void InteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
         {
             CheckLock();
+            Debug.Log("grab");
         }
 
         protected virtual void InteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
