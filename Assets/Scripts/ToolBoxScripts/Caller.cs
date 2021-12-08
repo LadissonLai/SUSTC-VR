@@ -46,13 +46,13 @@ namespace VRTK.Examples
             Transform headset = VRTK_DeviceFinder.HeadsetTransform();
             if (playArea != null && headset != null)
             {
-                transform.position = new Vector3(headset.position.x, playArea.position.y, headset.position.z);
-                controlObject.transform.localPosition = headset.forward * 0.5f;
+                transform.position = new Vector3(headset.position.x, headset.position.y, headset.position.z);
+                controlObject.transform.localPosition = headset.forward * 3.0f;
                 controlObject.transform.localPosition = new Vector3(controlObject.transform.localPosition.x, 0f, controlObject.transform.localPosition.z);
                 Vector3 targetPosition = headset.position;
                 targetPosition.y = playArea.transform.position.y;
                 controlObject.transform.LookAt(targetPosition);
-                controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y, 0f);
+                controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y + 100, 0f);
             }
         }
 
