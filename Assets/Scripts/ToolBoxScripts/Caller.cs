@@ -52,7 +52,7 @@ namespace VRTK.Examples
                 Vector3 targetPosition = headset.position;
                 targetPosition.y = playArea.transform.position.y;
                 controlObject.transform.LookAt(targetPosition);
-                controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y + 100, 0f);
+                controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y + 180, 0f);
             }
         }
 
