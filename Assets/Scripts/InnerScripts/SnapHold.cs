@@ -200,7 +200,7 @@
             if (highlightObject != null)
             {
                 highlightObject.SetActive(state);
-                Debug.Log("SetActive:"+state);
+                Debug.Log("SetActive: "+state);
                 isHighlighted = state;
             }
         }
@@ -359,12 +359,21 @@
 
         protected virtual void HoldObject(object sender, ControllerInteractionEventArgs e)
         {
+            Debug.Log("Grab");
             if (attemptTransitionAtEndOfFrameRoutine != null)
             {
                 StopCoroutine(attemptTransitionAtEndOfFrameRoutine);
             }
-            attemptTransitionAtEndOfFrameRoutine = StartCoroutine(AttemptForceSnapAtEndOfFrame(currentInteractObject));
-            // AttemptForceSnap(currentInteractObject);
+            // attemptTransitionAtEndOfFrameRoutine = StartCoroutine(AttemptForceSnapAtEndOfFrame(currentInteractObject));
+            AttemptForceSnapAtEndOfFrame(currentInteractObject);
+        }
+
+        public void StopTransitionCoroutine()
+        {
+            if (attemptTransitionAtEndOfFrameRoutine != null)
+            {
+                StopCoroutine(attemptTransitionAtEndOfFrameRoutine);
+            }
         }
 
         protected virtual void UnholdObject(object sender, ControllerInteractionEventArgs e)
@@ -372,26 +381,36 @@
             Debug.Log("Ungrab");
             CheckCanUnSnapHold(currentSnappedObject);
             CheckCanSnapHold(currentSnappedObject);
-            SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
-            if(snapObject != null)
+            // SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
+            foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
             {
-                snapObject.OnUnsnapped();
+                if(snapObject != null && snapObject.enabled == true)
+                {
+                    snapObject.OnUnsnapped();
+                }
             }
         }
 
-        protected virtual IEnumerator AttemptForceSnapAtEndOfFrame(VRTK_InteractableObject currentInteractObject)
+        protected virtual void AttemptForceSnapAtEndOfFrame(VRTK_InteractableObject currentInteractObject)
         {
-            yield return new WaitForEndOfFrame();
+            // yield return new WaitForEndOfFrame();
             SaveCurrentState();
             AttemptForceSnap(currentInteractObject);
             // Debug.Log("AttemptForceSnap"+currentInteractObject.gameObject.name);
+
             if(!isTool){
                 RemoveHoldEvent();
             }
-            SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
-            if(snapObject != null)
+            
+            Debug.Log("SnapName: "+ currentSnappedObject.gameObject.name);
+            Debug.Log("SnapNnum: "+ currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>().Length);
+
+            foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
             {
-                snapObject.OnSnapped();
+                if(snapObject != null && snapObject.enabled == true)
+                {
+                    snapObject.OnSnapped();
+                }
             }
         }
 

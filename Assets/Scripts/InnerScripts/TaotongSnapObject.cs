@@ -23,22 +23,39 @@ public class TaotongSnapObject : SnapObjectBase
         Debug.Log("TaotongSnapped");
 
         
-        transform.gameObject.GetComponentInChildren<CapsuleCollider>().enabled = false;
-        foreach (Collider collider in transform.gameObject.GetComponentsInChildren<SphereCollider>())
+        GetComponentInChildren<CapsuleCollider>().enabled = false;
+        foreach (Collider collider in GetComponentsInChildren<SphereCollider>())
         {
             collider.enabled = true;
         }
-        // transform.gameObject.GetComponentInChildren<VRTK_ArtificialRotator>().enabled = true;
-        // transform.gameObject.SetActive(true);
-        DestroyImmediate(transform.gameObject.GetComponent<VRTK_InteractableObject>());
-        transform.gameObject.AddComponent<VRTK_ArtificialRotator>();
+        DestroyImmediate(GetComponent<VRTK_InteractableObject>());
+        // DestroyImmediate(GetComponent<TaotongSnapObject>());
+
+        VRTK_ArtificialRotator rotator = transform.gameObject.AddComponent<VRTK_ArtificialRotator>();
+        rotator.snapToStep = true;
+        // MoveToolHighlightComponents();
         ChangeHierarchy();
+        
+        GetComponentInChildren<BanshouSnapObject>().enabled = true;
+        GetComponentInChildren<BanshouSnapObject>().RecordInitialPosition();
+        GetComponentInChildren<TaotongSnapObject>().enabled = false;
     }
 
+    protected void MoveToolHighlightComponents()
+    {
+        foreach (Component c in transform.Find("ToolHighlight").GetComponents<Component>())
+        {
+            UnityEditorInternal.ComponentUtility.CopyComponent(c);
+            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(transform.gameObject);
+        }
+        Destroy(transform.Find("ToolHighlight").gameObject);
+    }
     protected void ChangeHierarchy()
     {
         Transform luosiTransform = transform.parent.parent;
         transform.SetParent(luosiTransform.parent);
+        // SnapHold snapHoldScript = GetComponentInChildren<SnapHold>();
+        // snapHoldScript.StopTransitionCoroutine();
         foreach (Transform t in luosiTransform)
         {
             Destroy(t.gameObject);

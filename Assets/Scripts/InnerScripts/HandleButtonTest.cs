@@ -60,6 +60,10 @@ public class HandleButtonTest : MonoBehaviour
         {
             GameObject tool = Instantiate(prefab, parentTransform) as GameObject;
             tool.transform.localPosition = Vector3.zero;
+            // if(tool.GetComponentInChildren<SnapHold>() != null)
+            // {
+            //     tool.GetComponentInChildren<SnapHold>().enabled = false;
+            // }
         }
         index = (index + 2) % 3;
     }
