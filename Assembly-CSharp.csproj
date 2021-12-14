@@ -47,16 +47,21 @@
      <Compile Include="Assets\LJR\Scripts\Http\RequestDemo3.cs" />
      <Compile Include="Assets\Scripts\EntryUIScripts\EntrySetting.cs" />
      <Compile Include="Assets\Scripts\EntryUIScripts\MainPanelManager.cs" />
+     <Compile Include="Assets\Scripts\Enums.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\AddScriptViaStringTest.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\BanshouSnapObject.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandleButtonTest.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\Setting.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapDropZoneManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapHold.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapObjectBase.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\TaotongSnapObject.cs" />
      <Compile Include="Assets\Scripts\InnerUIScripts\InnerPanelManager.cs" />
+     <Compile Include="Assets\Scripts\Temp\LanguageTest.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\Caller.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\ToolBoxButtonManager.cs" />
+     <Compile Include="Assets\Scripts\Utility\ExcelUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\LanguageUtil.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -706,6 +711,12 @@
     </Reference>
     <Reference Include="LitJson">
         <HintPath>D:/UnityProjects/FinalProject/Assets/LJR/Plugins/LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/ExcelDataReader.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

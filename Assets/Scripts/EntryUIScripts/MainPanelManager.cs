@@ -69,18 +69,18 @@ public class MainPanelManager : MonoBehaviour
 
     public void OnExerciseBtnClicked(){
         SwitchPanel(this.transform.Find("AssAndDisSelectionCanvas"));
-        EntrySetting.Instance.runMode = EntrySetting.RunMode.Exercise;
+        EntrySetting.Instance.runMode = Enums.RunMode.Exercise;
     }
 
     public void OnTeachingBtnClicked(){
         SwitchPanel(this.transform.Find("AssAndDisSelectionCanvas"));
-        EntrySetting.Instance.runMode = EntrySetting.RunMode.Teaching;
+        EntrySetting.Instance.runMode = Enums.RunMode.Teaching;
     }
 
     public void OnExamBtnClicked(){
         //TODO
         Debug.Log("Under Development");
-        EntrySetting.Instance.runMode = EntrySetting.RunMode.Exam;
+        EntrySetting.Instance.runMode = Enums.RunMode.Exam;
     }
 
     public void OnSettingBtnClicked(){
@@ -112,13 +112,13 @@ public class MainPanelManager : MonoBehaviour
     public void OnAssemblyBtnClicked(){
         SwitchPanel(this.transform.Find("ModuleSelectionCanvas"));
         SetModuleListContent(Modules.assembly);
-        EntrySetting.Instance.behaviour = EntrySetting.Behaviour.Assembly;
+        EntrySetting.Instance.behaviour = Enums.Behaviour.Assembly;
     }
 
     public void OnDisAssemblyBtnClicked(){
         SwitchPanel(this.transform.Find("ModuleSelectionCanvas"));
         SetModuleListContent(Modules.disassembly);
-        EntrySetting.Instance.behaviour = EntrySetting.Behaviour.Disassembly;
+        EntrySetting.Instance.behaviour = Enums.Behaviour.Disassembly;
     }
 
     public void OnExitBtnClicked(){

@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntrySetting : MonoBehaviour
+public class Setting : MonoBehaviour
 {
-    public static EntrySetting Instance { get; private set; }
-    public Enums.RunMode runMode { get; set; } = 0;
-    public Enums.Behaviour behaviour { get; set; } = 0;
-    public int module { get; set; }
- 
+    public static Setting Instance { get; private set; }
+    public Enums.Language language { get; set; } = 0;
     void Awake()
     {
         if (Instance == null)
