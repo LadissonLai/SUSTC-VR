@@ -11,6 +11,7 @@ public class ExcelUtil
     /// 读取excel文件内容
     /// </summary>
     /// <param name="filePath">文件路径</param>
+    /// <param name="sheetIndex">表的页数</param>
     /// <param name="columnnum">行数</param>
     /// <param name="rownum">列数</param>
     /// <returns></returns>

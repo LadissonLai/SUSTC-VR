@@ -252,6 +252,7 @@
             {
                 // Debug.Log("inner: "+collider.gameObject.name);
                 currentInteractObject = collider.GetComponentInParent<VRTK_InteractableObject>();
+                // Debug.Log("trigger "+currentInteractObject.gameObject.name);
                 CheckCanSnapHold(currentInteractObject);
             }
         }
@@ -387,6 +388,7 @@
                 if(snapObject != null && snapObject.enabled == true)
                 {
                     snapObject.OnUnsnapped();
+                    break;
                 }
             }
         }
@@ -402,7 +404,7 @@
                 RemoveHoldEvent();
             }
             
-            Debug.Log("SnapName: "+ currentSnappedObject.gameObject.name);
+            Debug.Log("SnapName: "+ currentInteractObject.gameObject.name);
             Debug.Log("SnapNnum: "+ currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>().Length);
 
             foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
@@ -438,12 +440,6 @@
             willSnap = true;
             //Force touch one of the object's colliders on this trigger collider
             SnapObjectToZone(objectToSnap);
-            // transform.GetComponentInChildren<Collider>().enabled = false;
-            // Collider[] colliders = currentSnappedObject.transform.GetComponentsInChildren<Collider>();
-            // foreach (Collider collider in colliders)
-            // {
-            //     collider.enabled = true;
-            // }
         }
 
         protected virtual void SnapObjectToZone(VRTK_InteractableObject objectToSnap)

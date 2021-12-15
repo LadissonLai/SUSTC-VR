@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 using VRTK.Controllables.ArtificialBased;
+using VRTK.GrabAttachMechanics;
 
 public class TaotongSnapObject : SnapObjectBase
 {
@@ -21,7 +22,6 @@ public class TaotongSnapObject : SnapObjectBase
     public override void OnSnapped()
     {
         Debug.Log("TaotongSnapped");
-
         
         GetComponentInChildren<CapsuleCollider>().enabled = false;
         foreach (Collider collider in GetComponentsInChildren<SphereCollider>())
@@ -31,29 +31,24 @@ public class TaotongSnapObject : SnapObjectBase
         DestroyImmediate(GetComponent<VRTK_InteractableObject>());
         // DestroyImmediate(GetComponent<TaotongSnapObject>());
 
-        VRTK_ArtificialRotator rotator = transform.gameObject.AddComponent<VRTK_ArtificialRotator>();
-        rotator.snapToStep = true;
-        // MoveToolHighlightComponents();
         ChangeHierarchy();
         
-        GetComponentInChildren<BanshouSnapObject>().enabled = true;
-        GetComponentInChildren<BanshouSnapObject>().RecordInitialPosition();
         GetComponentInChildren<TaotongSnapObject>().enabled = false;
+
+        CommonUtil.NotifyStepController();
     }
 
-    protected void MoveToolHighlightComponents()
-    {
-        foreach (Component c in transform.Find("ToolHighlight").GetComponents<Component>())
-        {
-            UnityEditorInternal.ComponentUtility.CopyComponent(c);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(transform.gameObject);
-        }
-        Destroy(transform.Find("ToolHighlight").gameObject);
-    }
     protected void ChangeHierarchy()
     {
-        Transform luosiTransform = transform.parent.parent;
-        transform.SetParent(luosiTransform.parent);
+        Transform luosiTransform = GameObject.Find("101Object").transform.GetChild(0);
+        GameObject gameObject = new GameObject("Container");
+        gameObject.transform.SetParent(luosiTransform.parent);
+        gameObject.transform.localPosition = Vector3.zero;
+        gameObject.transform.localRotation = Quaternion.identity;
+        transform.SetParent(gameObject.transform);
+        VRTK_ArtificialRotator rotator = gameObject.AddComponent<VRTK_ArtificialRotator>();
+        rotator.snapToStep = true;
+        gameObject.GetComponent<VRTK_InteractableObject>().isGrabbable = false;
         // SnapHold snapHoldScript = GetComponentInChildren<SnapHold>();
         // snapHoldScript.StopTransitionCoroutine();
         foreach (Transform t in luosiTransform)

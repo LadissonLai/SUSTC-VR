@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 648486781880422219}
   - component: {fileID: 7422086176949437749}
   - component: {fileID: 4962687736127249289}
+  - component: {fileID: 8802669067405499303}
   m_Layer: 0
   m_Name: JiLunBanShou_L_Prefab
   m_TagString: Tool
@@ -80,6 +81,20 @@ MonoBehaviour:
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   usingState: 0
+--- !u!114 &8802669067405499303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960865545806344396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5cec411f1dca64eb3fd7a8d0ba3f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 360
+  isAssembly: 0
 --- !u!1001 &80968438839514515
 PrefabInstance:
   m_ObjectHideFlags: 0

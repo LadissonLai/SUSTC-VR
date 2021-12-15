@@ -28,14 +28,14 @@ public class LanguageUtil : MonoBehaviour
         //行与列
         int columnNum = 0, rowNum = 0;
         DataRowCollection collection = ExcelUtil.ReadExcel(filePath, 0, ref columnNum, ref rowNum);//获得行与列的值
-        //从第三行开始才是有效数据
+        //从第二行开始才是有效数据
         dict = new Dictionary<string, LanguageItem>();
         for (int i = 1; i < rowNum; i++)
         {
             LanguageItem item = new LanguageItem();
-            dict[collection[i][0] as string] = item;
+            dict[collection[i][0].ToString()] = item;
             for(int j = 1; j < columnNum; j++){
-                item.languageData.Add(collection[i][j] as string);
+                item.languageData.Add(collection[i][j].ToString());
             }
         }
     }

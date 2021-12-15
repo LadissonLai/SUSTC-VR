@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InnerPanelManager : MonoBehaviour
 {
+    public Text tipText;
+    public Image tipImage;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +29,11 @@ public class InnerPanelManager : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void UpdateTip(string key)
+    {
+        tipText.text = LanguageUtil.Get(key);
+        //TODO image 
     }
 }

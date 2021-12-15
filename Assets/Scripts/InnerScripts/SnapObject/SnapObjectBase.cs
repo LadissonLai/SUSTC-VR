@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
+using VRTK.Controllables.ArtificialBased;
+using VRTK.GrabAttachMechanics;
 
 public class SnapObjectBase : MonoBehaviour
 {

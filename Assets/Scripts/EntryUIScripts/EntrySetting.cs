@@ -7,7 +7,8 @@ public class EntrySetting : MonoBehaviour
     public static EntrySetting Instance { get; private set; }
     public Enums.RunMode runMode { get; set; } = 0;
     public Enums.Behaviour behaviour { get; set; } = 0;
-    public int module { get; set; }
+    public int module { get; set; } = 1;
+    public int chapter { get; set; } = 1;
  
     void Awake()
     {
