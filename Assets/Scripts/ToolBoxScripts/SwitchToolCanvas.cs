@@ -4,7 +4,7 @@ namespace VRTK.Examples
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class ToolBoxButtonManager : MonoBehaviour
+    public class SwitchToolCanvas : MonoBehaviour
     {
         Stack<Transform> st = new Stack<Transform>();
         void Start()
@@ -62,4 +62,5 @@ namespace VRTK.Examples
             switchPanel("TaoTongCanvas");
         }
     }
+
 }

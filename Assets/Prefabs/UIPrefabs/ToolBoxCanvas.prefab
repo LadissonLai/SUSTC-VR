@@ -2770,7 +2770,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7688742368312305179}
-        m_MethodName: onClickCube
+        m_MethodName: onClickTaoTong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4260,6 +4260,7 @@ GameObject:
   - component: {fileID: 7464878557255761456}
   - component: {fileID: 7464878557255761457}
   - component: {fileID: 7688742368312305179}
+  - component: {fileID: 5032872692591032195}
   m_Layer: 5
   m_Name: ToolBoxCanvas
   m_TagString: Untagged
@@ -4378,6 +4379,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54994d2660b45a44e89658d5c3906c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5032872692591032195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464878557255761460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a982bf089fd98b948bd17f3f9b59cea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  taotong_019: {fileID: 1451137182989643763, guid: 558bac2db8108554895f53c88cf3b263,
+    type: 3}
+  jiLunL: {fileID: 3960865545806344396, guid: 25df20af28bc9fa49b475da2a9b96143, type: 3}
 --- !u!1 &7464878557443204363
 GameObject:
   m_ObjectHideFlags: 0
