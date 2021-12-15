@@ -1,18 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ToolBoxButtonManager : MonoBehaviour
+namespace VRTK.Examples
 {
-    public void onClickCube() {
-        Debug.Log("On Click Cube!");
-    }
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    public void onClickPyramid() {
-        Debug.Log("On Click Pyramid!");
-    }
-
-    public void onClickSphere() {
-        Debug.Log("On Click Sphere!");
+    public class ToolBoxButtonManager : MonoBehaviour
+    {
+        Stack<Transform> st = new Stack<Transform>();
+        void Start()
+        {
+            st.Clear();
+            st.Push(transform.Find("CategoryCanvas"));
+            showPanel(st.Peek());
+        }
+        private void showPanel(Transform panel)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 1;
+            panel.GetComponent<CanvasGroup>().interactable = true;
+            panel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        private void hidePanel(Transform panel)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 0;
+            panel.GetComponent<CanvasGroup>().interactable = false;
+            panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+        private void switchPanel(string canvasName)        
+        {
+            var panel = transform.Find(canvasName);
+            if (panel) {
+                hidePanel(st.Peek());
+                st.Push(panel);
+                showPanel(st.Peek());
+            }
+        }
+        public void onClickReturn()
+        {
+            if(st.Count > 0)
+            {
+                hidePanel(st.Pop());
+            }
+            if(st.Count > 0)
+            {
+                showPanel(st.Peek());
+            }
+        }
+        public void onClickBanShou() 
+        {
+            switchPanel("BanShouCanvas");
+        }
+        public void onClickJiLun() 
+        {
+            switchPanel("JiLunCanvas");
+        }
+        public void onClickNiuLi() 
+        {
+            switchPanel("NiuLiCanvas");
+        }
+        public void onClickTaoTong() 
+        {
+            switchPanel("TaoTongCanvas");
+        }
     }
 }
