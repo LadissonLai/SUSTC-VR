@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using LitJson;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class EngineModule{
     public List<string> assembly;
@@ -101,9 +102,16 @@ public class MainPanelManager : MonoBehaviour
             Text txt = ButtonInst.transform.GetChild(0).GetComponent<Text>();
             txt.text = str;
             
+            string pattern = @"\[(\d+)\-(\d+)\]";
+            string module = Regex.Match(str, pattern).Result("$1");
+            string chapter = Regex.Match(str, pattern).Result("$2");
+
             ButtonInst.GetComponent<Button>().onClick.AddListener( 
                 () => { 
-                    EntrySetting.Instance.module = ButtonInst.transform.GetSiblingIndex(); 
+                    EntrySetting.Instance.module = int.Parse(module);
+                    EntrySetting.Instance.chapter = int.Parse(chapter);
+                    Debug.Log("module:" + module + " " + "chapter:" + chapter);
+                    // EntrySetting.Instance.module = ButtonInst.transform.GetSiblingIndex(); 
                     SceneManager.LoadScene(1);
                     } );
         }
