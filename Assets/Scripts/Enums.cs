@@ -6,7 +6,7 @@ public class Enums : MonoBehaviour
 {
     public enum Language
     {
-        中文,
+        Chinese,
         English,
     }
 

@@ -85,8 +85,12 @@ public class MainPanelManager : MonoBehaviour
     }
 
     public void OnSettingBtnClicked(){
-        //TODO
-        Debug.Log("Under Development");
+        SwitchPanel(this.transform.Find("SettingCanvas"));
+    }
+
+    public void SwitchLanguageSettings()
+    {
+        // todo 修改语言设置使用这个函数
     }
 
     void SetModuleListContent(List<string> content){
