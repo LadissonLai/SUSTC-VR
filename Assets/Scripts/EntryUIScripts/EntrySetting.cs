@@ -9,6 +9,8 @@ public class EntrySetting : MonoBehaviour
     public Enums.Behaviour behaviour { get; set; } = 0;
     public int module { get; set; } = 1;
     public int chapter { get; set; } = 1;
+
+    public Enums.Language language {get; set; } = Enums.Language.Chinese;
  
     void Awake()
     {

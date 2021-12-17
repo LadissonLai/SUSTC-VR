@@ -45,7 +45,7 @@ public class LanguageUtil : MonoBehaviour
     {
         if(dict != null && dict[key] != null && dict[key].languageData != null)
         {
-            return dict[key].languageData[(int)Setting.Instance.language];
+            return dict[key].languageData[(int)EntrySetting.Instance.language];
         }
         return null;
     }

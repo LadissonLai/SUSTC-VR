@@ -17,6 +17,8 @@ public class MainPanelManager : MonoBehaviour
     Transform CurrentPanel;
     EngineModule Modules;
     public GameObject ModuleListItem;
+
+    public Dropdown LanguageDropDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -86,12 +88,21 @@ public class MainPanelManager : MonoBehaviour
 
     public void OnSettingBtnClicked(){
         SwitchPanel(this.transform.Find("SettingCanvas"));
+        LanguageDropDown.onValueChanged.AddListener((value) => {
+            Debug.Log("Language: "+value);
+            EntrySetting.Instance.language = (Enums.Language)value;
+            // switch (value) {
+            //     case 1: EntrySetting.Instance.language = Enums.Language.English;break;
+            //     default: EntrySetting.Instance.language = Enums.Language.Chinese;break;
+            // }
+        });
     }
 
     public void SwitchLanguageSettings()
     {
         // todo 修改语言设置使用这个函数
     }
+
 
     void SetModuleListContent(List<string> content){
         Transform ModuleListItemContainer = transform.Find("ModuleSelectionCanvas")
@@ -142,7 +153,8 @@ public class MainPanelManager : MonoBehaviour
     }
     
     public void OnReturnBtnClicked(){
-        if(CurrentPanel == transform.Find("AssAndDisSelectionCanvas"))
+        if(CurrentPanel == transform.Find("AssAndDisSelectionCanvas") 
+            || CurrentPanel == transform.Find("SettingCanvas"))
             SwitchPanel(transform.Find("EntryCanvas"));
         else
             SwitchPanel(transform.Find("AssAndDisSelectionCanvas"));
