@@ -6,6 +6,7 @@ using System;
 
 public class StepScriptChooser : MonoBehaviour
 {
+    public Transform tempTransform;
 
     void Awake() 
     { 
@@ -20,7 +21,7 @@ public class StepScriptChooser : MonoBehaviour
         DataRowCollection collection = ExcelUtil.ReadExcel(filePath, 0, ref columnNum, ref rowNum);//获得行与列的值
         int key = 101;
         if(EntrySetting.Instance != null) key = EntrySetting.Instance.module * 100 + EntrySetting.Instance.chapter;
-        Debug.Log(key);
+        // Debug.Log(key);
         for(int i = 1; i < rowNum; i++){
             if( string.Equals(collection[i][0].ToString(), key.ToString()) )
             {

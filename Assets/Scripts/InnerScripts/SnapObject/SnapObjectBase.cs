@@ -7,6 +7,8 @@ using VRTK.GrabAttachMechanics;
 
 public class SnapObjectBase : MonoBehaviour
 {
+    
+    public string prefabName;
     // Start is called before the first frame update
     void Start()
     {

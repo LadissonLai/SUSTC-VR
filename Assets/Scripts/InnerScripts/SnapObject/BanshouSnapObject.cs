@@ -9,6 +9,7 @@ public class BanshouSnapObject : SnapObjectBase
 {
     public float maxAngle;
     public bool isAssembly;
+    protected bool isRotating = false;
     protected Vector3 initialPosition;
     protected Transform controlTransform;
     protected VRTK_InteractableObject controlInteract;
@@ -17,48 +18,66 @@ public class BanshouSnapObject : SnapObjectBase
     
     void Awake()
     {
-        RecordInitialPosition();
+        // RecordInitialPosition();
+    }
+
+    void Update()
+    {
+        if(isRotating) return;
+        if(controlInteract != null) controlInteract.isGrabbable = false;
+        GameObject touchObjectLeft = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
+        GameObject touchObjectRight = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
+        if(touchObjectLeft == null && touchObjectRight == null) return;
+        GameObject touchObject = touchObjectLeft == null ? touchObjectRight : touchObjectLeft;
+        if(!CommonUtil.GetStepController().IsInteractable(touchObject)) return;
+        
+        controlTransform = touchObject.transform;
+        initialPosition = CommonUtil.GetStepController().GetInitPosition(touchObject);
+        SetParam();
+        // Debug.Log("InitGood");
     }
 
     public override void OnSnapped()
     {
+        if(isRotating) return;
         Debug.Log("BanshouSnapped");
+        isRotating = true;
+        // RecordInitialPosition();
         ManageGrabbableListeners(true);
     }
 
     public override void OnUnsnapped()
     {
+        if(!isRotating) return;
         Debug.Log("BanshouUnsnapped");
         ManageGrabbableListeners(false);
         CheckAngle();
+        isRotating = false;
     }
 
     public void RecordInitialPosition()
     {
-        SetParam();
+        // SetParam();
+        if(controlRotator == null || controlInteract == null) return;
         if(isAssembly)
         {
             controlRotator.angleLimits = new Limits2D(-maxAngle, 0f);
-            // controlRotator.stepValueRange = new Limits2D(0f, maxAngle);
         }
         else
         {
             controlRotator.angleLimits = new Limits2D(0f, maxAngle);
-            // controlRotator.stepValueRange = new Limits2D(-maxAngle, 0f);
         }
         controlRotator.stepValueRange = new Limits2D(0f, maxAngle);
-        // controlRotator.stepSize = 1f;
-        // controlRotator.snapToStep = true;
-        controlInteract.isGrabbable = true;
-        // Debug.Log("kkkkkkkkkkkkkkkkkkk");
     }
     private void SetParam()
     {
-        controlTransform = GameObject.Find("101Object").transform.GetChild(0);
-        initialPosition = controlTransform.localPosition;
+        if(controlTransform == null) return;
+        Debug.Log("SetParamValid");
         controlRotator = controlTransform.GetComponentInChildren<VRTK_ArtificialRotator>();
         controlGrabAttach = controlTransform.GetComponentInChildren<VRTK_RotateTransformGrabAttach>();
         controlInteract = controlTransform.GetComponentInChildren<VRTK_InteractableObject>();
+        controlInteract.isGrabbable = true;
+        RecordInitialPosition();
     }
 
     protected virtual void ManageGrabbableListeners(bool state)

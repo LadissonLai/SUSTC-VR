@@ -13,14 +13,14 @@ public class LanguageUtil : MonoBehaviour
     {
         excelsFolderPath = Application.dataPath + "/Data/";
         CreatItemArrayWithExcel(excelsFolderPath + ExcelName);
-        foreach (var item in dict)
-        {
-            Debug.Log(item.Key + "--" + item.Value);
-            foreach (var innerItem in item.Value.languageData)
-            {
-                Debug.Log(innerItem);
-            }
-        }
+        // foreach (var item in dict)
+        // {
+        //     // Debug.Log(item.Key + "--" + item.Value);
+        //     foreach (var innerItem in item.Value.languageData)
+        //     {
+        //         // Debug.Log(innerItem);
+        //     }
+        // }
     }
 
     private static void CreatItemArrayWithExcel(string filePath)
@@ -45,7 +45,9 @@ public class LanguageUtil : MonoBehaviour
     {
         if(dict != null && dict[key] != null && dict[key].languageData != null)
         {
-            return dict[key].languageData[(int)EntrySetting.Instance.language];
+            int languageIndex = 0;
+            if(EntrySetting.Instance != null) languageIndex = (int)EntrySetting.Instance.language;
+            return dict[key].languageData[languageIndex];
         }
         return null;
     }

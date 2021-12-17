@@ -13,8 +13,13 @@ public class HandleButtonTest : MonoBehaviour
     public GameObject taotongPrefab;
 
     public GameObject banshouPrefab;
+    public GameObject lvqingqibanshouPrefab;
+
+    int length = 4;
 
     public Collider collider;
+
+    public VRTK_InteractableObject interactableObject;
 
     protected int index = 0;
 
@@ -44,16 +49,24 @@ public class HandleButtonTest : MonoBehaviour
         switch (index)
         {
             case 0:
-                collider.enabled = false;
+                // collider.enabled = false;
+                interactableObject.isGrabbable = false;
                 prefab = taotongPrefab;
                 break;
             case 1:
-                collider.enabled = false;
+                // collider.enabled = false;
+                interactableObject.isGrabbable = false;
                 prefab = banshouPrefab;
                 break;
             case 2:
-                collider.enabled = true;
+                // collider.enabled = true;
+                interactableObject.isGrabbable = true;
                 prefab = null;
+                break;
+            case 3:
+                // collider.enabled = false;
+                interactableObject.isGrabbable = false;
+                prefab = lvqingqibanshouPrefab;
                 break;
         }
         if(prefab != null)
@@ -65,7 +78,7 @@ public class HandleButtonTest : MonoBehaviour
             //     tool.GetComponentInChildren<SnapHold>().enabled = false;
             // }
         }
-        index = (index + 2) % 3;
+        index = (index + 1) % length;
     }
     
     // Update is called once per frame

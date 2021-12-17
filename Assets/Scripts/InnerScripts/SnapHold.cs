@@ -3,6 +3,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEditor;
     using Highlighters;
     using VRTK.Controllables.ArtificialBased;
     // [ExecuteInEditMode]
@@ -29,7 +30,6 @@
         protected VRTK_InteractableObject currentInteractObject = null;
         protected bool willSnap = false;
         protected bool isSnapped = false;
-        protected bool wasSnapped = false;
         protected bool isHighlighted = false;
         protected VRTK_BaseHighlighter objectHighlighter;
         protected Coroutine transitionInPlaceRoutine;
@@ -61,14 +61,17 @@
                 if (highlightObject != null && objectHighlighter == null)
                 {
                     InitializeHighlighter();
-                }
+                }     
             }
             
         }
 
         protected virtual void Update()
         {
-            // CreateHighlightersInEditor();
+            if(currentInteractObject == null )
+            {
+                CheckCanUnSnapHold();
+            }
         }
         
         protected virtual void ChooseDestroyType(Transform deleteTransform)
@@ -196,11 +199,9 @@
 
         protected virtual void SetHighlightObjectActive(bool state)
         {
-            Debug.Log("SetActive?");
             if (highlightObject != null)
             {
                 highlightObject.SetActive(state);
-                Debug.Log("SetActive: "+state);
                 isHighlighted = state;
             }
         }
@@ -248,7 +249,7 @@
         private void OnTriggerEnter(Collider collider)
         {
             // Debug.Log(collider.gameObject.name);
-            if(collider.gameObject.CompareTag("Tool"))
+            if(IsValidCollider(collider))
             {
                 // Debug.Log("inner: "+collider.gameObject.name);
                 currentInteractObject = collider.GetComponentInParent<VRTK_InteractableObject>();
@@ -259,11 +260,17 @@
 
         private void OnTriggerExit(Collider collider)
         {
-            if(collider.gameObject.CompareTag("Tool"))
+            if(IsValidCollider(collider) && !isSnapped)
             {
                 currentInteractObject = collider.GetComponentInParent<VRTK_InteractableObject>();
-                CheckCanUnSnapHold(currentInteractObject);
+                CheckCanUnSnapHold();
             }
+        }
+
+        private bool IsValidCollider(Collider collider)
+        {
+            return collider.gameObject.CompareTag("Tool") 
+                && string.Equals(highlightObjectPrefab.name, collider.gameObject.GetComponentInChildren<SnapObjectBase>().prefabName);
         }
 
         protected virtual void CheckCanSnapHold(VRTK_InteractableObject interactableObjectCheck)
@@ -272,21 +279,20 @@
             {
                 Debug.Log("ValidSnapObject");
                 Debug.Log(isSnapped);
-                AddHoldEvent();
                 if (!isSnapped)
                 {
+                    AddHoldEvent();
                     SetHighlightObjectActive(true);
                     willSnap = true;
                 }
             }
         }
-        protected virtual void CheckCanUnSnapHold(VRTK_InteractableObject interactableObjectCheck)
+        protected virtual void CheckCanUnSnapHold()
         {
-            if (isSnapped && currentSnappedObject == interactableObjectCheck)
+            if (isSnapped)
             {
                 RecoverPreviousState();            
                 isSnapped = false;
-                wasSnapped = true;
                 currentSnappedObject = null;
                 RemoveHoldEvent();
             }
@@ -380,7 +386,7 @@
         protected virtual void UnholdObject(object sender, ControllerInteractionEventArgs e)
         {
             Debug.Log("Ungrab");
-            CheckCanUnSnapHold(currentSnappedObject);
+            CheckCanUnSnapHold();
             CheckCanSnapHold(currentSnappedObject);
             // SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
             foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
@@ -412,6 +418,7 @@
                 if(snapObject != null && snapObject.enabled == true)
                 {
                     snapObject.OnSnapped();
+                    break;
                 }
             }
         }
@@ -455,36 +462,24 @@
             //If the item is in a snappable position and this drop zone isn't snapped and the collider is a valid interactable object
             if (willSnap && !isSnapped && ValidSnapObject(interactableObjectCheck))
             {
-                //Only snap it to the drop zone if it's not already in a drop zone
-                if (!interactableObjectCheck.IsInSnapDropZone())
+                if (highlightObject != null)
                 {
-                    if (highlightObject != null)
-                    {
-                        //Turn off the drop zone highlighter
-                        SetHighlightObjectActive(false);
-                    }
+                    //Turn off the drop zone highlighter
+                    SetHighlightObjectActive(false);
+                }
 
-                    // Vector3 newLocalScale = GetNewLocalScale(interactableObjectCheck);
-                    if (transitionInPlaceRoutine != null)
-                    {
-                        StopCoroutine(transitionInPlaceRoutine);
-                    }
+                isSnapped = true;
+                currentSnappedObject = interactableObjectCheck;
 
-                    isSnapped = true;
-                    currentSnappedObject = interactableObjectCheck;
-
-                    if (gameObject.activeInHierarchy)
-                    {
-                        UpdateTransformDimensions(interactableObjectCheck, highlightContainer);
-                    }
-
+                if (gameObject.activeInHierarchy)
+                {
+                    UpdateTransformDimensions(interactableObjectCheck, highlightContainer);
                 }
             }
 
             //Force reset isSnapped if the item is grabbed but isSnapped is still true
-            isSnapped = (isSnapped && interactableObjectCheck != null && interactableObjectCheck.IsGrabbed() ? false : isSnapped);
-            willSnap = !isSnapped;
-            wasSnapped = false;
+            isSnapped = true;
+            willSnap = false;
         }
 
         protected virtual void UpdateTransformDimensions(VRTK_InteractableObject ioCheck, GameObject endSettings)

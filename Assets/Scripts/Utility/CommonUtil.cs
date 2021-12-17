@@ -6,6 +6,7 @@ using System;
 public class CommonUtil : MonoBehaviour
 {
     private static GameObject UtilObject = null;
+    private static StepControllerBase StepController = null;
     private static InnerPanelManager panelManager = null;
     public static Component AddComponent(GameObject gameObject, string componentName)
     {
@@ -20,7 +21,7 @@ public class CommonUtil : MonoBehaviour
     public static void NotifyStepController()
     {
         FindUtilObject();
-        UtilObject.GetComponent<StepControllerBase>().Notify();
+        GetStepController().Notify();
     }
 
     private static void FindUtilObject()
@@ -31,10 +32,20 @@ public class CommonUtil : MonoBehaviour
         }
     }
     public static int GenChapterStepIndex(int idx, int step) {
-        return idx * 100 + step;
+        return idx * 100 + step + 1;
     }
     public static int GenChapterIndex(int module, int chapter) {
         return module * 100 + chapter;
+    }
+
+    public static StepControllerBase GetStepController()
+    {
+        if(StepController == null)
+        {
+            FindUtilObject();
+            StepController = UtilObject.GetComponent<StepControllerBase>();
+        }
+        return StepController;
     }
 
     public static void UpdateTip(int step)
