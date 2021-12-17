@@ -30,12 +30,18 @@ public class CommonUtil : MonoBehaviour
             UtilObject = GameObject.Find("Utils");
         }
     }
+    public static int GenChapterStepIndex(int idx, int step) {
+        return idx * 100 + step;
+    }
+    public static int GenChapterIndex(int module, int chapter) {
+        return module * 100 + chapter;
+    }
 
     public static void UpdateTip(int step)
     {
         int module = EntrySetting.Instance == null ? 1 : EntrySetting.Instance.module;
         int chapter = EntrySetting.Instance == null ? 1 : EntrySetting.Instance.chapter;
-        int index = (module * 100 + chapter) * 100 + step;
+        int index = GenChapterStepIndex(GenChapterIndex(module, chapter), step);
         UpdateTip(index.ToString());
     }
 

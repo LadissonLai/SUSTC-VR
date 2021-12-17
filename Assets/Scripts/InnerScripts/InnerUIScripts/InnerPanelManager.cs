@@ -14,7 +14,10 @@ public class InnerPanelManager : MonoBehaviour
         {
             Text ContentText = GameObject.Find("EntrySettingShow").transform
                                                     .GetChild(0).GetChild(1).GetComponent<Text>();
-            ContentText.text = string.Format("RunMode: {0:G}\nBehaviour: {1:G}\nModule: {2:D}",
+            ContentText.text = string.Format("{0}: {3:G}\n{1}: {4:G}\n{2}: {5:D}",
+                            LanguageUtil.Get("run_mode"),
+                            LanguageUtil.Get("behaviour"),
+                            LanguageUtil.Get("module"),
                             EntrySetting.Instance.runMode,
                             EntrySetting.Instance.behaviour,
                             EntrySetting.Instance.module);
@@ -22,6 +25,7 @@ public class InnerPanelManager : MonoBehaviour
             Debug.Log(EntrySetting.Instance.runMode);
             Debug.Log(EntrySetting.Instance.behaviour);
             Debug.Log(EntrySetting.Instance.module);
+
         }
     }
 

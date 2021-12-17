@@ -91,18 +91,8 @@ public class MainPanelManager : MonoBehaviour
         LanguageDropDown.onValueChanged.AddListener((value) => {
             Debug.Log("Language: "+value);
             EntrySetting.Instance.language = (Enums.Language)value;
-            // switch (value) {
-            //     case 1: EntrySetting.Instance.language = Enums.Language.English;break;
-            //     default: EntrySetting.Instance.language = Enums.Language.Chinese;break;
-            // }
         });
     }
-
-    public void SwitchLanguageSettings()
-    {
-        // todo 修改语言设置使用这个函数
-    }
-
 
     void SetModuleListContent(List<string> content){
         Transform ModuleListItemContainer = transform.Find("ModuleSelectionCanvas")
@@ -115,16 +105,18 @@ public class MainPanelManager : MonoBehaviour
         foreach(string str in content){
             GameObject ButtonInst = Instantiate(ModuleListItem, ModuleListItemContainer);
             Text txt = ButtonInst.transform.GetChild(0).GetComponent<Text>();
-            txt.text = str;
             
             string pattern = @"\[(\d+)\-(\d+)\]";
-            string module = Regex.Match(str, pattern).Result("$1");
-            string chapter = Regex.Match(str, pattern).Result("$2");
+            int module = int.Parse(Regex.Match(str, pattern).Result("$1"));
+            int chapter = int.Parse(Regex.Match(str, pattern).Result("$2"));
+
+            int key = CommonUtil.GenChapterIndex(module, chapter);
+            txt.text = LanguageUtil.Get(key.ToString());;
 
             ButtonInst.GetComponent<Button>().onClick.AddListener( 
                 () => { 
-                    EntrySetting.Instance.module = int.Parse(module);
-                    EntrySetting.Instance.chapter = int.Parse(chapter);
+                    EntrySetting.Instance.module = module;
+                    EntrySetting.Instance.chapter = chapter;
                     Debug.Log("module:" + module + " " + "chapter:" + chapter);
                     // EntrySetting.Instance.module = ButtonInst.transform.GetSiblingIndex(); 
                     SceneManager.LoadScene(1);
