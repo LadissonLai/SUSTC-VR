@@ -23,7 +23,7 @@ public class BanshouSnapObject : SnapObjectBase
 
     void Update()
     {
-        if(isRotating) return;
+        if(isRotating && controlTransform != null && controlRotator != null) return;
         if(controlInteract != null) controlInteract.isGrabbable = false;
         GameObject touchObjectLeft = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
         GameObject touchObjectRight = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();

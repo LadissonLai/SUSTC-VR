@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\EntryUIScripts\EntrySetting.cs" />
      <Compile Include="Assets\Scripts\EntryUIScripts\MainPanelManager.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\Global.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandConfig.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandleButtonTest.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerPanelManager.cs" />
@@ -66,6 +67,8 @@
      <Compile Include="Assets\Scripts\ToolBoxScripts\GenerateTools.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\SwitchToolCanvas.cs" />
      <Compile Include="Assets\Scripts\Utility\CommonUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\DataHolder\LanguageDataHolder.cs" />
+     <Compile Include="Assets\Scripts\Utility\DataHolder\StepScriptDataHolder.cs" />
      <Compile Include="Assets\Scripts\Utility\ExcelUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\LanguageUtil.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />

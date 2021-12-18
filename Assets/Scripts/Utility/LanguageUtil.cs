@@ -5,55 +5,53 @@ using System.Data;
 
 public class LanguageUtil : MonoBehaviour
 {
-    private static string excelsFolderPath = null;
-    // private static readonly string assetPath = "Assets/Resources/Release/";
-    private static string ExcelName = "TextConfig.xlsx";  
-    private static Dictionary<string ,LanguageItem> dict = null;
+    private static string dataName = "TextConfig";  
+    private static LanguageDataHolder assetHolder = null;
     void Awake()
     {
-        excelsFolderPath = Application.dataPath + "/Data/";
-        CreatItemArrayWithExcel(excelsFolderPath + ExcelName);
-        // foreach (var item in dict)
-        // {
-        //     // Debug.Log(item.Key + "--" + item.Value);
-        //     foreach (var innerItem in item.Value.languageData)
-        //     {
-        //         // Debug.Log(innerItem);
-        //     }
-        // }
+#if UNITY_EDITOR
+        CreateItemArrayWithExcel(string.Format("{0}{1}{2}.xlsx"
+                                        , Application.dataPath
+                                        , "/Data/"
+                                        , dataName));
+#endif
+        assetHolder = Resources.Load<LanguageDataHolder>(dataName);
     }
 
-    private static void CreatItemArrayWithExcel(string filePath)
+    private static void CreateItemArrayWithExcel(string filePath)
     {
         //行与列
         int columnNum = 0, rowNum = 0;
         DataRowCollection collection = ExcelUtil.ReadExcel(filePath, 0, ref columnNum, ref rowNum);//获得行与列的值
         //从第二行开始才是有效数据
-        dict = new Dictionary<string, LanguageItem>();
+        Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
         for (int i = 1; i < rowNum; i++)
         {
-            LanguageItem item = new LanguageItem();
-            dict[collection[i][0].ToString()] = item;
+            List<string> list = new List<string>();
+            dict[collection[i][0].ToString()] = list;
             for(int j = 1; j < columnNum; j++){
-                item.languageData.Add(collection[i][j].ToString());
+                list.Add(collection[i][j].ToString());
             }
         }
+
+        LanguageDataHolder assetDict = ScriptableObject.CreateInstance<LanguageDataHolder>();
+        assetDict.dict = dict;
+        
+        ExcelUtil.CreateAsset(dataName, assetDict);
+
     }
 
 
     public static string Get(string key)
     {
-        if(dict != null && dict[key] != null && dict[key].languageData != null)
+        if(assetHolder == null) return null;
+        if(assetHolder.dict != null && assetHolder.dict[key] != null)
         {
             int languageIndex = 0;
             if(EntrySetting.Instance != null) languageIndex = (int)EntrySetting.Instance.language;
-            return dict[key].languageData[languageIndex];
+            return assetHolder.dict[key][languageIndex];
         }
         return null;
     }
-}
 
-class LanguageItem
-{
-    public List<string> languageData = new List<string>();
 }

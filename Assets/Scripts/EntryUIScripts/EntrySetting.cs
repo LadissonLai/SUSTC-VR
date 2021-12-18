@@ -5,8 +5,8 @@ using UnityEngine;
 public class EntrySetting : MonoBehaviour
 {
     public static EntrySetting Instance { get; private set; }
-    public Enums.RunMode runMode { get; set; } = 0;
-    public Enums.Behaviour behaviour { get; set; } = 0;
+    public Enums.RunMode runMode { get; set; } = Enums.RunMode.Exercise;
+    public Enums.Behaviour behaviour { get; set; } = Enums.Behaviour.Disassembly;
     public int module { get; set; } = 1;
     public int chapter { get; set; } = 1;
 

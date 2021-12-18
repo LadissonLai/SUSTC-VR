@@ -1,6 +1,7 @@
 ﻿namespace VRTK.Examples
 {
     using UnityEngine;
+    using System.Collections;
 
     public class ToggleCustomHands : MonoBehaviour
     {
@@ -15,16 +16,35 @@
         protected virtual void OnEnable()
         {
             state = false;
-            if (leftController != null)
-            {
-                leftController.ButtonTwoPressed += ToggleHands;
-            }
+            // if (leftController != null)
+            // {
+            //     leftController.ButtonTwoPressed += ToggleHands;
+            // }
 
-            if (rightController != null)
-            {
-                rightController.ButtonTwoPressed += ToggleHands;
-            }
+            // if (rightController != null)
+            // {
+            //     rightController.ButtonTwoPressed += ToggleHands;
+            // }
             ToggleVisibility();
+            StartCoroutine(Toggle());
+        }
+
+        protected virtual IEnumerator Toggle()
+        {
+            // yield return new WaitForEndOfFrame();
+			yield return new WaitForSeconds(Time.deltaTime * 30);
+            state = true;
+            ToggleVisibility();
+        }
+
+        void LateUpdate()
+        {
+            if(!state)
+            {
+                // state = true;
+                // ToggleVisibility();
+            StartCoroutine(Toggle());
+            }
         }
 
         protected virtual void OnDisable()
