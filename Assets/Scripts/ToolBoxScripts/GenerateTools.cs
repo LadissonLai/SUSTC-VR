@@ -8,7 +8,9 @@ public class GenerateTools : MonoBehaviour
     private Transform leftHandPoint;
     private Transform rightHandPoint;
     private Transform curHandPoint;
+    private Caller caller;
     public GameObject taotong_019;
+    public GameObject jiYouLvQingQiBanshou;
     public GameObject jiLunL;
     private void recursive(GameObject parent, bool isLeft) {
         foreach(Transform child in parent.transform) {
@@ -37,16 +39,32 @@ public class GenerateTools : MonoBehaviour
         curHandPoint = rightHandPoint;
         VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_DestinationMarker>().DestinationMarkerEnter += DoPointerIn;
         VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_DestinationMarker>().DestinationMarkerEnter += DoPointerIn;
+        caller = transform.parent.GetComponent<Caller>();
+    }
+    private void generateTool(GameObject prefab) {
+        // 销毁手上已经有的工具
+        foreach(Transform obj in curHandPoint) {
+            Destroy(obj.gameObject);
+        }
+        GameObject tool = Instantiate(prefab, curHandPoint.transform) as GameObject;
+        tool.transform.localPosition = Vector3.zero;
+        Destroy(gameObject);
+        caller.ResetState();
     }
     public void onClickTaoTong019() {
-        GameObject tool = Instantiate(taotong_019, curHandPoint.transform) as GameObject;
-        tool.transform.localPosition = Vector3.zero;
-        Debug.Log("onClickTaoTong019 "+curHandPoint);
+        generateTool(taotong_019);
     }
     public void onClickJiLunL() {
-        GameObject tool = Instantiate(jiLunL, curHandPoint.transform) as GameObject;
-        tool.transform.localPosition = Vector3.zero;
-        
-        Debug.Log("onClickJiLunL "+curHandPoint);
+        generateTool(jiLunL);
+    }
+    public void onClickJiYouLvQingQiBanshou() {
+        generateTool(jiYouLvQingQiBanshou);
+    }
+    public void onClickRelease() {
+        foreach(Transform obj in curHandPoint) {
+            Destroy(obj.gameObject);
+        }
+        Destroy(gameObject);
+        caller.ResetState();
     }
 }

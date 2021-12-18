@@ -61,6 +61,10 @@ namespace VRTK.Examples
         {
             switchPanel("TaoTongCanvas");
         }
+        public void onClickGongJuXiang() 
+        {
+            switchPanel("GongJuXiangCanvas");
+        }
     }
 
 }
