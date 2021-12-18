@@ -5,20 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class InnerMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void onClickSetting() {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-    
-    public void OnClickReturnMain()
-    {
+    public void OnClickReturnMain() {
         SceneManager.LoadScene(0);
     }
 }
