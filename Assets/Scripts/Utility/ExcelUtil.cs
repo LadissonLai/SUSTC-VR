@@ -4,12 +4,17 @@ using UnityEngine;
 // using UnityEngine.Windows;
 using System.IO;
 using System.Data;
-using ExcelDataReader;
 using UnityEditor;
+
+#if UNITY_EDITOR
+using ExcelDataReader;
+#endif
 
 public class ExcelUtil
 {
     private static string assetFolderPath = "Assets/Resources/";
+
+#if UNITY_EDITOR
     /// <summary>
     /// 读取excel文件内容
     /// </summary>
@@ -29,7 +34,6 @@ public class ExcelUtil
         stream.Close();
         return result.Tables[sheetIndex].Rows; 
     }
-
     public static void CreateAsset(string assetName, Object assetData)
     {
         //确保文件夹存在
@@ -45,4 +49,6 @@ public class ExcelUtil
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
+    
+#endif
 }

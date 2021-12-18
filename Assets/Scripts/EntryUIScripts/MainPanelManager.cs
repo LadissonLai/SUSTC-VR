@@ -7,22 +7,23 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 
-public class EngineModule{
-    public List<string> assembly;
-    public List<string> disassembly;
-}
 
 public class MainPanelManager : MonoBehaviour
 {
     Transform CurrentPanel;
-    EngineModule Modules;
+    EngineModuleDataHolder Modules;
+    string dataName = "module";
     public GameObject ModuleListItem;
 
     public Dropdown LanguageDropDown;
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_EDITOR
         Modules = ReadJson("/Data/module.json");
+        ExcelUtil.CreateAsset(dataName, Modules);
+#endif
+        Modules = Resources.Load<EngineModuleDataHolder>(dataName);
         foreach(Transform child in transform){
             HidePanel(child);
         }
@@ -36,7 +37,7 @@ public class MainPanelManager : MonoBehaviour
         
     }
 
-    void PrintJson(EngineModule EngineModule){
+    void PrintJson(EngineModuleDataHolder EngineModule){
         foreach(string str in EngineModule.assembly){
             Debug.Log(str);
         }
@@ -45,11 +46,11 @@ public class MainPanelManager : MonoBehaviour
         }
     }
 
-    public EngineModule ReadJson(string str)
+    public EngineModuleDataHolder ReadJson(string str)
     {
         StreamReader StreamReader = new StreamReader(Application.dataPath + str);
         JsonReader js = new JsonReader(StreamReader);
-        return JsonMapper.ToObject<EngineModule>(js);
+        return JsonMapper.ToObject<EngineModuleDataHolder>(js);
     }
 
     void ShowPanel(Transform transform){

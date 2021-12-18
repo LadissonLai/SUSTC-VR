@@ -18,6 +18,7 @@ public class LanguageUtil : MonoBehaviour
         assetHolder = Resources.Load<LanguageDataHolder>(dataName);
     }
 
+#if UNITY_EDITOR
     private static void CreateItemArrayWithExcel(string filePath)
     {
         //行与列
@@ -40,7 +41,7 @@ public class LanguageUtil : MonoBehaviour
         ExcelUtil.CreateAsset(dataName, assetDict);
 
     }
-
+#endif
 
     public static string Get(string key)
     {

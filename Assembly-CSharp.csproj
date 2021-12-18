@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\Global.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandConfig.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandleButtonTest.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerMenuManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerPanelManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\Setting.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapDropZoneManager.cs" />
@@ -67,6 +68,7 @@
      <Compile Include="Assets\Scripts\ToolBoxScripts\GenerateTools.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\SwitchToolCanvas.cs" />
      <Compile Include="Assets\Scripts\Utility\CommonUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\DataHolder\EngineModuleDataHolder.cs" />
      <Compile Include="Assets\Scripts\Utility\DataHolder\LanguageDataHolder.cs" />
      <Compile Include="Assets\Scripts\Utility\DataHolder\StepScriptDataHolder.cs" />
      <Compile Include="Assets\Scripts\Utility\ExcelUtil.cs" />
@@ -726,6 +728,24 @@
     </Reference>
     <Reference Include="ExcelDataReader">
         <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.Other.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.MidEast">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+        <HintPath>D:/UnityProjects/FinalProject/Assets/Plugins/I18N.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

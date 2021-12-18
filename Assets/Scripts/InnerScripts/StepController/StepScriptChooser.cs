@@ -13,6 +13,7 @@ public class StepScriptChooser : MonoBehaviour
     void Awake() 
     { 
         string scriptName = FindScriptInExcel();
+        Debug.Log("scriptName " + scriptName);
         CommonUtil.AddComponent(transform.gameObject, scriptName);
     }
 
@@ -29,6 +30,7 @@ public class StepScriptChooser : MonoBehaviour
         return  holder.scriptMap.ContainsKey(key.ToString()) ? holder.scriptMap[key.ToString()] : holder.scriptMap["101"];
     }
 
+#if UNITY_EDITOR
     private void CreateDataAssetWithExcel()
     {
         string filePath = Application.dataPath + "/Data/ChapterScriptConfig.xlsx";
@@ -43,5 +45,5 @@ public class StepScriptChooser : MonoBehaviour
         
         ExcelUtil.CreateAsset(dataName, holder);
     }
-
+#endif
 }

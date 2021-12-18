@@ -32,7 +32,7 @@
         protected virtual IEnumerator Toggle()
         {
             // yield return new WaitForEndOfFrame();
-			yield return new WaitForSeconds(Time.deltaTime * 30);
+			yield return new WaitForSeconds(Time.deltaTime * 100);
             state = true;
             ToggleVisibility();
         }
