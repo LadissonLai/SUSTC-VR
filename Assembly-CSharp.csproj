@@ -63,7 +63,8 @@
      <Compile Include="Assets\Scripts\Temp\AddScriptViaStringTest.cs" />
      <Compile Include="Assets\Scripts\Temp\LanguageTest.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\Caller.cs" />
-     <Compile Include="Assets\Scripts\ToolBoxScripts\ToolBoxButtonManager.cs" />
+     <Compile Include="Assets\Scripts\ToolBoxScripts\GenerateTools.cs" />
+     <Compile Include="Assets\Scripts\ToolBoxScripts\SwitchToolCanvas.cs" />
      <Compile Include="Assets\Scripts\Utility\CommonUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\ExcelUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\LanguageUtil.cs" />

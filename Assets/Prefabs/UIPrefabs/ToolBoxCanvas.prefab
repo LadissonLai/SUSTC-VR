@@ -2639,8 +2639,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7688742368312305179}
-        m_MethodName: onClickCube
+      - m_Target: {fileID: 5032872692591032195}
+        m_MethodName: onClickJiLunL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2769,8 +2769,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7688742368312305179}
-        m_MethodName: onClickTaoTong
+      - m_Target: {fileID: 5032872692591032195}
+        m_MethodName: onClickTaoTong019
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4391,8 +4391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a982bf089fd98b948bd17f3f9b59cea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
   taotong_019: {fileID: 1451137182989643763, guid: 558bac2db8108554895f53c88cf3b263,
     type: 3}
   jiLunL: {fileID: 3960865545806344396, guid: 25df20af28bc9fa49b475da2a9b96143, type: 3}

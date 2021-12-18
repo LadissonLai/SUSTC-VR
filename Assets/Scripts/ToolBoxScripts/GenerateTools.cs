@@ -12,7 +12,7 @@ public class GenerateTools : MonoBehaviour
     public GameObject jiLunL;
     private void recursive(GameObject parent, bool isLeft) {
         foreach(Transform child in parent.transform) {
-            if(child.name == "GrabAttachPoint") {
+            if(child.gameObject.name == "GrabAttachPoint") {
                 if(isLeft) {
                     leftHandPoint = child;
                 } else {
@@ -25,8 +25,7 @@ public class GenerateTools : MonoBehaviour
     }
     public void DoPointerIn(object sender, DestinationMarkerEventArgs e)
     {
-        Debug.Log(e.controllerReference.index);
-        if(e.controllerReference.actual == VRTK_DeviceFinder.GetControllerLeftHand()) {
+        if(e.controllerReference.actual == VRTK_DeviceFinder.GetControllerLeftHand(true)) {
             curHandPoint = leftHandPoint;
         } else {
             curHandPoint = rightHandPoint;
@@ -35,15 +34,19 @@ public class GenerateTools : MonoBehaviour
     void Start() {
         recursive(VRTK_DeviceFinder.GetControllerLeftHand(), true);
         recursive(VRTK_DeviceFinder.GetControllerRightHand(), false);
+        curHandPoint = rightHandPoint;
         VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_DestinationMarker>().DestinationMarkerEnter += DoPointerIn;
         VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_DestinationMarker>().DestinationMarkerEnter += DoPointerIn;
     }
     public void onClickTaoTong019() {
-        GameObject tool = Instantiate(taotong_019, leftHandPoint.transform) as GameObject;
+        GameObject tool = Instantiate(taotong_019, curHandPoint.transform) as GameObject;
         tool.transform.localPosition = Vector3.zero;
+        Debug.Log("onClickTaoTong019 "+curHandPoint);
     }
     public void onClickJiLunL() {
-        GameObject tool = Instantiate(jiLunL, rightHandPoint.transform) as GameObject;
+        GameObject tool = Instantiate(jiLunL, curHandPoint.transform) as GameObject;
         tool.transform.localPosition = Vector3.zero;
+        
+        Debug.Log("onClickJiLunL "+curHandPoint);
     }
 }
