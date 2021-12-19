@@ -9,6 +9,9 @@ public class Global : MonoBehaviour
 
     public bool hasToolInHand;
     public GameObject engineObject;
+    public VRTK_InteractableObject interactableObject;
+    public BanshouSnapObject banshouObejct;
+    public GameObject rotatingObject;
     private Transform leftHandPoint;
     private Transform rightHandPoint;
     void Awake()
@@ -16,7 +19,6 @@ public class Global : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -45,14 +47,10 @@ public class Global : MonoBehaviour
         {
             recursive(VRTK_DeviceFinder.GetControllerRightHand(), false);
         }
-        hasToolInHand = leftHandPoint != null && leftHandPoint.childCount > 0 
-                    || rightHandPoint != null && rightHandPoint.childCount > 0;
+        // hasToolInHand = leftHandPoint != null && leftHandPoint.childCount > 0 
+        //             || rightHandPoint != null && rightHandPoint.childCount > 0;
 
-        VRTK_InteractableObject interactableObject = engineObject.GetComponent<VRTK_InteractableObject>();
-        if(interactableObject != null)
-        {
-            interactableObject.isGrabbable = !hasToolInHand;
-        }
+        interactableObject.isGrabbable = !hasToolInHand;
     }
 
     private void recursive(GameObject parent, bool isLeft) 

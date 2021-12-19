@@ -11,6 +11,7 @@ public class BanshouSnapObject : SnapObjectBase
     public bool isAssembly;
     protected bool isRotating = false;
     protected Vector3 initialPosition;
+    protected GameObject touchObject;
     protected Transform controlTransform;
     protected VRTK_InteractableObject controlInteract;
     protected VRTK_ArtificialRotator controlRotator;
@@ -18,23 +19,27 @@ public class BanshouSnapObject : SnapObjectBase
     
     void Awake()
     {
-        // RecordInitialPosition();
+        Global.Instance.banshouObejct = this;
     }
 
     void Update()
     {
-        if(isRotating && controlTransform != null && controlRotator != null) return;
-        if(controlInteract != null) controlInteract.isGrabbable = false;
-        GameObject touchObjectLeft = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
-        GameObject touchObjectRight = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
-        if(touchObjectLeft == null && touchObjectRight == null) return;
-        GameObject touchObject = touchObjectLeft == null ? touchObjectRight : touchObjectLeft;
-        if(!CommonUtil.GetStepController().IsInteractable(touchObject)) return;
+        // if(isRotating && controlTransform != null && controlRotator != null) return;
+        // if(controlInteract != null) controlInteract.isGrabbable = false;
+        // GameObject touchObjectLeft = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
+        // GameObject touchObjectRight = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractTouch>().GetTouchedObject();
         
-        controlTransform = touchObject.transform;
-        initialPosition = CommonUtil.GetStepController().GetInitPosition(touchObject);
-        SetParam();
-        // Debug.Log("InitGood");
+        // if(touchObjectLeft == null && touchObjectRight == null) return;
+        // touchObject = touchObjectLeft == null ? touchObjectRight : touchObjectLeft;
+        // if(!CommonUtil.GetStepController().IsInteractable(touchObject)) return;
+    }
+
+    void OnDisable()
+    {
+        if(Global.Instance != null && Global.Instance.banshouObejct == this)
+        {
+            Global.Instance.banshouObejct = null;
+        }
     }
 
     public override void OnSnapped()
@@ -42,7 +47,6 @@ public class BanshouSnapObject : SnapObjectBase
         if(isRotating) return;
         Debug.Log("BanshouSnapped");
         isRotating = true;
-        // RecordInitialPosition();
         ManageGrabbableListeners(true);
     }
 
@@ -55,9 +59,8 @@ public class BanshouSnapObject : SnapObjectBase
         isRotating = false;
     }
 
-    public void RecordInitialPosition()
+    private void RecordInitialPosition()
     {
-        // SetParam();
         if(controlRotator == null || controlInteract == null) return;
         if(isAssembly)
         {
@@ -69,14 +72,24 @@ public class BanshouSnapObject : SnapObjectBase
         }
         controlRotator.stepValueRange = new Limits2D(0f, maxAngle);
     }
-    private void SetParam()
+    public void SetParam(bool isValid)
     {
-        if(controlTransform == null) return;
-        Debug.Log("SetParamValid");
-        controlRotator = controlTransform.GetComponentInChildren<VRTK_ArtificialRotator>();
-        controlGrabAttach = controlTransform.GetComponentInChildren<VRTK_RotateTransformGrabAttach>();
-        controlInteract = controlTransform.GetComponentInChildren<VRTK_InteractableObject>();
+        if(!isValid)
+        {
+            if(controlInteract != null) controlInteract.isGrabbable = false;
+            return;
+        }
+        touchObject = Global.Instance.rotatingObject;
+        if(touchObject == null) return;
+        controlTransform = touchObject.transform;
+        initialPosition = CommonUtil.GetStepController().GetInitPosition(touchObject);
+
+        controlRotator = touchObject.GetComponentInChildren<VRTK_ArtificialRotator>();
+        controlGrabAttach = touchObject.GetComponentInChildren<VRTK_RotateTransformGrabAttach>();
+        controlInteract = touchObject.GetComponentInChildren<VRTK_InteractableObject>();
         controlInteract.isGrabbable = true;
+        
+        Debug.Log("SetParamValid");
         RecordInitialPosition();
     }
 
@@ -87,6 +100,7 @@ public class BanshouSnapObject : SnapObjectBase
             if (state)
             {
                 controlGrabAttach.AngleChanged += GrabMechanicAngleChanged;
+                Debug.Log("GrabMechanicAngleChanged");
             }
             else
             {
@@ -106,6 +120,7 @@ public class BanshouSnapObject : SnapObjectBase
 
     protected virtual void CheckAngle()
     {
+        if(controlRotator == null) return;
         float currentValue = controlRotator.GetValue();
         float currentValueAbs = currentValue >= 0 ? currentValue : -currentValue;
         if(maxAngle - currentValueAbs <= 5f)

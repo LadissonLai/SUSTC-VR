@@ -20,6 +20,7 @@ public class StepControllerBase : MonoBehaviour
     protected virtual void Awake() 
     { 
         Debug.Log("BaseAwake");
+        // CommonUtil.StepController = this;
         CommonUtil.UpdateTip(currentStepIndex);
         initPositions = new Dictionary<GameObject, Vector3>();
     }
@@ -90,6 +91,7 @@ public class StepControllerBase : MonoBehaviour
         gameObject.transform.SetParent(luosiTransform.parent);
         gameObject.transform.localPosition = Vector3.zero;
         gameObject.transform.localRotation = Quaternion.identity;
+        Global.Instance.rotatingObject = gameObject;
         
         Transform taotongTransform = luosiTransform.GetChild(luosiTransform.childCount-1).GetChild(1);
         taotongTransform.SetParent(gameObject.transform);

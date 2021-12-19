@@ -362,6 +362,7 @@ namespace VRTK
         {
             if (InteractableObjectGrabbed != null)
             {
+                Debug.Log("OnInteractableObjectGrabbed " + this.gameObject);
                 InteractableObjectGrabbed(this, e);
             }
         }

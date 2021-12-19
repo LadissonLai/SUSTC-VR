@@ -6,6 +6,8 @@ using UnityEditor;
 [System.Serializable]
 public class EngineModuleDataHolder : ScriptableObject
 {
+    [SerializeField]
     public List<string> assembly;
+    [SerializeField]
     public List<string> disassembly;
 }

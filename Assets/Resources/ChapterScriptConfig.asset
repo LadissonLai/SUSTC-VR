@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0968beca28024245a0a13d34baeebe5, type: 3}
   m_Name: ChapterScriptConfig
   m_EditorClassIdentifier: 
+  keyList:
+  - 101
+  valueList:
+  - JiYouPaiFang

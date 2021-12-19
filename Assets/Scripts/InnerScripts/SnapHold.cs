@@ -26,8 +26,8 @@
         protected GameObject highlightContainer;
         protected GameObject highlightObject;
         protected GameObject highlightEditorObject = null;
-        protected VRTK_InteractableObject currentSnappedObject = null;
-        protected VRTK_InteractableObject currentInteractObject = null;
+        protected GameObject currentSnappedObject = null;
+        protected GameObject currentInteractObject = null;
         protected bool willSnap = false;
         protected bool isSnapped = false;
         protected bool isHighlighted = false;
@@ -169,6 +169,11 @@
             clonedObject.transform.localRotation = Quaternion.identity;
 
             transform.localScale = saveScale;
+            SnapObjectBase snapComponent = clonedObject.GetComponentInChildren<SnapObjectBase>();
+            if(snapComponent != null)
+            {
+                Destroy(snapComponent);
+            }
             Debug.Log("CopyObject");
         }
 
@@ -252,7 +257,7 @@
             if(IsValidCollider(collider))
             {
                 // Debug.Log("inner: "+collider.gameObject.name);
-                currentInteractObject = collider.GetComponentInParent<VRTK_InteractableObject>();
+                currentInteractObject = collider.gameObject;
                 // Debug.Log("trigger "+currentInteractObject.gameObject.name);
                 CheckCanSnapHold(currentInteractObject);
             }
@@ -262,7 +267,7 @@
         {
             if(IsValidCollider(collider) && !isSnapped)
             {
-                currentInteractObject = collider.GetComponentInParent<VRTK_InteractableObject>();
+                currentInteractObject = collider.gameObject;
                 CheckCanUnSnapHold();
             }
         }
@@ -273,17 +278,19 @@
                 && string.Equals(highlightObjectPrefab.name, collider.gameObject.GetComponentInChildren<SnapObjectBase>().prefabName);
         }
 
-        protected virtual void CheckCanSnapHold(VRTK_InteractableObject interactableObjectCheck)
+        protected virtual void CheckCanSnapHold(GameObject interactableObjectCheck)
         {
             if (ValidSnapObject(interactableObjectCheck))
             {
-                Debug.Log("ValidSnapObject");
-                Debug.Log(isSnapped);
                 if (!isSnapped)
                 {
                     AddHoldEvent();
                     SetHighlightObjectActive(true);
                     willSnap = true;
+                    if(Global.Instance.banshouObejct != null)
+                    {
+                        Global.Instance.banshouObejct.SetParam(true);
+                    }
                 }
             }
         }
@@ -298,12 +305,16 @@
             }
             SetHighlightObjectActive(false);
             willSnap = false;
+            if(Global.Instance.banshouObejct != null)
+            {
+                Global.Instance.banshouObejct.SetParam(false);
+            }
 
         }
 
-        protected virtual bool ValidSnapObject(VRTK_InteractableObject interactableObjectCheck)
+        protected virtual bool ValidSnapObject(GameObject interactableObjectCheck)
         {
-            return (interactableObjectCheck != null && !VRTK_PolicyList.Check(interactableObjectCheck.gameObject, validObjectListPolicy));
+            return (interactableObjectCheck != null && !VRTK_PolicyList.Check(interactableObjectCheck, validObjectListPolicy));
         }
 
         protected virtual void AddHoldEvent()
@@ -389,7 +400,7 @@
             CheckCanUnSnapHold();
             CheckCanSnapHold(currentSnappedObject);
             // SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
-            foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
+            foreach (SnapObjectBase snapObject in currentInteractObject.GetComponentsInChildren<SnapObjectBase>())
             {
                 if(snapObject != null && snapObject.enabled == true)
                 {
@@ -399,7 +410,7 @@
             }
         }
 
-        protected virtual void AttemptForceSnapAtEndOfFrame(VRTK_InteractableObject currentInteractObject)
+        protected virtual void AttemptForceSnapAtEndOfFrame(GameObject currentInteractObject)
         {
             // yield return new WaitForEndOfFrame();
             SaveCurrentState();
@@ -410,10 +421,10 @@
                 RemoveHoldEvent();
             }
             
-            Debug.Log("SnapName: "+ currentInteractObject.gameObject.name);
-            Debug.Log("SnapNnum: "+ currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>().Length);
+            Debug.Log("SnapName: "+ currentInteractObject.name);
+            Debug.Log("SnapNnum: "+ currentInteractObject.GetComponentsInChildren<SnapObjectBase>().Length);
 
-            foreach (SnapObjectBase snapObject in currentInteractObject.gameObject.GetComponentsInChildren<SnapObjectBase>())
+            foreach (SnapObjectBase snapObject in currentInteractObject.GetComponentsInChildren<SnapObjectBase>())
             {
                 if(snapObject != null && snapObject.enabled == true)
                 {
@@ -435,13 +446,16 @@
 
         protected virtual void RecoverPreviousState()
         {
-            Transform curTransform = currentSnappedObject.transform;
-            curTransform.SetParent(prevParent);
-            curTransform.localPosition = prevPosition;
-            curTransform.localRotation = prevRotation;
+            if(currentSnappedObject != null)
+            {
+                Transform curTransform = currentSnappedObject.transform;
+                curTransform.SetParent(prevParent);
+                curTransform.localPosition = prevPosition;
+                curTransform.localRotation = prevRotation;
+            }
         }
 
-        protected virtual void AttemptForceSnap(VRTK_InteractableObject objectToSnap)
+        protected virtual void AttemptForceSnap(GameObject objectToSnap)
         {
             //force snap settings on
             willSnap = true;
@@ -449,7 +463,7 @@
             SnapObjectToZone(objectToSnap);
         }
 
-        protected virtual void SnapObjectToZone(VRTK_InteractableObject objectToSnap)
+        protected virtual void SnapObjectToZone(GameObject objectToSnap)
         {
             if (!isSnapped && ValidSnapObject(objectToSnap))
             {
@@ -457,7 +471,7 @@
             }
         }
 
-        protected virtual void SnapObject(VRTK_InteractableObject interactableObjectCheck)
+        protected virtual void SnapObject(GameObject interactableObjectCheck)
         {
             //If the item is in a snappable position and this drop zone isn't snapped and the collider is a valid interactable object
             if (willSnap && !isSnapped && ValidSnapObject(interactableObjectCheck))
@@ -482,7 +496,7 @@
             willSnap = false;
         }
 
-        protected virtual void UpdateTransformDimensions(VRTK_InteractableObject ioCheck, GameObject endSettings)
+        protected virtual void UpdateTransformDimensions(GameObject ioCheck, GameObject endSettings)
         {
             Transform ioTransform = ioCheck.transform;
             if (ioTransform != null && endSettings != null)

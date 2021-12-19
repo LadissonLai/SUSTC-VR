@@ -7,6 +7,8 @@ public class LanguageUtil : MonoBehaviour
 {
     private static string dataName = "TextConfig";  
     private static LanguageDataHolder assetHolder = null;
+    private static Dictionary<string, List<string>> dict;
+    // private static Dictionary<string, string[]> dict;
     void Awake()
     {
 #if UNITY_EDITOR
@@ -25,7 +27,7 @@ public class LanguageUtil : MonoBehaviour
         int columnNum = 0, rowNum = 0;
         DataRowCollection collection = ExcelUtil.ReadExcel(filePath, 0, ref columnNum, ref rowNum);//获得行与列的值
         //从第二行开始才是有效数据
-        Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+        dict = new Dictionary<string, List<string>>();
         for (int i = 1; i < rowNum; i++)
         {
             List<string> list = new List<string>();
@@ -39,7 +41,6 @@ public class LanguageUtil : MonoBehaviour
         assetDict.dict = dict;
         
         ExcelUtil.CreateAsset(dataName, assetDict);
-
     }
 #endif
 
@@ -53,6 +54,15 @@ public class LanguageUtil : MonoBehaviour
             return assetHolder.dict[key][languageIndex];
         }
         return null;
+
+        // if(assetHolder == null) return null;
+        // if(dict != null && dict[key] != null)
+        // {
+        //     int languageIndex = 0;
+        //     if(EntrySetting.Instance != null) languageIndex = (int)EntrySetting.Instance.language;
+        //     return dict[key][languageIndex];
+        // }
+        // return null;
     }
 
 }

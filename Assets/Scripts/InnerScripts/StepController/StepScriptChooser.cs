@@ -24,7 +24,7 @@ public class StepScriptChooser : MonoBehaviour
 #endif
         holder = Resources.Load<StepScriptDataHolder>(dataName);
         int key = 101;
-        if(EntrySetting.Instance != null) key = EntrySetting.Instance.module * 100 + EntrySetting.Instance.chapter;
+        if(EntrySetting.Instance != null) key = CommonUtil.GenChapterIndex(EntrySetting.Instance.module , EntrySetting.Instance.chapter);
         if(holder == null || holder.scriptMap == null)
             return null;
         return  holder.scriptMap.ContainsKey(key.ToString()) ? holder.scriptMap[key.ToString()] : holder.scriptMap["101"];

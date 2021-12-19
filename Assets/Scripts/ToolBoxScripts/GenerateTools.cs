@@ -48,8 +48,9 @@ public class GenerateTools : MonoBehaviour
         }
         GameObject tool = Instantiate(prefab, curHandPoint.transform) as GameObject;
         tool.transform.localPosition = Vector3.zero;
-        Destroy(gameObject);
+        Global.Instance.hasToolInHand = true;
         caller.ResetState();
+        Destroy(gameObject);
     }
     public void onClickTaoTong019() {
         generateTool(taotong_019);
@@ -61,10 +62,15 @@ public class GenerateTools : MonoBehaviour
         generateTool(jiYouLvQingQiBanshou);
     }
     public void onClickRelease() {
+        Debug.Log("enter");
         foreach(Transform obj in curHandPoint) {
             Destroy(obj.gameObject);
         }
-        Destroy(gameObject);
+        foreach(Transform obj in curHandPoint) {
+            Debug.Log(obj.gameObject);
+        }
+        Global.Instance.hasToolInHand = false;
         caller.ResetState();
+        Destroy(gameObject);
     }
 }

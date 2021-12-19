@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.Scripting;
 using System;
 
 public class CommonUtil : MonoBehaviour
 {
-    private static GameObject UtilObject = null;
-    private static StepControllerBase StepController = null;
+    public static GameObject UtilObject = null;
+    public static StepControllerBase StepController = null;
     private static InnerPanelManager panelManager = null;
+    void Awake()
+    {
+        CommonUtil.UtilObject = gameObject;
+        // GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
+    }
     public static Component AddComponent(GameObject gameObject, string componentName)
     {
         Type type = Type.GetType(componentName);
@@ -20,8 +26,9 @@ public class CommonUtil : MonoBehaviour
 
     public static void NotifyStepController()
     {
-        FindUtilObject();
-        GetStepController().Notify();
+        // FindUtilObject();
+        GetStepController();
+        StepController.Notify();
     }
 
     private static void FindUtilObject()
@@ -42,8 +49,10 @@ public class CommonUtil : MonoBehaviour
     {
         if(StepController == null)
         {
-            FindUtilObject();
+            // FindUtilObject();
+            Debug.Log(UtilObject);
             StepController = UtilObject.GetComponent<StepControllerBase>();
+            Debug.Log("StepControllerBase " + StepController);
         }
         return StepController;
     }

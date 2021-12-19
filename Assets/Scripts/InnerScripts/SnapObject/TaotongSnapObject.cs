@@ -28,8 +28,9 @@ public class TaotongSnapObject : SnapObjectBase
         {
             collider.enabled = true;
         }
-        DestroyImmediate(GetComponent<VRTK_InteractableObject>());
+        Destroy(GetComponent<VRTK_InteractableObject>());
         GetComponentInChildren<TaotongSnapObject>().enabled = false;
+        Global.Instance.hasToolInHand = false;
         CommonUtil.NotifyStepController();
 
     }

@@ -24,6 +24,10 @@ public class MainPanelManager : MonoBehaviour
         ExcelUtil.CreateAsset(dataName, Modules);
 #endif
         Modules = Resources.Load<EngineModuleDataHolder>(dataName);
+        // foreach (var item in Modules.disassembly)
+        // {
+        //     Debug.Log(item);
+        // }
         foreach(Transform child in transform){
             HidePanel(child);
         }
