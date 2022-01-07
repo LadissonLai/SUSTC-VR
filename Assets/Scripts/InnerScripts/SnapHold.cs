@@ -28,6 +28,7 @@
         protected GameObject highlightEditorObject = null;
         protected GameObject currentSnappedObject = null;
         protected GameObject currentInteractObject = null;
+        protected GameObject currentColliderObject = null;
         protected bool willSnap = false;
         protected bool isSnapped = false;
         protected bool isHighlighted = false;
@@ -68,10 +69,10 @@
 
         protected virtual void Update()
         {
-            if(currentInteractObject == null )
-            {
-                CheckCanUnSnapHold();
-            }
+            // if(currentInteractObject == null)
+            // {
+            //     CheckCanUnSnapHold();
+            // }
         }
         
         protected virtual void ChooseDestroyType(Transform deleteTransform)
@@ -102,33 +103,33 @@
         }
 
         #region Highlight
-        protected virtual void CreateHighlightersInEditor()
-        {
-            if (VRTK_SharedMethods.IsEditTime())
-            {
-                GenerateHighlightObjects();
+        // protected virtual void CreateHighlightersInEditor()
+        // {
+        //     if (VRTK_SharedMethods.IsEditTime())
+        //     {
+        //         GenerateHighlightObjects();
 
-                GenerateEditorHighlightObject();
-                if (highlightEditorObject != null)
-                {
-                    highlightEditorObject.SetActive(displayDropZoneInEditor);
-                }
-            }
-        }
+        //         GenerateEditorHighlightObject();
+        //         if (highlightEditorObject != null)
+        //         {
+        //             highlightEditorObject.SetActive(displayDropZoneInEditor);
+        //         }
+        //     }
+        // }
 
-        protected virtual void GenerateEditorHighlightObject()
-        {
-            if (highlightObject != null && highlightEditorObject == null && transform.Find(ObjectPath(HIGHLIGHT_EDITOR_OBJECT_NAME)) == null)
-            {
-                CopyObject(highlightObject, ref highlightEditorObject, HIGHLIGHT_EDITOR_OBJECT_NAME);
-                Renderer[] renderers = highlightEditorObject.GetComponentsInChildren<Renderer>();
-                for (int i = 0; i < renderers.Length; i++)
-                {
-                    renderers[i].material = Resources.Load("SnapDropZoneEditorObject") as Material;
-                }
-                highlightEditorObject.SetActive(true);
-            }
-        }
+        // protected virtual void GenerateEditorHighlightObject()
+        // {
+        //     if (highlightObject != null && highlightEditorObject == null && transform.Find(ObjectPath(HIGHLIGHT_EDITOR_OBJECT_NAME)) == null)
+        //     {
+        //         CopyObject(highlightObject, ref highlightEditorObject, HIGHLIGHT_EDITOR_OBJECT_NAME);
+        //         Renderer[] renderers = highlightEditorObject.GetComponentsInChildren<Renderer>();
+        //         for (int i = 0; i < renderers.Length; i++)
+        //         {
+        //             renderers[i].material = Resources.Load("SnapDropZoneEditorObject") as Material;
+        //         }
+        //         highlightEditorObject.SetActive(true);
+        //     }
+        // }
 
         private void GenerateHighlightObjects()
         {
@@ -145,12 +146,6 @@
                 highlightObject = checkForChild.gameObject;
                 
             }
-            // VRTK_ArtificialRotator rotator = highlightObject.GetComponentInChildren<VRTK_ArtificialRotator>();
-            // if(rotator != null)
-            // {
-            //     rotator.enabled = false; //不知道为何如果生效的话，会使得物体直接销毁
-            // }
-
             DisableHighlightShadows();
             SetHighlightObjectActive(false);
         }
@@ -257,9 +252,9 @@
             if(IsValidCollider(collider))
             {
                 // Debug.Log("inner: "+collider.gameObject.name);
-                currentInteractObject = collider.gameObject;
+                currentColliderObject = collider.gameObject;
                 // Debug.Log("trigger "+currentInteractObject.gameObject.name);
-                CheckCanSnapHold(currentInteractObject);
+                CheckCanSnapHold(currentColliderObject);
             }
         }
 
@@ -267,7 +262,8 @@
         {
             if(IsValidCollider(collider) && !isSnapped)
             {
-                currentInteractObject = collider.gameObject;
+                currentColliderObject = null;
+                currentInteractObject = null;
                 CheckCanUnSnapHold();
             }
         }
@@ -284,6 +280,7 @@
             {
                 if (!isSnapped)
                 {
+                    currentInteractObject = interactableObjectCheck;
                     AddHoldEvent();
                     SetHighlightObjectActive(true);
                     willSnap = true;
@@ -301,8 +298,9 @@
                 RecoverPreviousState();            
                 isSnapped = false;
                 currentSnappedObject = null;
-                RemoveHoldEvent();
+                // currentInteractObject = null;
             }
+            RemoveHoldEvent();
             SetHighlightObjectActive(false);
             willSnap = false;
             if(Global.Instance.banshouObejct != null)
@@ -343,7 +341,7 @@
                     rightController.GripClicked += HoldObject;
                 }
             }
-            Debug.Log("AddHoldEvent");
+            Debug.Log("AddHoldEvent " + gameObject + " " + currentInteractObject);
         }
 
         protected virtual void RemoveHoldEvent()
@@ -398,7 +396,6 @@
         {
             Debug.Log("Ungrab");
             CheckCanUnSnapHold();
-            CheckCanSnapHold(currentSnappedObject);
             // SnapObjectBase snapObject = currentInteractObject.gameObject.GetComponent<SnapObjectBase>();
             foreach (SnapObjectBase snapObject in currentInteractObject.GetComponentsInChildren<SnapObjectBase>())
             {
@@ -407,6 +404,11 @@
                     snapObject.OnUnsnapped();
                     break;
                 }
+            }
+            currentInteractObject = null;
+            if (gameObject.activeInHierarchy)
+            {
+                CheckCanSnapHold(currentColliderObject);
             }
         }
 
@@ -458,7 +460,7 @@
         protected virtual void AttemptForceSnap(GameObject objectToSnap)
         {
             //force snap settings on
-            willSnap = true;
+            // willSnap = true;
             //Force touch one of the object's colliders on this trigger collider
             SnapObjectToZone(objectToSnap);
         }
@@ -474,7 +476,7 @@
         protected virtual void SnapObject(GameObject interactableObjectCheck)
         {
             //If the item is in a snappable position and this drop zone isn't snapped and the collider is a valid interactable object
-            if (willSnap && !isSnapped && ValidSnapObject(interactableObjectCheck))
+            if (willSnap)
             {
                 if (highlightObject != null)
                 {
@@ -483,6 +485,7 @@
                 }
 
                 isSnapped = true;
+                willSnap = false;
                 currentSnappedObject = interactableObjectCheck;
 
                 if (gameObject.activeInHierarchy)
@@ -490,10 +493,6 @@
                     UpdateTransformDimensions(interactableObjectCheck, highlightContainer);
                 }
             }
-
-            //Force reset isSnapped if the item is grabbed but isSnapped is still true
-            isSnapped = true;
-            willSnap = false;
         }
 
         protected virtual void UpdateTransformDimensions(GameObject ioCheck, GameObject endSettings)

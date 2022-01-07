@@ -29,14 +29,18 @@ public class TaotongSnapObject : SnapObjectBase
             collider.enabled = true;
         }
         Destroy(GetComponent<VRTK_InteractableObject>());
-        GetComponentInChildren<TaotongSnapObject>().enabled = false;
+        // GetComponent<VRTK_InteractableObject>().isGrabbable = false;
+        
+        // GetComponent<VRTK_InteractableObject>().enabled = false;
         Global.Instance.hasToolInHand = false;
         CommonUtil.NotifyStepController();
+        GetComponentInChildren<TaotongSnapObject>().enabled = false;
 
     }
 
     public override void OnUnsnapped()
     {
         Debug.Log("TaotongUnsnapped");
+        // Destroy(GetComponent<VRTK_InteractableObject>());
     }
 }

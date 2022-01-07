@@ -62,11 +62,12 @@
      <Compile Include="Assets\Scripts\InnerScripts\StepController\JiYouPaiFang.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\StepController\StepControllerBase.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\StepController\StepScriptChooser.cs" />
-     <Compile Include="Assets\Scripts\Temp\AddScriptViaStringTest.cs" />
-     <Compile Include="Assets\Scripts\Temp\LanguageTest.cs" />
+     <Compile Include="Assets\Scripts\TempScript\AddScriptViaStringTest.cs" />
+     <Compile Include="Assets\Scripts\TempScript\LanguageTest.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\Caller.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\GenerateTools.cs" />
      <Compile Include="Assets\Scripts\ToolBoxScripts\SwitchToolCanvas.cs" />
+     <Compile Include="Assets\Scripts\Utility\AssetUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\CommonUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\DataHolder\EngineModuleDataHolder.cs" />
      <Compile Include="Assets\Scripts\Utility\DataHolder\LanguageDataHolder.cs" />
@@ -527,6 +528,7 @@
      <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\AdaptiveQualityDebugVisualization.shader" />
      <None Include="Assets\LJR\readme_jp.txt" />
      <None Include="Assets\LJR\readme_en.txt" />
+     <None Include="Assets\Temp\Assets\Environments\FXB_E5_VR_ChangJing\Shaders\Standard.shader" />
      <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\VRTK_TunnelEffect.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
