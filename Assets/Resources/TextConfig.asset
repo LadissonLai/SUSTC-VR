@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyList:
   - Welcome
+  - Chinese
+  - English
   - 10101
   - 10102
   - 10103
@@ -86,6 +88,12 @@ MonoBehaviour:
   - langData:
     - "\u4F60\u597D"
     - Hello
+  - langData:
+    - "\u4E2D\u6587\u7B80\u4F53"
+    - Simplified Chinese
+  - langData:
+    - "\u82F1\u8BED"
+    - English
   - langData:
     - "\u5728\u653E\u6CB9\u87BA\u6813\u5904\u653E\u7F6E\u5927\u53F719\u53F7\u5957\u7B52"
     - 10101

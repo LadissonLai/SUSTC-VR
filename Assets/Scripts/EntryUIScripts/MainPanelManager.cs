@@ -15,7 +15,6 @@ public class MainPanelManager : MonoBehaviour
     string dataName = "module";
     public GameObject ModuleListItem;
 
-    public Dropdown LanguageDropDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,10 +92,6 @@ public class MainPanelManager : MonoBehaviour
 
     public void OnSettingBtnClicked(){
         SwitchPanel(this.transform.Find("SettingCanvas"));
-        LanguageDropDown.onValueChanged.AddListener((value) => {
-            Debug.Log("Language: "+value);
-            EntrySetting.Instance.language = (Enums.Language)value;
-        });
     }
 
     void SetModuleListContent(List<string> content){
