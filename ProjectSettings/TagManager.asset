@@ -4,11 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - floor
+  - Leg
+  - Arm
   - ExcludeTeleport
-  - SnapCube
-  - SnapCylinder
-  - UpperCover
+  - Head
+  - RHand
+  - LHand
   - Tool
+  - WrenchParts
+  - WrenchPartsPlaceHolder
   layers:
   - Default
   - TransparentFX
@@ -18,13 +23,13 @@ TagManager:
   - UI
   - 
   - 
+  - Floor
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - RuntimeLighting
+  - PostProcess
+  - VRHand
+  - IgnoreHandTouch
+  - VRHand-IgnorePadFrontCollider
   - 
   - 
   - 
