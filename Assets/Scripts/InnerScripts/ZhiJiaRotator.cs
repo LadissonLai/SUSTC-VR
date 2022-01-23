@@ -5,17 +5,19 @@ using UnityEngine;
 public class ZhiJiaRotator : MonoBehaviour
 {
     public Transform rotationRef;
+    
+    private Vector3 origin;
     // Start is called before the first frame update
     void Start()
     {
-        
+        origin = transform.localEulerAngles;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        float refAngle = GetInpectorEulers(rotationRef).z;
-        Vector3 origin = transform.localEulerAngles;
+        float refAngle = rotationRef.localEulerAngles.z;
+        // Vector3 origin = transform.localEulerAngles;
         // Vector3 origin = GetInpectorEulers(transform);
         // transform.localRotation = Quaternion.Euler(new Vector3(refAngle, origin.y, origin.z));
         transform.localEulerAngles = new Vector3(refAngle, origin.y, origin.z);

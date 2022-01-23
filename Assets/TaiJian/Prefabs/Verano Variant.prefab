@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 57916c4451124d543b6b3b1eb16be4c0,
         type: 3}
       propertyPath: m_Name
-      value: Verano Variant
+      value: Verano
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57916c4451124d543b6b3b1eb16be4c0, type: 3}

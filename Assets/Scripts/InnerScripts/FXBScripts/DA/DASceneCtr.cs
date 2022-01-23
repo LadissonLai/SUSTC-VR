@@ -20,8 +20,6 @@ namespace Fxb.CMSVR
     {
         public Transform padPos;
 
-        public Transform carPos;
-
         private DASceneState SceneState => World.Get<DASceneState>();
 
         private IRecordModel RecordModel => World.Get<IRecordModel>();
@@ -44,50 +42,51 @@ namespace Fxb.CMSVR
 
         IEnumerator Start()
         {
-
-#if UNITY_EDITOR
-            Message.AddListener<GuideTipMessage>(OnGuideTipMessage);
-#endif
-
-            Message.AddListener<PartsTableDropObjChangeMessage>(OnPartsTableDropObjChangeMessage);
-
-            Message.AddListener<DAObjStateChangeMessage>(OnObjStateChanged);
-
-            Message.AddListener<CarLiftLocationChangedMessages>(OnLiftLocationChanged);
-
-            Message.AddListener<DAToolErrorMessage>(OnDAToolError);
-            Message.AddListener<WearEquipmentMessage>(OnWearEquipment);
-            Message.AddListener<ReloadDaSceneMessage>(OnReloadDaScene);
-
-            Message.AddListener<BatteryLiftDeviceStateChangeMessage>(OnBatteryLiftStateChanged);
-
-            yield return new WaitForSeconds(1);
-
-            gameObject.AddComponent<DASystem>();
-
-            gameObject.AddComponent<DATaskGuide>();
-
             yield return null;
 
-            Message.Send(new StartDAModeMessage()
-            {
-                mode = DAMode.DisassemblyAssembly,
+// #if UNITY_EDITOR
+//             Message.AddListener<GuideTipMessage>(OnGuideTipMessage);
+// #endif
 
-                rootCtrs = new List<AbstractDAObjCtr>()
-                {
-                    World.Get<DAObjCtr>("14"),
-                    World.Get<DAObjCtr>("13"),
-                    World.Get<DAObjCtr>("12"),
-                    World.Get<DAObjCtr>("8"),
-                    World.Get<DAObjCtr>("4"),
-                    World.Get<DAObjCtr>("2"),
-                    World.Get<DAObjCtr>("1")
-                }
-            });
+//             Message.AddListener<PartsTableDropObjChangeMessage>(OnPartsTableDropObjChangeMessage);
 
-            StartCoroutine(CheckTaskCompleted());
+//             Message.AddListener<DAObjStateChangeMessage>(OnObjStateChanged);
 
-            TryInitWithTask();
+//             Message.AddListener<CarLiftLocationChangedMessages>(OnLiftLocationChanged);
+
+//             Message.AddListener<DAToolErrorMessage>(OnDAToolError);
+//             Message.AddListener<WearEquipmentMessage>(OnWearEquipment);
+//             Message.AddListener<ReloadDaSceneMessage>(OnReloadDaScene);
+
+//             Message.AddListener<BatteryLiftDeviceStateChangeMessage>(OnBatteryLiftStateChanged);
+
+//             yield return new WaitForSeconds(1);
+
+//             gameObject.AddComponent<DASystem>();
+
+//             gameObject.AddComponent<DATaskGuide>();
+
+//             yield return null;
+
+//             Message.Send(new StartDAModeMessage()
+//             {
+//                 mode = DAMode.DisassemblyAssembly,
+
+//                 rootCtrs = new List<AbstractDAObjCtr>()
+//                 {
+//                     World.Get<DAObjCtr>("14"),
+//                     World.Get<DAObjCtr>("13"),
+//                     World.Get<DAObjCtr>("12"),
+//                     World.Get<DAObjCtr>("8"),
+//                     World.Get<DAObjCtr>("4"),
+//                     World.Get<DAObjCtr>("2"),
+//                     World.Get<DAObjCtr>("1")
+//                 }
+//             });
+
+            // StartCoroutine(CheckTaskCompleted());
+
+            // TryInitWithTask();
         }
 
         private void OnBatteryLiftStateChanged(BatteryLiftDeviceStateChangeMessage msg)
@@ -127,75 +126,73 @@ namespace Fxb.CMSVR
 
         protected override void Awake()
         {
-            base.Awake();
+            // base.Awake();
 
-            AnimWrenchCtr.partsPreviewPrefab = Resources.Load<GameObject>(PathConfig.PREFAB_PATH_COMBINE_WRENCH_PREVIEW).transform;
+            // AnimWrenchCtr.partsPreviewPrefab = Resources.Load<GameObject>(PathConfig.PREFAB_PATH_COMBINE_WRENCH_PREVIEW).transform;
 
-            Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_PAD), padPos).transform.ResetLocalMatrix();
+            // Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_PAD), padPos).transform.ResetLocalMatrix();
 
-            Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_CAR), carPos).transform.ResetLocalMatrix();
-
-            if (SceneState == null)
-                World.current.Injecter.Regist<DASceneState>();
+            // if (SceneState == null)
+            //     World.current.Injecter.Regist<DASceneState>();
         }
 
 #if UNITY_EDITOR
         private void Update()
         {
-            DAConfig.ignoreWrenchConditionCheck = ignoreWrenchConditionCheck;
+            // DAConfig.ignoreWrenchConditionCheck = ignoreWrenchConditionCheck;
 
-            DAConfig.skipToolAnimation = skipDAToolAnimation;
+            // DAConfig.skipToolAnimation = skipDAToolAnimation;
 
-            //测试 直接尝试用右手去拆装提示物体
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                //抓取装备后自动穿上
-                var equipmentObj = VRTKHelper.FindGrabedObjCom<EquipmentObjCtr>();
+            // //测试 直接尝试用右手去拆装提示物体
+            // if (Input.GetKeyDown(KeyCode.P))
+            // {
+            //     //抓取装备后自动穿上
+            //     var equipmentObj = VRTKHelper.FindGrabedObjCom<EquipmentObjCtr>();
 
-                if (equipmentObj != null)
-                {
-                    equipmentObj.Wear(true);
+            //     if (equipmentObj != null)
+            //     {
+            //         equipmentObj.Wear(true);
 
-                    return;
-                }
+            //         return;
+            //     }
                  
-                if (DaState.tipsInGuiding != null)
-                {
-                    foreach (var obj in DaState.tipsInGuiding)
-                    {
-                        if (obj.interactObj == null)
-                            continue;
+            //     if (DaState.tipsInGuiding != null)
+            //     {
+            //         foreach (var obj in DaState.tipsInGuiding)
+            //         {
+            //             if (obj.interactObj == null)
+            //                 continue;
 
-                        if (obj.interactObj.gameObject.activeInHierarchy && obj.interactObj.isTiped)
-                        {
-                            if (obj.DisplayMode == CmsDisplayMode.PlaceHolder)
-                                obj.interactObj.StopUsing(VRTKHelper.LeftHand.GetComponent<VRTK_InteractUse>());
-                            else
-                                obj.interactObj.StopUsing(VRTKHelper.RightHand.GetComponent<VRTK_InteractUse>());
+            //             if (obj.interactObj.gameObject.activeInHierarchy && obj.interactObj.isTiped)
+            //             {
+            //                 if (obj.DisplayMode == CmsDisplayMode.PlaceHolder)
+            //                     obj.interactObj.StopUsing(VRTKHelper.LeftHand.GetComponent<VRTK_InteractUse>());
+            //                 else
+            //                     obj.interactObj.StopUsing(VRTKHelper.RightHand.GetComponent<VRTK_InteractUse>());
 
-                            break;
-                        }
+            //                 break;
+            //             }
 
-                        var daObj = obj as DAObjCtr;
+            //             var daObj = obj as DAObjCtr;
 
-                        if (daObj.CloneObjToPickup != null && daObj.CloneObjToPickup.interactObj.isTiped)
-                        {
-                            if (VRTKHelper.LeftGrab.GetGrabbedObject() != null)
-                                break;
+            //             if (daObj.CloneObjToPickup != null && daObj.CloneObjToPickup.interactObj.isTiped)
+            //             {
+            //                 if (VRTKHelper.LeftGrab.GetGrabbedObject() != null)
+            //                     break;
 
-                            if (daObj.CloneObjToPickup.interactObj.TryGetComponent<VRTK_BaseGrabAttach>(out var grabAttach))
-                            {
-                                //抓取点随意的话会导致抓取物体离手掌距离过远
-                                grabAttach.precisionGrab = false;
-                            }
+            //                 if (daObj.CloneObjToPickup.interactObj.TryGetComponent<VRTK_BaseGrabAttach>(out var grabAttach))
+            //                 {
+            //                     //抓取点随意的话会导致抓取物体离手掌距离过远
+            //                     grabAttach.precisionGrab = false;
+            //                 }
 
-                            VRTKHelper.ForceGrab(SDK_BaseController.ControllerHand.Left, daObj.CloneObjToPickup.gameObject);
+            //                 VRTKHelper.ForceGrab(SDK_BaseController.ControllerHand.Left, daObj.CloneObjToPickup.gameObject);
 
-                            break;
-                        }
-                    }
-                }
-            }
+            //                 break;
+            //             }
+            //         }
+            //     }
+            // }
         }
 #endif
 
