@@ -90,7 +90,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -129,7 +129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 91.005, y: 0}
+  m_AnchoredPosition: {x: 58.98, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1581751226358221532
@@ -169,13 +169,14 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u53D8\u901F\u5668\u53D8\u901F\u5668\u53D8\u901F\u5668"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 669da864339df534ebd37dcc34922c46, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: a227e362151b42d409f6135611dcb50a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -325,6 +326,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -404,8 +406,7 @@ MonoBehaviour:
   planeCanvas: {fileID: 6948694331172623674}
   text: {fileID: 0}
   textPro: {fileID: 2046518709081260182}
-  minViewSizeH: 0.5
-  maxViewSizeH: 0.5
+  fixViewSizeH: 0
   autoAdjuestSize: 0
   canvasGroup: {fileID: 3525871255646725996}
 --- !u!1 &6948694331172623677
@@ -557,6 +558,7 @@ MonoBehaviour:
   m_Material: {fileID: 2100000, guid: 3f1d7d21e0c0922498c77c8958997781, type: 2}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

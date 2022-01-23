@@ -126,7 +126,7 @@ namespace Fxb.CMSVR
 
         protected override void Awake()
         {
-            // base.Awake();
+            base.Awake();
 
             // AnimWrenchCtr.partsPreviewPrefab = Resources.Load<GameObject>(PathConfig.PREFAB_PATH_COMBINE_WRENCH_PREVIEW).transform;
 
