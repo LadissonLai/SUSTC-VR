@@ -1124,6 +1124,7 @@
      <None Include="Assets\ThridParty\unity-ui-extensions\Shaders\UI Particle Add.shader" />
      <None Include="Assets\Resources\Shaders\AlphaRim.shader" />
      <None Include="Assets\Resources\Shaders\UI-FrontInScreen.shader" />
+     <None Include="Assets\Font\SDF\FontText\zh-cn_Commonly_used.txt" />
      <None Include="Assets\ThridParty\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\ThridParty\Doozy\ChangeLogs.txt" />
      <None Include="Assets\ThridParty\HighlightPlus\Resources\HighlightPlus\HighlightOverlay.shader" />
@@ -1181,6 +1182,7 @@
      <None Include="Assets\ThridParty\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Resources\Shaders\GrabGaussionBlur.shader" />
      <None Include="Assets\Resources\Shaders\AlphaRimAutoFade.shader" />
+     <None Include="Assets\Font\SDF\FontText\punctuation.txt" />
      <None Include="Assets\ThridParty\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\ThridParty\HighlightPlus\Resources\HighlightPlus\HighlightComposeOutline.shader" />
      <None Include="Assets\ThridParty\VRTK\Source\Scripts\Internal\Shaders\VRTK_TunnelEffect.shader" />

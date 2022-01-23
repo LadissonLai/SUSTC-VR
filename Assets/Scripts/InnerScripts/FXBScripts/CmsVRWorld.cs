@@ -17,7 +17,7 @@ namespace Fxb.CMSVR
 
             Config.TARGET_FRAMERATE = 90;
 
-            // RegistConfigs<WrenchConfig, WrenchConfig.Item>(PathConfig.CONFIG_WRENCH);
+            RegistConfigs<WrenchConfig, WrenchConfig.Item>(PathConfig.CONFIG_WRENCH);
 
             // RegistConfigs<RecordCsvConfig, RecordCsvConfig.Item>(PathConfig.CONFIG_RECORD);
 
