@@ -46,15 +46,8 @@ MonoBehaviour:
   CopiedNodes: []
   DeletedNodes: []
   SelectedNodes: []
-  GraphTabs:
-  - IsRootTab: 1
-    Graph: {fileID: 0}
-    SubGraphNode: {fileID: 0}
-    Zoom: 0.6
-    PanOffset: {x: 615.5, y: 271.8}
-    SelectedNodes: []
-    DeletedNodes: []
-  CurrentView: 1
+  GraphTabs: []
+  CurrentView: 0
   CurrentPanOffset: {x: 615.5, y: 271.8}
   DefaultPanOffset: {x: 0, y: 0}
   IsDirty: 0
