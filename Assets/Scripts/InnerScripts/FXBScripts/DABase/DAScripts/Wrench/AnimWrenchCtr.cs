@@ -115,6 +115,8 @@ namespace Fxb.DA
             animator.SetInteger(ANIM_ID_TORQUE, wrenchInfo.torsion);
             animator.SetTrigger(ANIM_ID_PLAY);
 
+            Debug.Log(animType);
+
             var initInterfacePos = ScrewConnect.position;
 
             var initScrewPos = screwT.position;
@@ -156,6 +158,8 @@ namespace Fxb.DA
             var inst = Instantiate(prefab);
 
             inst.name = partsName;
+
+            Debug.Log(inst);
 
             return inst;
         }

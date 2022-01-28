@@ -124,6 +124,8 @@ namespace Fxb.CMSVR
                 grabAttach.leftSnapHandle = handle.Find("LeftGrabPos");
 
                 grabAttach.rightSnapHandle = handle.Find("RightGrabPos");
+
+                Debug.Log("11");
             }
             else if(configData.Type == WrenchPartsType.Extension)
             {
@@ -140,6 +142,7 @@ namespace Fxb.CMSVR
                 wrenchInfo.taotong = configData.Id;
 
                 parts.SetParent(extension == null ? sleeveRoot : extension.Find("Connect"));
+                Debug.Log("22");
             }
 
             parts.ResetLocalMatrix();

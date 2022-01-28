@@ -1,0 +1,5 @@
+"id  模块_部件_螺丝/卡扣","名称","物品表id","模型名称","依赖部件","依赖螺丝/卡扣","备注",
+"Id","Name","PropID","ModelName","DependParts","DependSnapFits",,
+1,"机油滤清器总",1,"jiyoulvqingqizong","1_0,1_1",,,
+"1_0","放油螺栓",1_0,"fangyouluoshuan",,,,
+"1_1","机油滤清器","1_1","jiyoulvqinqi",,,,

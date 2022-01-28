@@ -22,7 +22,7 @@ namespace Fxb.CMSVR
 
         //void SetTaskID(IEnumerable<string> taskIDs);
 
-        void Init(bool isAddSafetyEquip = true);
+        void Init();
 
         string GetStepGroupDescription(string groupID);
 

@@ -19,19 +19,19 @@ namespace Fxb.CMSVR
 
             RegistConfigs<WrenchConfig, WrenchConfig.Item>(PathConfig.CONFIG_WRENCH);
 
-            // RegistConfigs<RecordCsvConfig, RecordCsvConfig.Item>(PathConfig.CONFIG_RECORD);
+            RegistConfigs<RecordCsvConfig, RecordCsvConfig.Item>(PathConfig.CONFIG_RECORD);
 
-            // RegistConfigs<RecordErrorCsvConfig, RecordErrorCsvConfig.Item>(PathConfig.CONFIG_RECORDERROR);
+            RegistConfigs<RecordErrorCsvConfig, RecordErrorCsvConfig.Item>(PathConfig.CONFIG_RECORDERROR);
 
-            // RegistConfigs<DACsvConfig, DACsvConfig.Item>(PathConfig.CONFIG_DA);
+            RegistConfigs<DACsvConfig, DACsvConfig.Item>(PathConfig.CONFIG_DA);
 
-            // RegistConfigs<PropCsvConfig, PropCsvConfig.Item>(PathConfig.CONFIG_PROP);
+            RegistConfigs<PropCsvConfig, PropCsvConfig.Item>(PathConfig.CONFIG_PROP);
 
-            // RegistConfigs<TaskCsvConfig, TaskCsvConfig.Item>(PathConfig.CONFIG_TASK);
+            RegistConfigs<TaskCsvConfig, TaskCsvConfig.Item>(PathConfig.CONFIG_TASK);
 
-            // RegistConfigs<TaskStepGroupCsvConfig, TaskStepGroupCsvConfig.Item>(PathConfig.CONFIG_TASKSTEP);
+            RegistConfigs<TaskStepGroupCsvConfig, TaskStepGroupCsvConfig.Item>(PathConfig.CONFIG_TASKSTEP);
 
-            // RegistConfigs<SoftwareCsvConfig, SoftwareCsvConfig.Item>(PathConfig.CONFIG_SOFTWARE);
+            RegistConfigs<SoftwareCsvConfig, SoftwareCsvConfig.Item>(PathConfig.CONFIG_SOFTWARE);
 
             ConfigTester();
         }

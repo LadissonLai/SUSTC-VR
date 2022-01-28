@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Fxb.CMSVR
 {
@@ -24,12 +25,6 @@ namespace Fxb.CMSVR
         List<string> completedStepGroupIDs = new List<string>();
 
         Dictionary<string, string[]> stepGroupCache = new Dictionary<string, string[]>();
-
-        const string EQUIPSTEPID = "1001";
-
-        const string LOWPOWERSTEPID = "32";
-
-        const string HIGHPOWERSTEPID = "41";
 
         bool isSubmitAllTask;
 
@@ -106,46 +101,6 @@ namespace Fxb.CMSVR
             return stepIDs;
         }
 
-        bool TryAddPowerOn(List<string> idCaches)
-        {
-            if (idCaches.Count != taskItemDatas.Count)
-                return false;
-
-            bool lowPower = false;
-
-            bool highPower = false;
-
-            //lowPowerStepID 居首 highPowerStepID 居中 末尾
-            foreach (var item in idCaches)
-            {
-                if (!lowPower)
-                    lowPower = item.Contains($"{LOWPOWERSTEPID},");
-
-                if (!highPower)
-                {
-                    highPower = item.Contains($",{HIGHPOWERSTEPID},");
-
-                    if (!highPower)
-                        highPower = item.Substring(item.LastIndexOf(',') + 1) == HIGHPOWERSTEPID;
-                }
-
-                if (lowPower && highPower)
-                    break;
-            }
-
-            if (highPower)
-                idCaches[idCaches.Count - 1] = $"{idCaches[idCaches.Count - 1]},1002,42,43";
-
-            if (lowPower)
-                idCaches[idCaches.Count - 1] = $"{idCaches[idCaches.Count - 1]},38";
-
-            //低压或者高压都表示添加成功
-            if (lowPower || highPower)
-                return true;
-            else
-                return false;
-        }
-
         #region  public 
 
         public IReadOnlyList<TaskItemData> GetData()
@@ -173,7 +128,7 @@ namespace Fxb.CMSVR
         /// <summary>
         /// 进入DAScene后初始化
         /// </summary>
-        public void Init(bool isAddSafetyEquip = true)
+        public void Init()
         {
             if (cfgs == null)
                 cfgs = World.Get<TaskCsvConfig>();
@@ -192,6 +147,7 @@ namespace Fxb.CMSVR
 
             foreach (TaskItemData itemData in taskItemDatas)
             {
+                Debug.Log(itemData.taskID);
                 var row = cfgs.FindRowDatas(itemData.taskID);
 
                 //无用log关闭
@@ -208,22 +164,9 @@ namespace Fxb.CMSVR
 
                 string stepids = row.StepGroupID;
 
-                //添加在第一步
-                if (isAddSafetyEquip)
-                {
-                    stepids = $"{EQUIPSTEPID},{stepids}";
-
-                    isAddSafetyEquip = false;
-                }
-
                 //暂时存储步骤组id
                 stepIDCaches.Add(stepids);
             }
-
-            //添加低压高压上电步骤
-            bool flag = TryAddPowerOn(stepIDCaches);
-
-            DebugEx.Log($"添加上电步骤{flag}");
 
             //计算分数
             weightScore = 100 / totalWeight;

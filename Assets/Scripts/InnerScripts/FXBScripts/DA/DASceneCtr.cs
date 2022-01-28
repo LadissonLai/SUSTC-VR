@@ -30,8 +30,6 @@ namespace Fxb.CMSVR
 
         public bool skipDAToolAnimation;
 
-        public bool skipSafetyEquip;
-
         public string taskID;
 
         public DaTaskMode taskState;
@@ -42,51 +40,45 @@ namespace Fxb.CMSVR
 
         IEnumerator Start()
         {
+            // yield return null;
+
+#if UNITY_EDITOR
+            Message.AddListener<GuideTipMessage>(OnGuideTipMessage);
+#endif
+
+            Message.AddListener<PartsTableDropObjChangeMessage>(OnPartsTableDropObjChangeMessage);
+
+            Message.AddListener<DAObjStateChangeMessage>(OnObjStateChanged);
+
+            Message.AddListener<CarLiftLocationChangedMessages>(OnLiftLocationChanged);
+
+            Message.AddListener<DAToolErrorMessage>(OnDAToolError);
+            Message.AddListener<WearEquipmentMessage>(OnWearEquipment);
+            Message.AddListener<ReloadDaSceneMessage>(OnReloadDaScene);
+
+            Message.AddListener<BatteryLiftDeviceStateChangeMessage>(OnBatteryLiftStateChanged);
+
+            yield return new WaitForSeconds(1);
+
+            gameObject.AddComponent<DASystem>();
+
+            gameObject.AddComponent<DATaskGuide>();
+
             yield return null;
 
-// #if UNITY_EDITOR
-//             Message.AddListener<GuideTipMessage>(OnGuideTipMessage);
-// #endif
+            Message.Send(new StartDAModeMessage()
+            {
+                mode = DAMode.Disassembly,
 
-//             Message.AddListener<PartsTableDropObjChangeMessage>(OnPartsTableDropObjChangeMessage);
+                rootCtrs = new List<AbstractDAObjCtr>()
+                {
+                    World.Get<DAObjCtr>("1")
+                }
+            });
 
-//             Message.AddListener<DAObjStateChangeMessage>(OnObjStateChanged);
+            StartCoroutine(CheckTaskCompleted());
 
-//             Message.AddListener<CarLiftLocationChangedMessages>(OnLiftLocationChanged);
-
-//             Message.AddListener<DAToolErrorMessage>(OnDAToolError);
-//             Message.AddListener<WearEquipmentMessage>(OnWearEquipment);
-//             Message.AddListener<ReloadDaSceneMessage>(OnReloadDaScene);
-
-//             Message.AddListener<BatteryLiftDeviceStateChangeMessage>(OnBatteryLiftStateChanged);
-
-//             yield return new WaitForSeconds(1);
-
-//             gameObject.AddComponent<DASystem>();
-
-//             gameObject.AddComponent<DATaskGuide>();
-
-//             yield return null;
-
-//             Message.Send(new StartDAModeMessage()
-//             {
-//                 mode = DAMode.DisassemblyAssembly,
-
-//                 rootCtrs = new List<AbstractDAObjCtr>()
-//                 {
-//                     World.Get<DAObjCtr>("14"),
-//                     World.Get<DAObjCtr>("13"),
-//                     World.Get<DAObjCtr>("12"),
-//                     World.Get<DAObjCtr>("8"),
-//                     World.Get<DAObjCtr>("4"),
-//                     World.Get<DAObjCtr>("2"),
-//                     World.Get<DAObjCtr>("1")
-//                 }
-//             });
-
-            // StartCoroutine(CheckTaskCompleted());
-
-            // TryInitWithTask();
+            TryInitWithTask();
         }
 
         private void OnBatteryLiftStateChanged(BatteryLiftDeviceStateChangeMessage msg)
@@ -128,12 +120,12 @@ namespace Fxb.CMSVR
         {
             base.Awake();
 
-            // AnimWrenchCtr.partsPreviewPrefab = Resources.Load<GameObject>(PathConfig.PREFAB_PATH_COMBINE_WRENCH_PREVIEW).transform;
+            AnimWrenchCtr.partsPreviewPrefab = Resources.Load<GameObject>(PathConfig.PREFAB_PATH_COMBINE_WRENCH_PREVIEW).transform;
 
-            // Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_PAD), padPos).transform.ResetLocalMatrix();
+            Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_PAD), padPos).transform.ResetLocalMatrix();
 
-            // if (SceneState == null)
-            //     World.current.Injecter.Regist<DASceneState>();
+            if (SceneState == null)
+                World.current.Injecter.Regist<DASceneState>();
         }
 
 #if UNITY_EDITOR
@@ -312,14 +304,7 @@ namespace Fxb.CMSVR
 
             daState.taskID2Init = null;
 
-            bool safetyEquip = true;
-
-#if UNITY_EDITOR
-
-            safetyEquip = !skipSafetyEquip;
-
-#endif
-            World.current.Injecter.Regist<ITaskModel>(new TaskModel(new string[] { newID })).Init(safetyEquip);
+            World.current.Injecter.Regist<ITaskModel>(new TaskModel(new string[] { newID })).Init();
 
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_TASKDETAIL);
 
