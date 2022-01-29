@@ -11,7 +11,7 @@ namespace Fxb.CMSVR
         /// <summary>
         /// 默认被忽略的空间
         /// </summary>
-        public DAGridPlane[] ingoreZones;
+        public DAGridPlane[] ignoreZones;
 
         public DADorpAblePlane dropAblePlane;
 

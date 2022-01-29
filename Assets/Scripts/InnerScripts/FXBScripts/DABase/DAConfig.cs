@@ -18,7 +18,7 @@ namespace Fxb.DA
         /// <summary>
         /// 是否忽略扳手条件检查 忽略时可以使用任意扳手进行操作。用作测试
         /// </summary>
-        public static bool ignoreWrenchConditionCheck = true;
+        public static bool ignoreWrenchConditionCheck = false;
 
         public static bool skipToolAnimation = false;
 

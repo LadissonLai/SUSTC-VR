@@ -159,8 +159,6 @@ namespace Fxb.DA
 
             inst.name = partsName;
 
-            Debug.Log(inst);
-
             return inst;
         }
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_YesOrNo
   m_EditorClassIdentifier: 
   PopupName: YesOrNo
-  Prefab: {fileID: 1804210476386420, guid: da234e8d650e71841ad0c89fb9931a2b, type: 3}
+  Prefab: {fileID: 1804210476386420, guid: 20f8ae57bfddbfe43aeaf533ddcae323, type: 3}

@@ -86,6 +86,8 @@ namespace Fxb.DA
             var useAbleRes = CheckWrenchUseAble(false, wrenchCtr);
 
             IsAnimSuccess = useAbleRes.useAble;
+            
+            Debug.Log("IsAnimSuccess: " + IsAnimSuccess);
 
             if (!IsAnimSuccess)
             {
@@ -169,6 +171,10 @@ namespace Fxb.DA
 
             var wrenchInfo = wrench.WrenchInfo;
 
+            Debug.Log("wrenchInfo.taotong: " + wrenchInfo.taotong);
+
+            Debug.Log("checkCondition.taotongID: " + checkCondition.taotongID);
+            
             if (
                 (!string.IsNullOrEmpty(checkCondition.taotongID) && wrenchInfo.taotong != checkCondition.taotongID)
                 ||

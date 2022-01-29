@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 721985570939105354}
   - component: {fileID: 7760210651595348676}
   - component: {fileID: 8634807595437770218}
+  - component: {fileID: 8153265228640041187}
   m_Layer: 13
   m_Name: fangyouluoshuan
   m_TagString: Untagged
@@ -405,3 +406,16 @@ MonoBehaviour:
   collisionTracker: {fileID: 7760210651595348676}
   dropGridPlane: {fileID: 0}
   PropID: 
+--- !u!65 &8153265228640041187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946417483095606580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016615663, y: 0.024451502, z: 0.016615694}
+  m_Center: {x: -0.000000012572855, y: 0.00000003306195, z: 0.000000027008356}
