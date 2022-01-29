@@ -2553,11 +2553,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: weilangfadognji Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 986847300562665866, guid: bb4ef445be80e174bb1907371cddbfcf,
-        type: 3}
-      propertyPath: dropGridPlane
-      value: 
-      objectReference: {fileID: 1455587997}
     - target: {fileID: 3721477591688572182, guid: bb4ef445be80e174bb1907371cddbfcf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2633,11 +2628,6 @@ PrefabInstance:
       propertyPath: rmsCount
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4005631732703207853, guid: bb4ef445be80e174bb1907371cddbfcf,
-        type: 3}
-      propertyPath: dropGridPlane
-      value: 
-      objectReference: {fileID: 1455587997}
     - target: {fileID: 8166463253155674003, guid: bb4ef445be80e174bb1907371cddbfcf,
         type: 3}
       propertyPath: m_IsActive
