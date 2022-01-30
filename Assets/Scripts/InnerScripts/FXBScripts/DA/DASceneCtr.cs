@@ -66,16 +66,6 @@ namespace Fxb.CMSVR
 
             yield return null;
 
-            Message.Send(new StartDAModeMessage()
-            {
-                mode = DAMode.Disassembly,
-
-                rootCtrs = new List<AbstractDAObjCtr>()
-                {
-                    World.Get<DAObjCtr>("1")
-                }
-            });
-
             StartCoroutine(CheckTaskCompleted());
 
             TryInitWithTask();

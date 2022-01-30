@@ -129,8 +129,8 @@ namespace Fxb.CMSVR
             collisionTracker.CustomPredicate = CollisionPredicate;
 
             if (dropGridPlane == null)
-                // dropGridPlane = GetComponentInChildren<DAGridPlane>();
-                dropGridPlane = GameObject.Find("DropAblePlane").GetComponent<DAGridPlane>();
+                dropGridPlane = GetComponentInChildren<DAGridPlane>();
+                // dropGridPlane = GameObject.Find("DropAblePlane").GetComponent<DAGridPlane>();
 
             rigidBody = GetComponent<Rigidbody>();
 

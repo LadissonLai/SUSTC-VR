@@ -73,6 +73,8 @@ namespace Fxb.CMSVR
                 if (parts.attachTo != null && parts.attachTo != this)
                     continue;
 
+                Debug.Log(name + " depends on " + parts.gameObject.name);
+
                 parts.attachTo = this;
 
                 allDependParts.AddUnique(parts);

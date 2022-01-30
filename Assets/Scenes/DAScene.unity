@@ -2548,10 +2548,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 366594191212433599, guid: bb4ef445be80e174bb1907371cddbfcf,
+        type: 3}
+      propertyPath: rmsCount
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 431784812957310725, guid: bb4ef445be80e174bb1907371cddbfcf,
         type: 3}
       propertyPath: m_Name
       value: weilangfadognji Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089854177052857060, guid: bb4ef445be80e174bb1907371cddbfcf,
+        type: 3}
+      propertyPath: rmsCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3721477591688572182, guid: bb4ef445be80e174bb1907371cddbfcf,
         type: 3}
@@ -2628,9 +2638,24 @@ PrefabInstance:
       propertyPath: rmsCount
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6007035874784229257, guid: bb4ef445be80e174bb1907371cddbfcf,
+        type: 3}
+      propertyPath: rmsCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143283937938678636, guid: bb4ef445be80e174bb1907371cddbfcf,
+        type: 3}
+      propertyPath: rmsCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8166463253155674003, guid: bb4ef445be80e174bb1907371cddbfcf,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327256350889507372, guid: bb4ef445be80e174bb1907371cddbfcf,
+        type: 3}
+      propertyPath: rmsCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8797156221980519120, guid: bb4ef445be80e174bb1907371cddbfcf,

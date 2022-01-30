@@ -170,10 +170,6 @@ namespace Fxb.DA
             (bool useAble, string errorMsg) res = (true, null);
 
             var wrenchInfo = wrench.WrenchInfo;
-
-            Debug.Log("wrenchInfo.taotong: " + wrenchInfo.taotong);
-
-            Debug.Log("checkCondition.taotongID: " + checkCondition.taotongID);
             
             if (
                 (!string.IsNullOrEmpty(checkCondition.taotongID) && wrenchInfo.taotong != checkCondition.taotongID)

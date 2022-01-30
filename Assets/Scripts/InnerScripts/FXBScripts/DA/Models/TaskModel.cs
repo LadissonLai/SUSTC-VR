@@ -1,5 +1,6 @@
 ﻿using Doozy.Engine;
 using Framework;
+using Fxb.DA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,6 +146,8 @@ namespace Fxb.CMSVR
 
             List<string> stepIDCaches = new List<string>();
 
+            List<AbstractDAObjCtr> dAObjCtrCaches =  new List<AbstractDAObjCtr>();
+
             foreach (TaskItemData itemData in taskItemDatas)
             {
                 Debug.Log(itemData.taskID);
@@ -166,6 +169,11 @@ namespace Fxb.CMSVR
 
                 //暂时存储步骤组id
                 stepIDCaches.Add(stepids);
+
+                foreach (var target in row.Targets.Split(','))
+                {
+                    dAObjCtrCaches.Add(World.Get<DAObjCtr>(target));
+                }
             }
 
             //计算分数
@@ -183,6 +191,14 @@ namespace Fxb.CMSVR
             totalScore = 100;
 
             isSubmitAllTask = false;
+
+
+            Message.Send(new StartDAModeMessage()
+            {
+                mode = DAMode.Disassembly,
+
+                rootCtrs = dAObjCtrCaches
+            });
         }
 
         public List<string> GetRecordIDs(string taskID)

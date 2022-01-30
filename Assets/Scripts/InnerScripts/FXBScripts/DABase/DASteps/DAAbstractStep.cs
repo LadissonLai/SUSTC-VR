@@ -37,6 +37,10 @@ namespace Fxb.DA
 
         protected virtual bool CheckFinished()
         {
+            foreach (var item in DAState.processingObjs)
+            {
+                Debug.Log("CheckFinished" + item);
+            }
             if (DAState.processingObjs.Count > 0)
                 return false;
 
@@ -104,6 +108,7 @@ namespace Fxb.DA
 
         public virtual void Start(AbstractDAObjCtr root)
         {
+            Debug.Log("step:: "+ root.gameObject.name);
             Debug.Assert(root != null);
 
             IsRunning = true;
