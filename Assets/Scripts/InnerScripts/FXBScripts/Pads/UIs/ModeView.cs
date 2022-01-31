@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace Fxb.CPTTS
 {
-    public class TaskMainMenuView : PadViewBase
+    public class ModeView : PadViewBase
     {
         public Button[] menuMapBtns;
 
-        public UIView taskView;
+        public UIView homeView;
 
         // Start is called before the first frame update
         protected override void Start()
@@ -23,8 +23,8 @@ namespace Fxb.CPTTS
 
                 btn.onClick.AddListener(() =>
                 {
-                    EntrySetting.Instance.behaviour = (Enums.Behaviour)i;
-                    taskView.Show();
+                    EntrySetting.Instance.runMode = (Enums.RunMode)i;
+                    homeView.Show();
                 });
             }
 
