@@ -15,11 +15,12 @@ namespace Fxb.CMSVR
 
         public Button titleBtn;
 
-        public Transform progressMark;
+        // public Transform progressMark;
 
-        public Image levelIcon;
+        // 没给到level的切图，暂时不做
+        // public Image levelIcon;
 
-        TextMeshProUGUI levelTitle;
+        // TextMeshProUGUI levelTitle;
 
         public event Action<string> OnTitleBtnClicked;
 
@@ -29,7 +30,7 @@ namespace Fxb.CMSVR
 
         string id;
 
-        float middleColor = 86 / 255f;
+        // float middleColor = 86 / 255f;
 
         // Start is called before the first frame update
         void Start()
@@ -39,7 +40,7 @@ namespace Fxb.CMSVR
 
         public void Refresh(string taskID, SpriteAtlas atlas = null)
         {
-            levelTitle = levelTitle ?? levelIcon.GetComponentInChildren<TextMeshProUGUI>();
+            // levelTitle = levelTitle ?? levelIcon.GetComponentInChildren<TextMeshProUGUI>();
 
             taskCfg = taskCfg ?? World.Get<TaskCsvConfig>();
 
@@ -48,18 +49,18 @@ namespace Fxb.CMSVR
             if (atlas != null)
                 spriteAtlas = atlas;
 
-            titleBtn.image.sprite = spriteAtlas.GetSprite(data.Icon);
+            // titleBtn.image.sprite = spriteAtlas.GetSprite(data.Icon);
 
             title.text = data.Title;
 
             var taskModel = World.Get<ITaskModel>();
 
-            if (taskModel == null || taskModel.IsSubmitAllTask)
-                progressMark.gameObject.SetActive(false);
-            else
-                progressMark.gameObject.SetActive(taskModel.GetData()[0].taskID == taskID);
+            // if (taskModel == null || taskModel.IsSubmitAllTask)
+            //     progressMark.gameObject.SetActive(false);
+            // else
+            //     progressMark.gameObject.SetActive(taskModel.GetData()[0].taskID == taskID);
 
-            LoadLevelIcon(data.Level);
+            // LoadLevelIcon(data.Level);
 
             id = taskID;
         }
@@ -69,47 +70,47 @@ namespace Fxb.CMSVR
             OnTitleBtnClicked?.Invoke(id);
         }
 
-        void LoadLevelIcon(float level)
-        {
-            string iconName = null;
+        // void LoadLevelIcon(float level)
+        // {
+        //     string iconName = null;
 
-            switch (level)
-            {
-                case 2:
-                    iconName = "icon_label_senior";
+        //     switch (level)
+        //     {
+        //         case 2:
+        //             iconName = "icon_label_senior";
 
-                    levelTitle.text = "高级";
+        //             levelTitle.text = "高级";
 
-                    levelTitle.color = Color.white;
+        //             levelTitle.color = Color.white;
 
-                    break;
+        //             break;
 
-                case 1:
-                    iconName = "icon_label_middle";
+        //         case 1:
+        //             iconName = "icon_label_middle";
 
-                    levelTitle.text = "中级";
+        //             levelTitle.text = "中级";
 
-                    levelTitle.color = new Color(middleColor, middleColor, middleColor, 1);
+        //             levelTitle.color = new Color(middleColor, middleColor, middleColor, 1);
 
-                    break;
+        //             break;
 
-                case 0:
-                    iconName = "icon_label_primary";
+        //         case 0:
+        //             iconName = "icon_label_primary";
 
-                    levelTitle.text = "初级";
+        //             levelTitle.text = "初级";
 
-                    levelTitle.color = Color.white;
+        //             levelTitle.color = Color.white;
 
-                    break;
+        //             break;
 
-                default:
-                    Debug.LogError($"{level}- 无效的任务等级");
+        //         default:
+        //             Debug.LogError($"{level}- 无效的任务等级");
 
-                    return;
-            }
+        //             return;
+        //     }
 
-            levelIcon.sprite = spriteAtlas.GetSprite(iconName);
-        }
+        //     levelIcon.sprite = spriteAtlas.GetSprite(iconName);
+        // }
     }
 
 }
