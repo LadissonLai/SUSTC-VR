@@ -153,6 +153,8 @@ namespace Fxb.DA
 
         public Transform GenWrenchPartsByPrefabName(string partsName)
         {
+
+            Debug.Log("GenWrenchPartsByPrefabName: " + partsName);
             var prefab = partsPreviewPrefab.Find(partsName);
 
             var inst = Instantiate(prefab);

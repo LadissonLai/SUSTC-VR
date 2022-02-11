@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 5540882170464781055}
   - component: {fileID: 41129060812016251}
   - component: {fileID: -6372044050339293704}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: tulunzhougaichendian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19dd50c49f321474ca3cd6c52c8d0c7d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -386,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9015202078298435368}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

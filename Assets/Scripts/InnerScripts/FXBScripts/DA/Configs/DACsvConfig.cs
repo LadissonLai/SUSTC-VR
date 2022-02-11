@@ -29,7 +29,10 @@ namespace Fxb.CMSVR
                 Debug.Assert(!modelNameDataMap.ContainsKey(rowData.ModelName), "model name 重复:" + rowData.ModelName);
 
                 modelNameDataMap.Add(rowData.ModelName, rowData);
-
+                
+                // if(rowData.Id.StartsWith("205")){
+                //     Debug.Log("aaaaaaaaaaaaaaaaaaaaaa: " + rowData.Id);
+                // }
                 return true;
             }
 

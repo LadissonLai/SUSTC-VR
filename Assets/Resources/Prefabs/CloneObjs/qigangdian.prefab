@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 5157955292575314902}
   - component: {fileID: 5258817388554465266}
   - component: {fileID: 6687162120862041600}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: qigangdian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e8cc6fe20b39a7469edf48df6f10624, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0

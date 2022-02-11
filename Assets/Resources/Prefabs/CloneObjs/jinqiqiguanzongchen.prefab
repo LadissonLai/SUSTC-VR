@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181154112361186426}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7643658848899573714}
   - component: {fileID: 1893243631241874463}
   - component: {fileID: 9195393354970080573}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jinqiqiguanzongchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71e7aa7dcdefb3a478a71f0dece75722, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 687624352005763586}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}

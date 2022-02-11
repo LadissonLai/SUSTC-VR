@@ -37,10 +37,6 @@ namespace Fxb.DA
 
         protected virtual bool CheckFinished()
         {
-            foreach (var item in DAState.processingObjs)
-            {
-                Debug.Log("CheckFinished" + item);
-            }
             if (DAState.processingObjs.Count > 0)
                 return false;
 

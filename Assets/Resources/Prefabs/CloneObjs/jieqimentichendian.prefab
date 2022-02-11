@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7950902612234207770}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 3863505190097988276}
   - component: {fileID: 3769668299080544951}
   - component: {fileID: 9082362793142925179}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jieqimentichendian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78a8748aca8b29e448fb46c60b273024, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,8 +133,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5508159732271559508}
   - component: {fileID: 635904975181851454}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: GridPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8068028192355672779}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}

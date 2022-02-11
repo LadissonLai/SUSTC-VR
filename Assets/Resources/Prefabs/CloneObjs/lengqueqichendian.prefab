@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 7597263307966880920}
   - component: {fileID: 7858999290077186746}
   - component: {fileID: 5881748811872616425}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: lengqueqichendian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 059e2dabde7811f49baf053718020042, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -417,7 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5016647682094597788}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5097802405499969816}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}

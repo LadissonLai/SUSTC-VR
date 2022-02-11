@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 1964517503577396281}
   - component: {fileID: 160818665562347088}
   - component: {fileID: 4579996900909225540}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: zhengshiliantiaoqichundian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78a8748aca8b29e448fb46c60b273024, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -416,7 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8006546480228876132}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}

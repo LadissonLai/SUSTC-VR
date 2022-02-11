@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 2136300840304874620}
   - component: {fileID: 3571272184810668593}
   - component: {fileID: 8436169553189063861}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Daoliubang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51d6759f6eb57b947807be62e1b06656, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0

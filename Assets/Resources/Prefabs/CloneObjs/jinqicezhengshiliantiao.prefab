@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5630139615746057112}
   - component: {fileID: 2985026838266967574}
   - component: {fileID: 3659463007126631395}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object173
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6664382759508185740}
   - component: {fileID: 3120104903947455077}
   - component: {fileID: 196198994082652882}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object176
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6122751618404449831}
   - component: {fileID: 5057869165881081948}
   - component: {fileID: 3421534412773168401}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object174
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2532024587041650560}
   - component: {fileID: 5903538559429518638}
   - component: {fileID: 9008014700158268967}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object175
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 4853749276055313422}
   - component: {fileID: 7713301439659441105}
   - component: {fileID: 3356961858439707544}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cylinder072
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 4279781098136104090}
   - component: {fileID: 7292495601375236620}
   - component: {fileID: 1542550979320508598}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Circle005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84610373f43a09847819da00290697f3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: -7275542958260896123}
   - component: {fileID: 6624610176123104594}
   - component: {fileID: -4827155565820095022}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jinqicezhengshiliantiao
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -407,7 +407,7 @@ namespace Fxb.CMSVR
 
         protected void SetupInteractParents()
         {
-            DebugEx.AssertIsTrue(attachTo != null || Type == CmsObjType.ModelGroup, $"attachTo null:{name}");
+            DebugEx.AssertIsTrue(attachTo != null || Type == CmsObjType.ModelGroup, $"attachTo null:{name + configData.Id}");
 
         }
 

@@ -148,6 +148,7 @@ namespace Fxb.CMSVR
             Debug.Assert(cutPlaceHolder == null);
 
             var configData = target.ConfigData;
+            Debug.Log(configData.PrefabName);
 
             //根据目标的模型名称，从preview里面的对应原始套筒,接杆等
             var isExtension = configData.Type == WrenchPartsType.Extension;
