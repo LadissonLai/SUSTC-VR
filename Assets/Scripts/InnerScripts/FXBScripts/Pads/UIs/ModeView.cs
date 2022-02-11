@@ -24,6 +24,7 @@ namespace Fxb.CPTTS
                 btn.onClick.AddListener(() =>
                 {
                     EntrySetting.Instance.runMode = (Enums.RunMode)i;
+                    Debug.Log("model choose press");
                     homeView.Show();
                 });
             }
