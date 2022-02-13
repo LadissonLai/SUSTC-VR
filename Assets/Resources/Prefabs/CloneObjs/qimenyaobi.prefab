@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8898758312110049976}
   - component: {fileID: 2380824493443296446}
   - component: {fileID: 2758175404655233845}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4784 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54172df802013644f8d0e928a26ae93f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6423004085334139021}
   - component: {fileID: 4139331106607654324}
   - component: {fileID: 889093100025437148}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4787 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54172df802013644f8d0e928a26ae93f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7674241685683255940}
   - component: {fileID: 3197057649557767015}
   - component: {fileID: 2686694869135503149}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4785 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54172df802013644f8d0e928a26ae93f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 8037383098621122534}
   - component: {fileID: 3986967320082559577}
   - component: {fileID: 8313804857197171504}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4786 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47ac83b7a7133c8479365ee19626d385, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 4253037798824228556}
   - component: {fileID: 7763216883451752865}
   - component: {fileID: 4724447534266284791}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: qimenyaobi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0

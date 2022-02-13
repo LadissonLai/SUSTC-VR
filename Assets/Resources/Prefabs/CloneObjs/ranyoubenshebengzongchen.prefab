@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1088248764514042114}
   - component: {fileID: 6996698675569056550}
   - component: {fileID: 8362820157311063909}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: safa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ceec6747083111e4aaea66f334d3b988, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2105711646114444506}
   - component: {fileID: 619413500841286174}
   - component: {fileID: 6369320646750130741}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object199
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ceec6747083111e4aaea66f334d3b988, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 5033285812971953560}
   - component: {fileID: 4281749608080324541}
   - component: {fileID: 6081411717735476804}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: ranyoubenshebengzongchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6480040461537983221}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 3718897725509500248}
   - component: {fileID: 4395626647240757554}
   - component: {fileID: 6706434288770087392}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Box030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ceec6747083111e4aaea66f334d3b988, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 8187404929352065267}
   - component: {fileID: 7620363712754098801}
   - component: {fileID: 4120400592779303732}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Helix001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ceec6747083111e4aaea66f334d3b988, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

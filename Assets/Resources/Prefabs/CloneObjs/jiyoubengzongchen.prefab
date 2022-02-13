@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8442098421455031540}
   - component: {fileID: 143963387018522129}
   - component: {fileID: 2803431843482424983}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object274
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06df03ca8c412e94b9dfdc633e51d9d8, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8567899770671646026}
   - component: {fileID: 2805429960901356195}
   - component: {fileID: 6703878789047953659}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jiyoubengliuliangkongzhidianchifagudingjian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e6d8156526183542ad26c865acbe483, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 2372179983533188469}
   - component: {fileID: 2933965772117601312}
   - component: {fileID: 6679529952207990710}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object276
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06df03ca8c412e94b9dfdc633e51d9d8, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 8228673522370470188}
   - component: {fileID: 4686192462223262549}
   - component: {fileID: 5309417147394191163}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object305
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 781803dde345bf942842f262e3e87d54, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 5474286714886443257}
   - component: {fileID: 362967631333691820}
   - component: {fileID: 9084742371961450667}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jiyoubengzongchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 7097953694938617123}
   - component: {fileID: 1600318346998529514}
   - component: {fileID: 3174254949811281748}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cylinder057
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5bfc2a0b6a43a5d458ba8b3ddb18870a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 8171735960140677601}
   - component: {fileID: 934527148707074021}
   - component: {fileID: 5550788214903484290}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jiyoubengliuliangkongzhidianchifa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e6d8156526183542ad26c865acbe483, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 3984782339974218719}
   - component: {fileID: 7573173348492090360}
   - component: {fileID: 7028192399357421180}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object275
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 807ee8ddb5296d044a56ef64baa7898e, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 3983251741579958725}
   - component: {fileID: 2450326816276850036}
   - component: {fileID: 1627879480555953231}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: zhengshiliantiaozhangjinqitipianzongchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3fdb47c25a46c54b89443c9b55d5966, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

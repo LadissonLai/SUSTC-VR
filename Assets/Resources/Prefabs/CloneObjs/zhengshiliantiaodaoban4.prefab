@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 2945603164849896435}
   - component: {fileID: 5848759464542150492}
   - component: {fileID: 2230708559048055048}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: zhengshiliantiaodaoban4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 1392947895478570289}
   - component: {fileID: 2534100848820097582}
   - component: {fileID: 2767561973917780926}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4685 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92864adb13789d249a49f894a2e8d092, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844059958663304134}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 1304719632635267557}
   - component: {fileID: 3816295372975977050}
   - component: {fileID: 9093644946493047056}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: -DC_Shell4686 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3fdb47c25a46c54b89443c9b55d5966, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

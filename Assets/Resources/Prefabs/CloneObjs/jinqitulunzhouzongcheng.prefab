@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3945111993950868931}
   - component: {fileID: 1644815041649642809}
   - component: {fileID: 287280482682119639}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cylinder005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0774086441ba29d4fb12ab7f63fb9405, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -7127629362614207734}
   - component: {fileID: 8037232163908061672}
   - component: {fileID: 44284080588778947}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: jinqitulunzhouzongcheng
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 4145120312791442441}
   - component: {fileID: 5832197558753626398}
   - component: {fileID: 804582657504086792}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: paiqitulunzhou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 449d12f30dc55e04aad0deb2e1233dbf, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 566344212480839192}
   - component: {fileID: 7696302700015480578}
   - component: {fileID: 7525035525527495338}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object172
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0774086441ba29d4fb12ab7f63fb9405, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

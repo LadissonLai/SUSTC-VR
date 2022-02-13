@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: -7932181371956058548}
   - component: {fileID: 2618136360705973268}
   - component: {fileID: 5841257438251431667}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: shangyouke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
   holdButtonToUse: 1
-  useOnlyIfGrabbed: 1
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 8336915601848509215}
   - component: {fileID: 4943206506291114034}
   - component: {fileID: 6330167850754777159}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object162
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2760b20cf826d5429411e32de8419bb, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 834814163405881039}
   - component: {fileID: 4488546034154913698}
   - component: {fileID: 5108832611874972561}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Object155
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e6d8156526183542ad26c865acbe483, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

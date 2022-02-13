@@ -268,7 +268,7 @@ namespace Fxb.CMSVR
                     if (dropAblePlane.GetUsedGridById(existObj.PropID, out var rect))
                     {
                         //测试看看效果 已存在相同物品，直接在其下方绘制rect
-                        dropAblePlane.drawer.DrawRect(rect, true);
+                        // dropAblePlane.drawer.DrawRect(rect, true);
                     }
                 }
                 else

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988479759261576431}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8992046359085154486}
   - component: {fileID: 2338161688199393145}
   - component: {fileID: 563325028009123227}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: lengqueqizongcheng
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,8 +149,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 287df13891eaf6f48b06b70242e789c2, type: 2}
-  - {fileID: 2100000, guid: b7016f59a68ca0e4b9e8d0d86629f54d, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   followMarkerPoint: 0
   customOrigin: {fileID: 0}
   AdjuestPosOffset: {x: 0, y: 0, z: 0}
-  customTooltipSpawnKey: Prefabs/DefaultTooltipPanel_s
+  customTooltipSpawnKey: Prefabs/DefaultTooltipPlane_s
 --- !u!114 &1769431545291429526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4971768996300186824}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
