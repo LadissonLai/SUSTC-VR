@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114446145064353546}
   - component: {fileID: 3513526227696280607}
   m_Layer: 0
-  m_Name: -DC_Shell4763
+  m_Name: jianxitiaojieqi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3674c170cc9361b499fdcdee865791bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

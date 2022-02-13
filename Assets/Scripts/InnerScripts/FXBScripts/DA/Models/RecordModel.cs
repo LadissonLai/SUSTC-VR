@@ -100,7 +100,7 @@ namespace Fxb.CMSVR
                 {
                     //重复记录属于正常逻辑，不需要log输出。
                     //DebugEx.Log($" 记录 {arg} 已完成，不再记录 ");
-
+                    Debug.Log($"Record: {arg}");
                     return false;
                 }
             }
@@ -158,6 +158,7 @@ namespace Fxb.CMSVR
 
             completedRecords.Add(recordID);
 
+            Debug.Log($"Record completed: {recordID}");
             return true;
         }
 

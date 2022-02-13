@@ -81,6 +81,8 @@ namespace Fxb.CMSVR
         }
 
         private string idfromConfig;
+        
+        private int operateOrder => configData.OperateOrder.Length > 0 ? int.Parse(configData.OperateOrder) : 0;
 
         private bool waitForFirstActived;
 
@@ -379,7 +381,7 @@ namespace Fxb.CMSVR
 
             //    return;
             //}
-
+            Debug.Log($"DoProcess {name} {State}");
             if (!World.Get<DAState>().isRunning)
                 return;
 
@@ -595,6 +597,12 @@ namespace Fxb.CMSVR
         protected override void OnDisassembled(bool success)
         {
             base.OnDisassembled(success);
+
+            if(operateOrder > 0 && !World.Get<DAOrderObserver>().Observe(Name, operateOrder))
+            {
+                //zjytodo
+                Debug.Log("顺序错了");
+            }
 
             if (success && state == CmsObjState.WaitForPickup)
             {

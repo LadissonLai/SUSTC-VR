@@ -17,6 +17,7 @@ namespace Fxb.CMSVR
             public string ModelName { get; private set; }
             public string DependParts { get; private set; }
             public string DependSnapFits { get; private set; }
+            public string OperateOrder { get; private set; }
             public string SmallParts { get; private set; }
         }
 

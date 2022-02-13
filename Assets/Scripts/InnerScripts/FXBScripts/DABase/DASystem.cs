@@ -38,6 +38,7 @@ namespace Fxb.CMSVR
             Message.AddListener<DAObjProcessingMessage>(OnObjProcessingMessage);
 
             World.current.Injecter.Regist<DAState>();
+            World.current.Injecter.Regist<DAOrderObserver>();
         }
 
         private void OnObjProcessingMessage(DAObjProcessingMessage message)

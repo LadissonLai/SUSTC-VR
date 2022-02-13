@@ -195,7 +195,7 @@ namespace Fxb.CMSVR
 
             Message.Send(new StartDAModeMessage()
             {
-                mode = DAMode.Disassembly,
+                mode = DAMode.DisassemblyAssembly,
 
                 rootCtrs = dAObjCtrCaches
             });
