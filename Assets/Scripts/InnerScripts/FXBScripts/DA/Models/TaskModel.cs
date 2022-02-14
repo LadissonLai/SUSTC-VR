@@ -150,7 +150,6 @@ namespace Fxb.CMSVR
 
             foreach (TaskItemData itemData in taskItemDatas)
             {
-                Debug.Log(itemData.taskID);
                 var row = cfgs.FindRowDatas(itemData.taskID);
 
                 //无用log关闭

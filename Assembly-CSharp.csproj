@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\EntryUIScripts\SettingPanel.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\DAOrderObserver.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\EngineRotator.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CmsVRWorld.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CombineWrench\CombineAbleWrenchParts.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CombineWrench\CombineWrenchSystem.cs" />

@@ -602,6 +602,8 @@ namespace Fxb.CMSVR
             {
                 //zjytodo
                 Debug.Log("顺序错了");
+                var errorMsg = "拆卸顺序有误";
+                Popup_Tips.Show(errorMsg);
             }
 
             if (success && state == CmsObjState.WaitForPickup)

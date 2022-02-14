@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZhiJiaRotator : MonoBehaviour
+public class EngineRotator : MonoBehaviour
 {
     public Transform rotationRef;
 
-    public bool isEngine;
+    public Transform ZhiJiaPoint;
+
+    public Transform EnginePoint;
     
     private Vector3 origin;
     // Start is called before the first frame update
@@ -19,6 +21,9 @@ public class ZhiJiaRotator : MonoBehaviour
     void LateUpdate()
     {
         float refAngle = rotationRef.localEulerAngles.z;
-        transform.localEulerAngles = new Vector3(isEngine ? -refAngle : refAngle, origin.y, origin.z);
+        transform.localEulerAngles = new Vector3(-refAngle, origin.y, origin.z);
+
+        Vector3 disDiff = ZhiJiaPoint.position - EnginePoint.position;
+        transform.position += disDiff;
     }
 }
