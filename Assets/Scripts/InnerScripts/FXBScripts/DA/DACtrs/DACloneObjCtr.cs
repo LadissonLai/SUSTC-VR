@@ -317,7 +317,6 @@ namespace Fxb.CMSVR
                 this.CurrentValidDropAble = targetDropAble;
             else if (targetDropAble == this.CurrentValidDropAble)
                 this.CurrentValidDropAble = null;
-
             //有可能需要放置到指定位置 TODO
             interactObj.validDrop = state ? VRTK_InteractableObject.ValidDropTypes.DropAnywhere : VRTK_InteractableObject.ValidDropTypes.NoDrop;
         }

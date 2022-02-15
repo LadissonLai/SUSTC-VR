@@ -15181,6 +15181,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f37498a2c1deff047b8e98e6a69a60f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37498a2c1deff047b8e98e6a69a60f1, type: 3}
 --- !u!4 &1729924926302391326 stripped
@@ -15380,6 +15384,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WrenchParts
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: db35f487061d1fd4095b275b15471d30, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: db35f487061d1fd4095b275b15471d30, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: db35f487061d1fd4095b275b15471d30, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db35f487061d1fd4095b275b15471d30, type: 3}
 --- !u!1 &1957554204753901703 stripped
@@ -15478,6 +15494,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 2be8aa62e82771048a0d4ffb8d8b2acc, type: 3}
       propertyPath: m_TagString
       value: WrenchParts
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2be8aa62e82771048a0d4ffb8d8b2acc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2be8aa62e82771048a0d4ffb8d8b2acc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2be8aa62e82771048a0d4ffb8d8b2acc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2be8aa62e82771048a0d4ffb8d8b2acc, type: 3}
@@ -15945,6 +15973,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 3fcaca571b1055844b5c6d9546478e8a, type: 3}
       propertyPath: m_TagString
       value: WrenchParts
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3fcaca571b1055844b5c6d9546478e8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3fcaca571b1055844b5c6d9546478e8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3fcaca571b1055844b5c6d9546478e8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fcaca571b1055844b5c6d9546478e8a, type: 3}
