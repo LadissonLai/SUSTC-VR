@@ -69,6 +69,8 @@
      <Compile Include="Assets\Scripts\EntryUIScripts\SettingPanel.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\DAOrderObserver.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\EngineRotator.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\ExtraToolInit.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CmsVRWorld.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CombineWrench\CombineAbleWrenchParts.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\CombineWrench\CombineWrenchSystem.cs" />
@@ -144,6 +146,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\ExternalDevices\BatteryLift\BatteryLiftDeviceCtr.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\ExternalDevices\BatteryLift\BatteryLiftDeviceMessages.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\ExternalDevices\IExternalDevicesConnectAble.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\ExternalToolCondition.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\InteractCar\CMSCarCtr.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\InteractCar\CarLiftCtr.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\InteractCar\CarMessages.cs" />

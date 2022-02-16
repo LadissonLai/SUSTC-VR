@@ -304,14 +304,15 @@ namespace Fxb.DA
         /// <param name="newState"></param>
         public virtual void ForceSwitchState(CmsObjState newState)
         {
-            if(
-                (newState == CmsObjState.Default && State == CmsObjState.Fixed) 
-                ||
-                (newState == CmsObjState.Fixed && State == CmsObjState.Default)
-               )
-            {
-                State = newState;
-            }
+            // if(
+            //     (newState == CmsObjState.Default && State == CmsObjState.Fixed) 
+            //     ||
+            //     (newState == CmsObjState.Fixed && State == CmsObjState.Default)
+            //    )
+            // {
+            //     State = newState;
+            // }
+            State = newState;
         }
          
         //拆卸

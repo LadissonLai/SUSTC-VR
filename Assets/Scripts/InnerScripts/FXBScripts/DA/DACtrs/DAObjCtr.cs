@@ -503,6 +503,7 @@ namespace Fxb.CMSVR
 
         private void OnControllerGrabObjMessage(ControllerGrabInteractObjMessage message)
         {
+            Debug.Log($"OnControllerGrabObjMessage {name} {state}");
             //正常情况下只有被拆下的状态会监听
             Debug.Assert(state == CmsObjState.Dismantled);
 
@@ -523,12 +524,7 @@ namespace Fxb.CMSVR
         {
             if (objGrabed != null && objGrabed.TryGetComponent<DACloneObjCtr>(out var cloneObj))
             {
-                #region 此逻辑不合适  暂时屏蔽
-                //grab的UnGrab事件触发时机在清理grabobj之前，需要判断是否被抓取状态  cloneObj.IsEnableAssemble &&
-
-                #endregion
-
-                if (cloneObj.interactObj.IsGrabbed() && cloneObj.PropID == PropID && !cloneObj.WaitForFistDrop)
+                if (cloneObj.interactObj.IsGrabbed() && cloneObj.PropID == PropID)
                     return true;
             }
 
@@ -602,6 +598,8 @@ namespace Fxb.CMSVR
             {
                 //zjytodo
                 Debug.Log("顺序错了");
+                var errorMsg = "拆卸顺序有误";
+                Popup_Tips.Show(errorMsg);
             }
 
             if (success && state == CmsObjState.WaitForPickup)
