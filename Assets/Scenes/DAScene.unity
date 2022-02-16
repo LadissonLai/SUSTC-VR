@@ -573,7 +573,7 @@ MonoBehaviour:
   ignoreWrenchConditionCheck: 0
   skipDAToolAnimation: 0
   taskID: 2
-  taskState: 1
+  taskState: 2
 --- !u!114 &244110128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6643,7 +6643,7 @@ PrefabInstance:
     - target: {fileID: 489388924781128008, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 491799450814845360, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -6723,7 +6723,7 @@ PrefabInstance:
     - target: {fileID: 1185547730376209808, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188612112187329410, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -6733,7 +6733,7 @@ PrefabInstance:
     - target: {fileID: 1192303430386546151, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1217674567875647439, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -6928,7 +6928,7 @@ PrefabInstance:
     - target: {fileID: 2463504393724477922, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2518004520821353339, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7388,7 +7388,7 @@ PrefabInstance:
     - target: {fileID: 5038604209626543810, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5058858131305587284, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7433,7 +7433,7 @@ PrefabInstance:
     - target: {fileID: 5395462599820026447, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5427811995776170338, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7463,7 +7463,7 @@ PrefabInstance:
     - target: {fileID: 5575441084787140783, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578539883326078059, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7553,7 +7553,7 @@ PrefabInstance:
     - target: {fileID: 6052185965730376781, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6095365462079807745, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7578,7 +7578,7 @@ PrefabInstance:
     - target: {fileID: 6170278500066488331, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6176296915768461837, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7713,7 +7713,7 @@ PrefabInstance:
     - target: {fileID: 7128443015556507803, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7130969904845829612, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -7878,7 +7878,7 @@ PrefabInstance:
     - target: {fileID: 8036207520366126009, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8106808750115414925, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
@@ -8018,7 +8018,7 @@ PrefabInstance:
     - target: {fileID: 9021034184250339839, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9078887561329425681, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
