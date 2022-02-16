@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_Tips
   m_EditorClassIdentifier: 
   PopupName: Tips
-  Prefab: {fileID: 9057027109391636787, guid: b3366a301d5573541bf9080b7ac01f61, type: 3}
+  Prefab: {fileID: 9057027109391636787, guid: 680f5d066d28b5544afb0740eae6f839, type: 3}

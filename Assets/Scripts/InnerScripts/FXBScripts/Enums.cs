@@ -106,6 +106,7 @@ namespace Fxb.CMSVR
     public enum DaTaskMode
     {
         None,
+        Teching,
         Training,
         Examination
     }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_ModeChoose
   m_EditorClassIdentifier: 
   PopupName: ModeChoose
-  Prefab: {fileID: 1804210476386420, guid: 47f791b20c2ea21438b665d5ed5db000, type: 3}
+  Prefab: {fileID: 1804210476386420, guid: 2b12e8c79068e194692af2aaf3153c2c, type: 3}

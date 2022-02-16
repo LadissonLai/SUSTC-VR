@@ -14,6 +14,8 @@ namespace Fxb.CMSVR
     {
         public TextMeshProUGUI title;
 
+        public Button TechingBtn;
+
         public Button trainingBtn;
 
         public Button examinationBtn;
@@ -25,6 +27,9 @@ namespace Fxb.CMSVR
         // Start is called before the first frame update
         void Start()
         {
+
+            TechingBtn.onClick.AddListener(()=> OnTaskChose(DaTaskMode.Teching));
+
             trainingBtn.onClick.AddListener(() => OnTaskChose(DaTaskMode.Training));
 
             examinationBtn.onClick.AddListener(() => OnTaskChose(DaTaskMode.Examination));

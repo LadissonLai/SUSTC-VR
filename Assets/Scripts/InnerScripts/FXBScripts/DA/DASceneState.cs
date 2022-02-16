@@ -22,7 +22,7 @@ namespace Fxb.CMSVR
         public string taskID2Init;
 
         /// <summary>
-        /// 实训/考核
+        /// 教学/实训/考核
         /// </summary>
         public DaTaskMode taskMode;
 

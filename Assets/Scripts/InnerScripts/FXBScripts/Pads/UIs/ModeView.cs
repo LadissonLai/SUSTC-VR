@@ -24,6 +24,18 @@ namespace Fxb.CPTTS
                 btn.onClick.AddListener(() =>
                 {
                     EntrySetting.Instance.runMode = (Enums.RunMode)i;
+                    switch (i)
+                    {
+                        case 0:
+                            World.Get<Fxb.CMSVR.DASceneState>().taskMode = DaTaskMode.Teching;
+                            break;
+                        case 1:
+                            World.Get<Fxb.CMSVR.DASceneState>().taskMode = DaTaskMode.Training;
+                            break;
+                        case 2:
+                            World.Get<Fxb.CMSVR.DASceneState>().taskMode = DaTaskMode.Examination;
+                            break;
+                    }
                     Debug.Log("model choose press");
                     homeView.Show();
                 });

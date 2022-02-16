@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: _UIPopupDatabase
   m_EditorClassIdentifier: 
   PopupNames:
-  - YesOrNo
-  - Tips
   - ModeChoose
+  - Tips
+  - YesOrNo
   Popups:
-  - {fileID: 11400000, guid: be32b3dfc0d8c7e42a5d8e22fdace4b3, type: 2}
-  - {fileID: 11400000, guid: 3bea704bad47f9b46aa344a5ef820ba2, type: 2}
   - {fileID: 11400000, guid: c59b6b715baebbc4baaf935d87024e09, type: 2}
+  - {fileID: 11400000, guid: 3bea704bad47f9b46aa344a5ef820ba2, type: 2}
+  - {fileID: 11400000, guid: be32b3dfc0d8c7e42a5d8e22fdace4b3, type: 2}

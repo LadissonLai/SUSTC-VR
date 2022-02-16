@@ -17,8 +17,7 @@ namespace Fxb.CMSVR
 
         // public Transform progressMark;
 
-        // 没给到level的切图，暂时不做
-        // public Image levelIcon;
+        public Image levelIcon;
 
         // TextMeshProUGUI levelTitle;
 
@@ -48,6 +47,8 @@ namespace Fxb.CMSVR
 
             if (atlas != null)
                 spriteAtlas = atlas;
+            else 
+                Debug.Log("atlas is null");
 
             // titleBtn.image.sprite = spriteAtlas.GetSprite(data.Icon);
 
@@ -55,12 +56,7 @@ namespace Fxb.CMSVR
 
             var taskModel = World.Get<ITaskModel>();
 
-            // if (taskModel == null || taskModel.IsSubmitAllTask)
-            //     progressMark.gameObject.SetActive(false);
-            // else
-            //     progressMark.gameObject.SetActive(taskModel.GetData()[0].taskID == taskID);
-
-            // LoadLevelIcon(data.Level);
+            LoadLevelIcon(data.Level);
 
             id = taskID;
         }
@@ -70,47 +66,40 @@ namespace Fxb.CMSVR
             OnTitleBtnClicked?.Invoke(id);
         }
 
-        // void LoadLevelIcon(float level)
-        // {
-        //     string iconName = null;
+        void LoadLevelIcon(float level)
+        {
+            string iconName = null;
 
-        //     switch (level)
-        //     {
-        //         case 2:
-        //             iconName = "icon_label_senior";
+            switch (level)
+            {
+                case 1:
+                case 0: // 没填就默认1
+                    iconName = "level1";
+                    break;
 
-        //             levelTitle.text = "高级";
+                case 2:
+                    iconName = "level2";
+                    break;
 
-        //             levelTitle.color = Color.white;
+                case 3:
+                    iconName = "level3";
+                    break;
 
-        //             break;
+                case 4:
+                    iconName = "level4";
+                    break;
 
-        //         case 1:
-        //             iconName = "icon_label_middle";
+                case 5:
+                    iconName = "level5";
+                    break;
 
-        //             levelTitle.text = "中级";
+                default:
+                    Debug.LogError($"{level}- 无效的任务等级");
+                    return;
+            }
 
-        //             levelTitle.color = new Color(middleColor, middleColor, middleColor, 1);
-
-        //             break;
-
-        //         case 0:
-        //             iconName = "icon_label_primary";
-
-        //             levelTitle.text = "初级";
-
-        //             levelTitle.color = Color.white;
-
-        //             break;
-
-        //         default:
-        //             Debug.LogError($"{level}- 无效的任务等级");
-
-        //             return;
-        //     }
-
-        //     levelIcon.sprite = spriteAtlas.GetSprite(iconName);
-        // }
+            // levelIcon.sprite = spriteAtlas.GetSprite(iconName);
+        }
     }
 
 }
