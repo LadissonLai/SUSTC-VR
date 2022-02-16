@@ -17,8 +17,8 @@ namespace Fxb.CMSVR
             if(TryGetComponent<DAObjCtr>(out var objCtr))
             {
                 objCtr.ForceSwitchState(DA.CmsObjState.Dismantled);
-                objCtr.SetDisplayMode(DA.CmsDisplayMode.Hide);
                 objCtr.SetActived(true);
+                objCtr.SetDisplayMode(DA.CmsDisplayMode.Hide);
                 Debug.Log("ExtraToolInit start");
             }
         }
