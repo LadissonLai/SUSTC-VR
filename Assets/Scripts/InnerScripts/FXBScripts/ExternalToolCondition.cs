@@ -13,7 +13,7 @@ namespace Fxb.CMSVR
 
         public override string GetCompareFaildMsg(CompareType faildCompareType)
         {
-            return $"工具 {needToolId} 未安装";
+            return $"工具 {needToolId} 未安装 {World.Get<DAObjCtr>(needToolId).State}";
         }
     }
 }

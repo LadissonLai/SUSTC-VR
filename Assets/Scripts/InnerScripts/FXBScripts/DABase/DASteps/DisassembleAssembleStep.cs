@@ -99,6 +99,7 @@ namespace Fxb.CMSVR
         {
             var objCtr = message.objCtr;
 
+            Debug.Log($"OnDAObjStateChangeMessage {objCtr.State} {validDAObjs.Contains(objCtr)}");
             if (!validDAObjs.Contains(objCtr))
                 return;
 
@@ -107,7 +108,7 @@ namespace Fxb.CMSVR
             //通过先关闭再开启来刷新内部状态
             objCtr.SetActived(false);
 
-            //Debug.Log("刷新拆装状态");
+            Debug.Log($"刷新拆装状态 {objCtr.State}");
         }
  
         protected override void OnDAObjStateChanged(AbstractDAObjCtr objCtr)

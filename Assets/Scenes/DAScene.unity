@@ -6067,6 +6067,11 @@ PrefabInstance:
       propertyPath: rmsCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 31403563368223903, guid: 80d6e30369964ca4fa9a1165e292815c,
+        type: 3}
+      propertyPath: rmsCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 77583801028461588, guid: 80d6e30369964ca4fa9a1165e292815c,
         type: 3}
       propertyPath: rmsCount
@@ -6118,6 +6123,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1570223121775309694, guid: 80d6e30369964ca4fa9a1165e292815c,
+        type: 3}
+      propertyPath: rmsCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593043633201085335, guid: 80d6e30369964ca4fa9a1165e292815c,
         type: 3}
       propertyPath: rmsCount
       value: 1
@@ -6544,7 +6554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98329159ae8ac504ea8a2f1e37b39849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreZones: []
+  ignoreZones:
+  - {fileID: 1455587997}
   dropAblePlane: {fileID: 1808025590}
   collisionTracker: {fileID: 2122090370}
 --- !u!4 &642232815
@@ -7468,7 +7479,7 @@ PrefabInstance:
     - target: {fileID: 5578539883326078059, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5581533153341327827, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}

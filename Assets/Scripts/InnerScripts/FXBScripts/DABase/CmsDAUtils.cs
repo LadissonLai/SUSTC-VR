@@ -123,7 +123,7 @@ namespace Fxb.DA
             var hasFindValidObj = false;
 
             var dependObjs = filterType == CmsObjType.Parts ? target.DependParts : target.DependSnapFits;
- 
+
             if (dependObjs?.Count > 0)
             {
                 foreach (var obj in dependObjs)

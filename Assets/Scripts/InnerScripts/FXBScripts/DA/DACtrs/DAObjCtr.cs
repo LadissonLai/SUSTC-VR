@@ -316,6 +316,8 @@ namespace Fxb.CMSVR
         {
             var GUID_ERROR_MSG = "实训模式下请按照指引进行操作！";
 
+            Debug.Log($"CheckProcessCondition {name}");
+
             if (World.Get<DASceneState>().isGuiding)
             {
                 //实训模式只能处理当前正在提示的物体. 

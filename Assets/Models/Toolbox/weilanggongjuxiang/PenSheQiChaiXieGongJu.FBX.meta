@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 02 - Defahei
-    second: {fileID: 2100000, guid: 0c2d3cc8f86dba84fbb1161bf81bec65, type: 2}
+    second: {fileID: 2100000, guid: b3aa8bfc14064f04d866129156588c36, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: FDJ_jinshu_qianhei
-    second: {fileID: 2100000, guid: 042c8e469b8f1d646b0edece5707db66, type: 2}
+    second: {fileID: 2100000, guid: 2f1509f3c22889341a7aee0dabf721e5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: blinn34
-    second: {fileID: 2100000, guid: 05b57b71bf4766a4587ac42f2602a3f4, type: 2}
+    second: {fileID: 2100000, guid: a4dc55f644931024787e1710dee7d97b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1

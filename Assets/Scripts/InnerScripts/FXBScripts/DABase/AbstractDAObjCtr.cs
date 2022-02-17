@@ -295,6 +295,8 @@ namespace Fxb.DA
  
                 if (AutoDefault)
                     ForceSwitchState(CmsObjState.Default);
+                    
+                Debug.Log($"DoFix {State}");
             }
         }
          
@@ -391,6 +393,8 @@ namespace Fxb.DA
                 State = CmsObjState.Assembled;
             
             OnAssembled(success);
+
+            Debug.Log($"OnAssembled {State}");
              
             if (success && AutoFix)
             {
