@@ -13,50 +13,53 @@ namespace Fxb.CMSVR
 {
     public class TaskDetailView : PadViewBase
     {
-        public Transform taskTemplate;
+        // public Transform taskTemplate;
 
         public TextMeshProUGUI title;
 
-        public TextMeshProUGUI description;
+        // public TextMeshProUGUI description;
 
-        public string descriptionPrex = "<b>任务描述</b>：";
+        // public string descriptionPrex = "<b>任务描述</b>：";
 
-        public TextMeshProUGUI completedAmountTxt;
+        // public TextMeshProUGUI completedAmountTxt;
 
         public Button submitBtn;
+
+        public Button stepBtn;
 
         ITaskModel taskModel;
 
         string lastTask;
 
-        List<TaskDetailItemView> detailItems = new List<TaskDetailItemView>();
+        // List<TaskDetailItemView> detailItems = new List<TaskDetailItemView>();
 
         // Start is called before the first frame update
         protected override void Start()
         {
             base.Start();
 
-            Message.AddListener<RefreshRecordItemStateMessage>(OnRefreshRecordItemState);
+            // Message.AddListener<RefreshRecordItemStateMessage>(OnRefreshRecordItemState);
 
             submitBtn.onClick.AddListener(SubmitTask);
+            stepBtn.onClick.AddListener(ShowStep);
         }
 
         private void OnDestroy()
         {
-            Message.RemoveListener<RefreshRecordItemStateMessage>(OnRefreshRecordItemState);
+            // Message.RemoveListener<RefreshRecordItemStateMessage>(OnRefreshRecordItemState);
         }
 
         /// <summary>
         /// 实时刷新UI状态
         /// </summary>
         /// <param name="msg"></param>
-        private void OnRefreshRecordItemState(RefreshRecordItemStateMessage msg)
-        {
-            foreach (var item in detailItems)
-                item.RefreshStep();
+        // private void OnRefreshRecordItemState(RefreshRecordItemStateMessage msg)  // 动作更新的时候用，我们做在大屏幕
+        // {
+        //     foreach (var item in detailItems)
+        //         item.RefreshStep();
 
-            UpdateCompletedAmount();
-        }
+        //     UpdateCompletedAmount();
+        // }
 
         protected override void OnStartShow()
         {
@@ -73,16 +76,16 @@ namespace Fxb.CMSVR
         void Init()
         {
             //每次重置列表位置
-            (description.transform.parent.parent as RectTransform).anchoredPosition = Vector2.zero;
+            // (description.transform.parent.parent as RectTransform).anchoredPosition = Vector2.zero;
 
             var data = taskModel.GetData()[0];
 
             if (data.taskID == lastTask)
             {
-                foreach (var item in detailItems)
-                    item.RefreshStep();
+                // foreach (var item in detailItems)
+                //     item.RefreshStep();
 
-                UpdateCompletedAmount();
+                // UpdateCompletedAmount();
 
                 if(taskModel.IsSubmitAllTask)
                     submitBtn.gameObject.SetActive(false);
@@ -92,33 +95,34 @@ namespace Fxb.CMSVR
 
             title.text = data.taskTitle;
 
-            description.text = $"{descriptionPrex}{data.taskDescription}";
+            // description.text = $"{descriptionPrex}{data.taskDescription}";
 
-            taskTemplate.gameObject.SetActive(true);
+            // taskTemplate.gameObject.SetActive(true);
 
-            int index;
+            // int index;
 
-            for (index = 0; index < data.stepGroups.Count; index++)
-            {
-                if (detailItems.Count <= index)
-                    detailItems.Add(Instantiate(taskTemplate, taskTemplate.parent).
-                        GetComponent<TaskDetailItemView>());
+            // for (index = 0; index < data.stepGroups.Count; index++)
+            // {
+            //     if (detailItems.Count <= index)
+            //         detailItems.Add(Instantiate(taskTemplate, taskTemplate.parent).
+            //             GetComponent<TaskDetailItemView>());
 
-                detailItems[index].InitStep(index + 1, data.stepGroups[index].id);
-            }
+            //     detailItems[index].InitStep(index + 1, data.stepGroups[index].id);
+            // }
 
-            while (detailItems.Count > index)
-            {
-                Destroy(detailItems[index].gameObject);
+            // while (detailItems.Count > index)
+            // {
+            //     Destroy(detailItems[index].gameObject);
 
-                detailItems.RemoveAt(index);
-            }
+            //     detailItems.RemoveAt(index);
+            // }
 
-            taskTemplate.gameObject.SetActive(false);
+            // taskTemplate.gameObject.SetActive(false);
 
             submitBtn.gameObject.SetActive(true);
+            stepBtn.gameObject.SetActive(true);
 
-            UpdateCompletedAmount(data.stepGroups.Count);
+            // UpdateCompletedAmount(data.stepGroups.Count);
 
             lastTask = data.taskID;
         }
@@ -127,23 +131,23 @@ namespace Fxb.CMSVR
         /// 默认初始化时存在已经完成的步骤
         /// </summary>
         /// <param name="newStepGroupsAmnt"></param>
-        void UpdateCompletedAmount(int newStepGroupsAmnt = 0)
-        {
-            if (newStepGroupsAmnt != 0)
-                completedAmountTxt.text = $"{0}/{newStepGroupsAmnt}";
+        // void UpdateCompletedAmount(int newStepGroupsAmnt = 0)
+        // {
+        //     if (newStepGroupsAmnt != 0)
+        //         completedAmountTxt.text = $"{0}/{newStepGroupsAmnt}";
 
-            var data = taskModel.GetData()[0];
+        //     var data = taskModel.GetData()[0];
 
-            int amount = 0;
+        //     int amount = 0;
 
-            foreach (var item in data.stepGroups)
-            {
-                if (taskModel.CheckStepGroupCompleted(item.id))
-                    amount += 1;
-            }
+        //     foreach (var item in data.stepGroups)
+        //     {
+        //         if (taskModel.CheckStepGroupCompleted(item.id))
+        //             amount += 1;
+        //     }
 
-            completedAmountTxt.text = $"{amount}/{data.stepGroups.Count}";
-        }
+        //     completedAmountTxt.text = $"{amount}/{data.stepGroups.Count}";
+        // }
 
         void SubmitTask()
         {
@@ -170,6 +174,11 @@ namespace Fxb.CMSVR
             submitBtn.gameObject.SetActive(false);
 
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_RECORD); 
+        }
+
+        void ShowStep()
+        {
+            //todo gsd interface
         }
     }
 }

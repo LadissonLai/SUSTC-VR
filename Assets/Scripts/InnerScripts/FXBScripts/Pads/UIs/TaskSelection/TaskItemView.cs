@@ -25,7 +25,7 @@ namespace Fxb.CMSVR
 
         TaskCsvConfig taskCfg;
 
-        SpriteAtlas spriteAtlas;
+        public SpriteAtlas spriteAtlas;
 
         string id;
 
@@ -98,7 +98,7 @@ namespace Fxb.CMSVR
                     return;
             }
 
-            // levelIcon.sprite = spriteAtlas.GetSprite(iconName);
+            levelIcon.sprite = spriteAtlas.GetSprite(iconName);
         }
     }
 
