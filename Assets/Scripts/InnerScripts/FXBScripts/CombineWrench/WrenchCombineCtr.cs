@@ -37,6 +37,8 @@ namespace Fxb.CMSVR
         protected CombineAbleWrenchParts cutPlaceHolder;
 
         private Pose poseStartup;
+
+        private Vector3 scaleStartup;
  
         private void OnDisable()
         {
@@ -51,6 +53,8 @@ namespace Fxb.CMSVR
         private void Start()
         {
             poseStartup = new Pose(transform.position, transform.rotation);
+
+            scaleStartup = transform.localScale;
 
             //扳手脚本默认关闭 拼接完成后再打开
             WrenchCtr.enabled = false;
@@ -265,6 +269,8 @@ namespace Fxb.CMSVR
             newWrenchCtr.transform.position = poseStartup.position;
 
             newWrenchCtr.transform.rotation = poseStartup.rotation;
+
+            newWrenchCtr.transform.localScale = scaleStartup;
         }
 
         private void CreateNewCombineParts(CombineAbleWrenchParts parts)
@@ -278,6 +284,8 @@ namespace Fxb.CMSVR
             newParts.position = parts.poseStartup.position;
 
             newParts.rotation = parts.poseStartup.rotation;
+
+            newParts.localScale = parts.scaleStartup;
         }
          
         /// <summary>

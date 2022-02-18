@@ -28,6 +28,8 @@ namespace Fxb.CMSVR
 
         public Pose poseStartup;
 
+        public Vector3 scaleStartup;
+
         [HideInInspector]
         public AdvancedInteractableObj interactObj;
 
@@ -85,6 +87,8 @@ namespace Fxb.CMSVR
         private void Start()
         {
             poseStartup = new Pose(transform.position, transform.rotation);
+
+            scaleStartup = transform.localScale;
 
             ConfigData = World.Get<WrenchConfig>().FindRDByModelName(name);
 
