@@ -120,7 +120,7 @@ namespace Fxb.CMSVR
                 interactObj.grabAttachMechanicScript = grabAttach;
             }
 
-            ID = $"{PropID}_{DateTime.Now.Ticks}";
+            ID = $"{PropID}_{DateTime.Now.Ticks}_{this.GetHashCode()}";
 
             name = ID;
 
