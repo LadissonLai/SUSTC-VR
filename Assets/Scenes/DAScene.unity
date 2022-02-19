@@ -7272,16 +7272,6 @@ PrefabInstance:
       propertyPath: rmsCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3815133544460947458, guid: d8b218b7658982849aa9c23d9105d8da,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1629
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815133544460947458, guid: d8b218b7658982849aa9c23d9105d8da,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 3844887006855452777, guid: d8b218b7658982849aa9c23d9105d8da,
         type: 3}
       propertyPath: rmsCount
