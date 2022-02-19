@@ -171,10 +171,13 @@
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\Wearables\IWearable.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\Wearables\WearableMessages.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\Global.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\HSRotatorRotatePart.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\HSRotatorVerticalPart.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandConfig.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\HandleButtonTest.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerMenuManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerPanelManager.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\QuBingLianGanClone.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\Setting.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapDropZoneManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapHold.cs" />
@@ -216,6 +219,8 @@
      <Compile Include="Assets\Scripts\InnerScripts\StepController\ZhenKongBeng.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\StepController\ZhengShiLian.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\ZhiJiaRotator.cs" />
+     <Compile Include="Assets\Scripts\MainScreen\OperationStepsScript.cs" />
+     <Compile Include="Assets\Scripts\MainScreen\RecordTableScript.cs" />
      <Compile Include="Assets\Scripts\TempScript\AddScriptViaStringTest.cs" />
      <Compile Include="Assets\Scripts\TempScript\LanguageTest.cs" />
      <Compile Include="Assets\Scripts\TempScript\PrintLocation.cs" />
