@@ -29,6 +29,8 @@ namespace Fxb.CMSVR
 
         [Tooltip("将目标值与numParam进行比较的方式")]
         public CompareType compareType;
+
+        public float precision = 0.001f;
  
         public abstract DAProcessTarget ProcessTarget { get; }
 
@@ -56,7 +58,7 @@ namespace Fxb.CMSVR
                     break;
                 case CompareType.Equal:
 
-                    if (Mathf.Abs(numParam - compareWith) > 0.001f)
+                    if (Mathf.Abs(numParam - compareWith) > precision)
                     {
                         errorMsg = GetCompareFaildMsg(CompareType.Equal);
                     }

@@ -158,6 +158,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\Pads\UIs\lv2Sys.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\ParentChanger.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\PathConfig.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\QuzhouRotateCondition.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\SoftwareCsvConfig.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\UI\DAHandViewCtr.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\FXBScripts\UI\DAViewCtr.cs" />
@@ -178,6 +179,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerMenuManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerPanelManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\QuBingLianGanClone.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\RanYouDaoGuiCXGJ.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\Setting.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapDropZoneManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapHold.cs" />

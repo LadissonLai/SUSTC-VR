@@ -13,7 +13,12 @@ public class QuBingLianGanClone : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        int taskId = int.Parse(World.Get<ITaskModel>().GetData()[0].taskID);
+        if(World.Get<ITaskModel>() == null)
+        {
+            gameObject.SetActive(false);
+            yield return null;
+        }
+        int taskId = int.Parse(World.Get<ITaskModel>()?.GetData()[0].taskID);
         if(taskId == 6)
         {
             QuBingLianGan_Origin.SetActive(false);

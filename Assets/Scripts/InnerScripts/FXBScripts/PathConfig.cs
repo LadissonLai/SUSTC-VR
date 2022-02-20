@@ -35,6 +35,8 @@ namespace Fxb.CMSVR
 
         public static readonly string PREFAB_PATH_PAD = PREFAB_ROOT_ + "Pad";
 
+        public static readonly string PREFAB_PATH_ENGINE = PREFAB_ROOT_ + "weilangfadognji Variant";
+
         public static readonly string PREFAB_PATH_CAR = PREFAB_ROOT_ + "BYD_E5_DA_Scripts";
 
         public static readonly string PREFAB_PATH_COMBINE_WRENCH_PREVIEW = PREFAB_ROOT_ + "CombineWrenchPreview";
