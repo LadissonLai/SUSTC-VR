@@ -28,12 +28,10 @@ public class OperationStepsScript : MonoBehaviour
 
     // isOperate表示给的UI设计图的右图。默认为false，左图
     public bool isOperate = false;
-    
     private int curPage = 0;
-
     private int doneCount = 0;
-
     private int maxPageIndex;
+    private bool hasCurDone = false;
 
     private Color DarkGray = Color.grey;
     private Color Black = Color.black;
@@ -66,8 +64,9 @@ public class OperationStepsScript : MonoBehaviour
             } else {
                 // 颜色设置为黑色，隐藏√，若上一个做完了，则当前step字体变大
                 step.GetComponentInChildren<Text>().color = Black;
-                if(lastDone) {
-                   step.GetComponentInChildren<Text>().fontSize = (int)((double)step.GetComponentInChildren<Text>().fontSize * 1.5);
+                if(lastDone && !hasCurDone) {
+                    step.GetComponentInChildren<Text>().fontSize = (int)((double)step.GetComponentInChildren<Text>().fontSize * 1.5);
+                    hasCurDone = true;
                 }
                 step.GetComponentInChildren<Image>().color = new Color(imgColor.r, imgColor.g, imgColor.b,0);
             }
@@ -110,6 +109,7 @@ public class OperationStepsScript : MonoBehaviour
             Destroy(item);
         }
         doneCount = 0;
+        hasCurDone = false;
 
         // load new steps
         for (int i = 0; i < obj.pages[index].steps.Count; i++) {
