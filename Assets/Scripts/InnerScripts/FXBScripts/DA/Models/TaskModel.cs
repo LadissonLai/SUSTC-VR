@@ -102,6 +102,18 @@ namespace Fxb.CMSVR
             return stepIDs;
         }
 
+        private void hidePreviousParts()
+        {
+            for(int i = 1; i < int.Parse(taskItemDatas[0].taskID); i++)
+            {
+                foreach (var item in GetTarget(i.ToString()).Split(','))
+                {
+                    World.Get<DAObjCtr>(item)?.gameObject.SetActive(false);
+                }
+            }
+
+        }
+
         #region  public 
 
         public IReadOnlyList<TaskItemData> GetData()
@@ -191,6 +203,7 @@ namespace Fxb.CMSVR
 
             isSubmitAllTask = false;
 
+            Debug.Log("aaaaaaaaaaaaaaaaa");
 
             Message.Send(new StartDAModeMessage()
             {
@@ -198,6 +211,8 @@ namespace Fxb.CMSVR
 
                 rootCtrs = dAObjCtrCaches
             });
+
+            hidePreviousParts();
         }
 
         public List<string> GetRecordIDs(string taskID)

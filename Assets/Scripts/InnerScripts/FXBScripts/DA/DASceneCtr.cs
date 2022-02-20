@@ -20,9 +20,13 @@ namespace Fxb.CMSVR
     {
         public Transform padPos;
 
+        public Transform enginePos;
+
         private DASceneState SceneState => World.Get<DASceneState>();
 
         private IRecordModel RecordModel => World.Get<IRecordModel>();
+
+        private DAOrderObserver OrderObserver => World.Get<DAOrderObserver>();
 
         [Header("Debug")]
 
@@ -114,8 +118,13 @@ namespace Fxb.CMSVR
 
             Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_PAD), padPos).transform.ResetLocalMatrix();
 
+            Instantiate(Resources.Load<GameObject>(PathConfig.PREFAB_PATH_ENGINE), enginePos).transform.ResetLocalMatrix();
+            
             if (SceneState == null)
                 World.current.Injecter.Regist<DASceneState>();
+
+            if(OrderObserver == null)
+                World.current.Injecter.Regist<DAOrderObserver>();
         }
 
 #if UNITY_EDITOR
@@ -226,7 +235,7 @@ namespace Fxb.CMSVR
                     recordType = RecordStepType.Fix;
                     break;
             }
-
+            // Debug.Log($"Record {recordType} {msg.objCtr.gameObject} {msg.objCtr.ID}");
             RecordModel.Record(recordType, msg.objCtr.ID);
         }
 

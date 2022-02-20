@@ -99,7 +99,6 @@ namespace Fxb.CMSVR
         {
             var objCtr = message.objCtr;
 
-            Debug.Log($"OnDAObjStateChangeMessage {objCtr.State} {validDAObjs.Contains(objCtr)}");
             if (!validDAObjs.Contains(objCtr))
                 return;
 
