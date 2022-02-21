@@ -1106,7 +1106,7 @@ PrefabInstance:
     - target: {fileID: 3210629876935886276, guid: fcb4858d4f4daff4f8a42af2b0cea49c,
         type: 3}
       propertyPath: m_Name
-      value: Content
+      value: StepContent
       objectReference: {fileID: 0}
     - target: {fileID: 3745933323684330841, guid: fcb4858d4f4daff4f8a42af2b0cea49c,
         type: 3}

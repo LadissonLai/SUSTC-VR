@@ -26,6 +26,12 @@ namespace Fxb.CMSVR
             Message.AddListener<PrepareTaskMessage>(OnprepareTaskMessage);
             Message.AddListener<RefreshRecordItemStateMessage>(Onrefresh);
         }
+        
+        void OnDestroy(){
+            
+            Message.RemoveListener<PrepareTaskMessage>(OnprepareTaskMessage);
+            Message.RemoveListener<RefreshRecordItemStateMessage>(Onrefresh);
+        }
         void Start() {
             steps = new List<GameObject>();
         }

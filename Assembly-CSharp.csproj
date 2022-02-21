@@ -221,6 +221,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\StepController\ZhenKongBeng.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\StepController\ZhengShiLian.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\ZhiJiaRotator.cs" />
+     <Compile Include="Assets\Scripts\MainScreen\CompleteOperationStepsScript.cs" />
      <Compile Include="Assets\Scripts\MainScreen\OperationStepsScript.cs" />
      <Compile Include="Assets\Scripts\MainScreen\RecordTableScript.cs" />
      <Compile Include="Assets\Scripts\TempScript\AddScriptViaStringTest.cs" />
