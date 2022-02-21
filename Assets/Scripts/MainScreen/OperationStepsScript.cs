@@ -4,101 +4,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using LitJson;
 using System.IO;
-using Doozy.Engine.UI;
+using Doozy.Engine;
 using Framework;
 using Fxb.CPTTS;
 
 namespace Fxb.CMSVR
 {
-    public class OperationStep {
-        public string name { get; set; }
-        public bool done { get; set; }
-        public OperationStep(string name, bool done) {
-            this.name = name;
-            this.done = done;
-        }
-    }
-    public class OperationSinglePage {
-        public string title { get; set; }
-        // public string description { get; set;}
-        public List<OperationStep> steps { get; set; }
-    }
-    public class OperationPages {
-        public List<OperationSinglePage> pages { get; set; }
-    }
     public class OperationStepsScript : MonoBehaviour
     {
-        public GameObject UpBtn;
-        public GameObject DownBtn;
         public GameObject Step;
         public GameObject Content;
-        private OperationPages obj;
         private List<GameObject> steps;
-
-        // isOperate表示给的UI设计图的右图。默认为false，左图
-        public bool isOperate = false;
-        private int curPage = 0;
         private int doneCount = 0;
-        private int maxPageIndex;
-        private bool hasCurDone = false;
-
         private Color DarkGray = Color.grey;
         private Color Black = Color.black;
+        private bool hasFirstUndo = false;
         TaskCsvConfig taskCfg;
+        ITaskModel taskModel;
         // Start is called before the first frame update
-        private void Init() {
-            TaskStepGroupCsvConfig stepCfgs = World.Get<TaskStepGroupCsvConfig>();
-            taskCfg = World.Get<TaskCsvConfig>();
-            obj.pages = new List<OperationSinglePage>();
-            foreach(var item in taskCfg.DataArray) {
-                OperationSinglePage page = new OperationSinglePage();
-                // Debug.Log("gsd title" + item.Title);
-                page.title = item.Title;
-                page.steps = new List<OperationStep>();
-                foreach(var stepID in item.StepGroupID.Split(',')) {
-                    var step = stepCfgs.FindRowDatas(stepID).Description;
-                    // todo 每个step有没有完成还没搞
-                    page.steps.Add(new OperationStep(step, false));
-                }
-                obj.pages.Add(page);
-            }
+        void Awake() {
+            Message.AddListener<PrepareTaskMessage>(OnprepareTaskMessage);
+            Message.AddListener<RefreshRecordItemStateMessage>(Onrefresh);
         }
         void Start() {
-            obj = new OperationPages();
-            Init();
-            // obj = ReadJson("/Data/OperationStepsData.json");
-            maxPageIndex = obj.pages.Count;
             steps = new List<GameObject>();
-            if(maxPageIndex > 0) {
-                loadScreen(0);
-            }
-            checkInteractable();
         }
 
-        private OperationPages ReadJson(string str) {
-            StreamReader StreamReader = new StreamReader(Application.dataPath + str);
-            JsonReader js = new JsonReader(StreamReader);
-            return JsonMapper.ToObject<OperationPages>(js);
+        void OnprepareTaskMessage(PrepareTaskMessage msg) {
+            taskModel = World.Get<ITaskModel>();
+            loadScreen();
+        }
+        void Onrefresh(RefreshRecordItemStateMessage msg) {
+            taskModel = World.Get<ITaskModel>();
+            loadScreen();
         }
 
-        private void checkStepState(GameObject step, bool done, bool  lastDone) {
+        private void checkStepState(GameObject step, bool done) {
             var imgColor = step.GetComponentInChildren<Image>().color;
-            if(isOperate) {
-                if(done) {
-                    doneCount++;
-                    // 颜色设置为灰色，显示√
-                    step.GetComponentInChildren<Text>().color = DarkGray;
-                    Debug.Log(step.GetComponentInChildren<Text>().color);
-                    step.GetComponentInChildren<Image>().color = new Color(imgColor.r, imgColor.g, imgColor.b,255);
-                } else {
-                    // 颜色设置为黑色，隐藏√，若上一个做完了，则当前step字体变大
-                    step.GetComponentInChildren<Text>().color = Black;
-                    if(lastDone && !hasCurDone) {
-                        step.GetComponentInChildren<Text>().fontSize = (int)((double)step.GetComponentInChildren<Text>().fontSize * 1.5);
-                        hasCurDone = true;
-                    }
-                    step.GetComponentInChildren<Image>().color = new Color(imgColor.r, imgColor.g, imgColor.b,0);
-                }
+            if(done) {
+                doneCount++;
+                // 颜色设置为灰色，显示√
+                step.GetComponentInChildren<Text>().color = DarkGray;
+                step.GetComponentInChildren<Image>().color = new Color(imgColor.r, imgColor.g, imgColor.b,255);
             } else {
                 // 颜色设置为黑色，隐藏√
                 step.GetComponentInChildren<Text>().color = Black;
@@ -106,82 +53,44 @@ namespace Fxb.CMSVR
             }
 
         }
-        void checkInteractable() {
-            if(curPage > 0) {
-                UpBtn.GetComponent<Button>().interactable = true;
-            } else {
-                UpBtn.GetComponent<Button>().interactable = false;
-            }
-            if(curPage < maxPageIndex - 1) {
-                DownBtn.GetComponent<Button>().interactable = true;
-            } else {
-                DownBtn.GetComponent<Button>().interactable = false;
-            }
-        }
-        public void onClickPageUp() {
-            curPage = (curPage + 1 + maxPageIndex) % maxPageIndex;
-            loadScreen(curPage);
-            checkInteractable();
-        }
-        public void onClickPageDown() {
-            curPage = (curPage - 1 + maxPageIndex) % maxPageIndex;
-            loadScreen(curPage);
-            checkInteractable();
-        }
 
         // 暴露出的接口
 
         // 加载指定页面
-        public void loadScreen(int index) {
+        public void loadScreen() {
             // initialize
             foreach(var item in steps) {
                 Destroy(item);
             }
+            hasFirstUndo = false;
             doneCount = 0;
-            hasCurDone = false;
-
+            var curPage = taskModel.GetData()[0];
+            var stepGroups = curPage.stepGroups;
             // load new steps
-            for (int i = 0; i < obj.pages[index].steps.Count; i++) {
+            for (int i = 0; i < stepGroups.Count; i++) {
                 GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
-                tmpStep.GetComponentInChildren<Text>().text = (i+1).ToString() + ". " + obj.pages[index].steps[i].name;
-                bool lastDone;
-                if(i == 0){
-                    lastDone = false;
-                } else {
-                    lastDone = obj.pages[index].steps[i - 1].done;
+                tmpStep.GetComponentInChildren<Text>().text = (i+1).ToString() + ". " + taskModel.GetStepGroupDescription(stepGroups[i].id);
+                if(!hasFirstUndo && !taskModel.CheckStepGroupCompleted(stepGroups[i].id)) {
+                    tmpStep.GetComponentInChildren<Text>().fontSize = (int)((double)tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                    hasFirstUndo = true;
                 }
-                checkStepState(tmpStep, obj.pages[index].steps[i].done, lastDone);
+                checkStepState(tmpStep, taskModel.CheckStepGroupCompleted(stepGroups[i].id));
                 tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * i);
                 steps.Add(tmpStep);
             }
 
-            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * obj.pages[index].steps.Count);
+            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * stepGroups.Count);
             foreach(var item in GetComponentsInChildren<Text>()) {
                 if(item.name == "Title") {
-                    item.text = obj.pages[index].title;
+                    item.text = curPage.taskTitle;
                 }
                 if(item.name == "Description") {
                     item.text = "操作步骤";
                 }
                 if(item.name == "DoneCount") {
-                    item.text = doneCount.ToString() + "/" + obj.pages[index].steps.Count.ToString();
+                    item.text = doneCount.ToString() + "/" + stepGroups.Count;
                 }
             }
-
-            // 若isOperate，隐藏上下按钮
-            if(isOperate) {
-                UpBtn.SetActive(false);
-                DownBtn.SetActive(false);
-            } else {
-                UpBtn.SetActive(true);
-                DownBtn.SetActive(true);
-            }
         }
-        // 完成第几个step
-        public void doneStep(int index) {
-            obj.pages[curPage].steps[index].done = true;
-            loadScreen(curPage);
-        }
-
     }
 }
