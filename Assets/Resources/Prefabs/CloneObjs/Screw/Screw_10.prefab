@@ -418,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactObj: {fileID: 8207137191782486159}
   collisionTracker: {fileID: 8744696207571829882}
-  dropGridPlane: {fileID: 0}
+  dropGridPlane: {fileID: 8462240213115237910}
   PropID: 
 --- !u!1 &6987232586637301952
 GameObject:
