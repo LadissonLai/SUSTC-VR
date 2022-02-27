@@ -11,7 +11,7 @@ namespace Fxb.CMSVR
     {
         private void Awake()
         {
-            Message.AddListener<DAToolErrorMessage>(OnWrenchError);
+            Message.AddListener<DAErrorMessage>(OnWrenchError);
 
             Message.AddListener<DATipMessage>(OnTipShow);
 
@@ -20,14 +20,14 @@ namespace Fxb.CMSVR
 
         private void OnDestroy()
         {
-            Message.RemoveListener<DAToolErrorMessage>(OnWrenchError);
+            Message.RemoveListener<DAErrorMessage>(OnWrenchError);
 
             Message.RemoveListener<DATipMessage>(OnTipShow);
 
             Message.RemoveListener<PartsTableDropErrorMessage>(OnPartsTableDropErrorMessage);
         }
          
-        private void OnWrenchError(DAToolErrorMessage message)
+        private void OnWrenchError(DAErrorMessage message)
         {
             Popup_Tips.Show(message.tipInfo);
         }

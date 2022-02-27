@@ -61,17 +61,7 @@ namespace Fxb.CMSVR
 
         InvalidTools,
 
-        InvalidSuit,
-
-        InvalidHat,
-
-        InvalidGlasses,
-
-        InvalidShoes,
-
-        InvalidCottonGloves,
-
-        InvalidRubberGloves
+        InvalidConditionCheck,
     }
 
     //考虑改为EquipType/EquipCategory

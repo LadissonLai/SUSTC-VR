@@ -119,7 +119,10 @@ namespace Fxb.CMSVR
             // taskTemplate.gameObject.SetActive(false);
 
             submitBtn.gameObject.SetActive(true);
-            stepBtn.gameObject.SetActive(true);
+            if(EntrySetting.Instance != null && EntrySetting.Instance.runMode != Enums.RunMode.Exam)
+            {
+                stepBtn.gameObject.SetActive(true);
+            }
 
             // UpdateCompletedAmount(data.stepGroups.Count);
 
@@ -168,13 +171,18 @@ namespace Fxb.CMSVR
 
         void DoSubmitTask(int param)
         {
+            Message.Send(new PreSubmitMessage());
+            
             taskModel.SubmitTask();
 
             submitBtn.gameObject.SetActive(false);
 
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_RECORD); 
 
-            Message.Send(new ShowRecordMessage());
+            if(EntrySetting.Instance != null && EntrySetting.Instance.runMode != Enums.RunMode.Exercise)
+            {
+                Message.Send(new ShowRecordMessage());
+            }
         }
 
         void ShowStep()

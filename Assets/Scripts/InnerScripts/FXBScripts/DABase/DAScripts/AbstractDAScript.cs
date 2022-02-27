@@ -10,7 +10,8 @@ namespace Fxb.DA
         {
             Disassemble,
             Assemble,
-            Fix
+            Fix,
+            None,
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace Fxb.CMSVR
 
         bool CheckRecordCompleted(string recordID);
 
-        bool RecordError(RecordStepType type, string arg, ErrorRecordType errorType);
+        bool RecordError(RecordStepType type, string arg, string errorID);
 
         void SetRecordCompleted(string recordID);
 

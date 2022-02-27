@@ -725,7 +725,7 @@ MonoBehaviour:
   enginePos: {fileID: 1859452029}
   ignoreWrenchConditionCheck: 0
   skipDAToolAnimation: 0
-  taskID: 3
+  taskID: 5
   taskState: 2
 --- !u!1 &261332365
 GameObject:

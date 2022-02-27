@@ -68,7 +68,7 @@ public class MixedToolDAScript : AbstractDAScript
 
         if (!IsAnimSuccess)
         {     
-            Message.Send(new DAToolErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Assemble));
+            Message.Send(new DAErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Assemble, "10101"));
 
             //if (isPlayFailedAnimation)
             //    screwoutLevel = ScrewOutLevel.NoMove;
@@ -93,7 +93,7 @@ public class MixedToolDAScript : AbstractDAScript
 
         if (!IsAnimSuccess)
         {
-            Message.Send(new DAToolErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Disassemble));
+            Message.Send(new DAErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Disassemble, "10101"));
 
             //if (isPlayFailedAnimation)
             //    screwoutLevel = ScrewOutLevel.NoMove;
@@ -120,7 +120,7 @@ public class MixedToolDAScript : AbstractDAScript
 
         if (!IsAnimSuccess)
         {
-            Message.Send(new DAToolErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Fix));
+            Message.Send(new DAErrorMessage("请使用正确的工具进行操作", daObjID, DAAnimType.Fix, "10101"));
 
             //if (isPlayFailedAnimation)
             //    screwoutLevel = ScrewOutLevel.NoMove;

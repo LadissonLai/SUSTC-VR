@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Fxb.CMSVR
 {
-    public class ErrorCache : Dictionary<string, List<ErrorRecordType>>
+    public class ErrorCache : Dictionary<string, List<string>>
     {
-        public ErrorCache(string param, ErrorRecordType errorRecordType)
+        public ErrorCache(string param, string errorRecordId)
         {
-            Add(param, new List<ErrorRecordType>() { errorRecordType });
+            Add(param, new List<string>() { errorRecordId });
         }
     }
 
@@ -41,6 +41,8 @@ namespace Fxb.CMSVR
         RecordCsvConfig cfg = World.Get<RecordCsvConfig>();
 
         RecordErrorCsvConfig errorCfg = World.Get<RecordErrorCsvConfig>();
+
+        DACsvConfig daCfg = World.Get<DACsvConfig>();
 
         /// <summary>
         /// 错误的记录
@@ -167,17 +169,17 @@ namespace Fxb.CMSVR
         /// </summary>
         /// <param name="type"></param>
         /// <param name="daObjID"></param>
-        public bool RecordError(RecordStepType type, string daObjID, ErrorRecordType errorType)
+        public bool RecordError(RecordStepType type, string daObjID, string errorID)
         {
             if (recordErrorCaches.ContainsKey(type))
             {
                 if (recordErrorCaches[type].ContainsKey(daObjID))
-                    return recordErrorCaches[type][daObjID].AddUnique(errorType);
+                    return recordErrorCaches[type][daObjID].AddUnique(errorID);
                 else
-                    recordErrorCaches[type].Add(daObjID, new List<ErrorRecordType>() { errorType });
+                    recordErrorCaches[type].Add(daObjID, new List<string>() { errorID });
             }
             else
-                recordErrorCaches.Add(type, new ErrorCache(daObjID, errorType));
+                recordErrorCaches.Add(type, new ErrorCache(daObjID, errorID));
 
             return true;
         }
@@ -249,7 +251,7 @@ namespace Fxb.CMSVR
 
                     foreach (var item in recordErrorCaches[type][param])
                     {
-                        var data = errorCfg.FindRowDatas(((int)item).ToString());
+                        var data = errorCfg.FindRowDatas(item);
 
                         score += data.Score;
 
@@ -257,6 +259,23 @@ namespace Fxb.CMSVR
 
                         if (string.IsNullOrWhiteSpace(title))
                             continue;
+                        
+                        var daData = daCfg.FindRowDatas(param);
+                        if (item.Equals("10101"))
+                        {
+                            switch (type)
+                            {
+                                case RecordStepType.Dismantle:
+                                    title = $"{title}拆卸{daData.Name}";
+                                    break;
+                                case RecordStepType.Assemble:
+                                    title = $"{title}安装{daData.Name}";
+                                    break;
+                                case RecordStepType.Fix:
+                                    title = $"{title}紧固{daData.Name}";
+                                    break;
+                            }
+                        }
 
                         error = $"{error}、{title}";
                     }
@@ -303,4 +322,6 @@ namespace Fxb.CMSVR
     public class RefreshRecordItemStateMessage : Message { }
     public class ShowStepMessage : Message { }
     public class ShowRecordMessage : Message { }
+
+    public class PreSubmitMessage : Message { }
 }

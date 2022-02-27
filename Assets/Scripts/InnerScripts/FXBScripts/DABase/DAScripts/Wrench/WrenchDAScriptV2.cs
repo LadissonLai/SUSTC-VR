@@ -66,7 +66,7 @@ namespace Fxb.DA
 
             if (!IsAnimSuccess)
             {
-                Message.Send(new DAToolErrorMessage(useAbleRes.errorMsg, daObjID, DAAnimType.Assemble));
+                Message.Send(new DAErrorMessage(useAbleRes.errorMsg, daObjID, DAAnimType.Assemble, "10101"));
 
                 yield break;
             }
@@ -91,7 +91,7 @@ namespace Fxb.DA
 
             if (!IsAnimSuccess)
             {
-                Message.Send(new DAToolErrorMessage(useAbleRes.errorMsg, daObjID, DAAnimType.Disassemble));
+                Message.Send(new DAErrorMessage(useAbleRes.errorMsg, daObjID, DAAnimType.Disassemble, "10101"));
 
                 yield break;
             }
@@ -119,7 +119,7 @@ namespace Fxb.DA
             //是否成功都可以播放对应动画
             if (!IsAnimSuccess)
             {
-                Message.Send(new DAToolErrorMessage(useAbleRes.errorMsg,daObjID, DAAnimType.Fix));
+                Message.Send(new DAErrorMessage(useAbleRes.errorMsg,daObjID, DAAnimType.Fix, "10101"));
 
                 yield break;
             }

@@ -203,8 +203,6 @@ namespace Fxb.CMSVR
 
             isSubmitAllTask = false;
 
-            Debug.Log("aaaaaaaaaaaaaaaaa");
-
             Message.Send(new StartDAModeMessage()
             {
                 mode = DAMode.DisassemblyAssembly,

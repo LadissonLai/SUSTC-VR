@@ -179,6 +179,7 @@
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerMenuManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\InnerUIScripts\InnerPanelManager.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\QuBingLianGanClone.cs" />
+     <Compile Include="Assets\Scripts\InnerScripts\QuZhouXiangLuoShuanOrderObserver.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\RanYouDaoGuiCXGJ.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\Setting.cs" />
      <Compile Include="Assets\Scripts\InnerScripts\SnapDropZoneManager.cs" />

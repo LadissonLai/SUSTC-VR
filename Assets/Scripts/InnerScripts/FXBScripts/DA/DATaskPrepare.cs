@@ -152,5 +152,6 @@ namespace Fxb.CMSVR
     }
 
 
+    public class ExtraToolPrepareMessage : Message { }
     public class PrepareTaskMessage : Message { }
 }

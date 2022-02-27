@@ -487,6 +487,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &767520287594952697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155574609177611547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &4799235423718972970
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 0}
+  m_Content: {fileID: 2799507551466534278}
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
@@ -1150,6 +1175,8 @@ MonoBehaviour:
   RecordError: {fileID: 6604122301676641390, guid: 7b9fdab0802ac6845b4b68479315a9c2,
     type: 3}
   ScoreContent: {fileID: 7977786062510439784}
+  CompleteOperationSteps: {fileID: 0}
+  OperationSteps: {fileID: 0}
 --- !u!1 &7464878557443204363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1735,7 @@ PrefabInstance:
     - target: {fileID: 3745933323684330841, guid: fcb4858d4f4daff4f8a42af2b0cea49c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 7.9660034
+      value: 0.0007857754
       objectReference: {fileID: 0}
     - target: {fileID: 3745933323684330841, guid: fcb4858d4f4daff4f8a42af2b0cea49c,
         type: 3}

@@ -596,12 +596,9 @@ namespace Fxb.CMSVR
         {
             base.OnDisassembled(success);
 
-            if(operateOrder > 0 && !World.Get<DAOrderObserver>().Observe(Name, operateOrder))
+            if(operateOrder > 0 && !World.Get<DAOrderObserver>().Observe(Name, operateOrder, out var needSendMsg, out var errorID) && needSendMsg)
             {
-                //zjytodo
-                Debug.Log("顺序错了");
-                var errorMsg = "拆卸顺序有误";
-                Popup_Tips.Show(errorMsg);
+                Message.Send(new DAErrorMessage("拆卸顺序有误", ID, AbstractDAScript.DAAnimType.Disassemble, errorID));
             }
 
             if (success && state == CmsObjState.WaitForPickup)

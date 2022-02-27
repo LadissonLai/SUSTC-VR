@@ -43,22 +43,15 @@ namespace Fxb.CMSVR
         }
 
         void OnprepareTaskMessage(PrepareTaskMessage msg) {
-            taskModel = World.Get<ITaskModel>();
-            recordModel = World.Get<IRecordModel>();
-            if(int.Parse(taskModel.GetData()[0].taskID) > 0) {
-                loadScreen();
-            }
+            loadScreen(true);
         }
         void Onrefresh(RefreshRecordItemStateMessage msg) {
-            taskModel = World.Get<ITaskModel>();
-            recordModel = World.Get<IRecordModel>();
-            if(int.Parse(taskModel.GetData()[0].taskID) > 0) {
-                loadScreen();
-            }
+            loadScreen(false);
         }
 
         private void checkStepState(GameObject step, bool done) {
             var imgColor = step.GetComponentInChildren<Image>().color;
+            // done = true;
             if(done) {
                 doneCount++;
                 // 颜色设置为灰色，显示√
@@ -74,7 +67,12 @@ namespace Fxb.CMSVR
         // 暴露出的接口
 
         // 加载指定页面
-        public void loadScreen() {
+        public void loadScreen(bool isInitial) {
+            taskModel = World.Get<ITaskModel>();
+            recordModel = World.Get<IRecordModel>();
+            if(int.Parse(taskModel.GetData()[0].taskID) <= 0) {
+                return;
+            }
             // initialize
             if(CompleteOperationSteps) {
                 CompleteOperationSteps.SetActive(false);
@@ -95,23 +93,23 @@ namespace Fxb.CMSVR
             foreach(var stepGroup in stepGroups) {
                 foreach(var stepID in taskModel.GetChildStepIDs(stepGroup.id)) {
                     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
-                    // Debug.Log("gsd record null? " + recordModel == null);
-                    // Debug.Log("gsd record title null? " + recordModel.FindRecord(stepID).Title + "  " + stepID);
-                    // Debug.Log("gsd tmpStep null? " + tmpStep == null);
-                    // Debug.Log("gsd text null? " + tmpStep.GetComponentInChildren<Text>() == null);
-                    tmpStep.GetComponentInChildren<Text>().text = (steps.Count + 1).ToString() + ". " + recordModel.FindRecord(stepID).Title;
+                    var texts = tmpStep.GetComponentsInChildren<Text>();
+                    texts[0].text = (steps.Count + 1).ToString() + ". ";
+                    texts[1].text = recordModel.FindRecord(stepID).Title;
                     if(!recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID) && !hasFirstUndo) {
-                        tmpStep.GetComponentInChildren<Text>().fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
-                        tmpStep.GetComponentInChildren<Text>().fontStyle = FontStyle.Bold;
+                        texts[0].fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                        texts[0].fontStyle = FontStyle.Bold;
+                        texts[1].fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                        texts[1].fontStyle = FontStyle.Bold;
                         hasFirstUndo = true;
                     }
-                    checkStepState(tmpStep, recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID));
-                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (30) * steps.Count);
+                    checkStepState(tmpStep, !isInitial && recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID));
+                    // tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (30) * steps.Count);
                     steps.Add(tmpStep);
                 }
             }
 
-            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 30 * stepGroups.Count);
+            // Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 30 * stepGroups.Count);
             foreach(var item in GetComponentsInChildren<Text>()) {
                 if(item.name == "Title") {
                     item.text = curPage.taskTitle;

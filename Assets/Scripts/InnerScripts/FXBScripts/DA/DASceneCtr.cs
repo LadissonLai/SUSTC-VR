@@ -56,7 +56,7 @@ namespace Fxb.CMSVR
 
             Message.AddListener<CarLiftLocationChangedMessages>(OnLiftLocationChanged);
 
-            Message.AddListener<DAToolErrorMessage>(OnDAToolError);
+            Message.AddListener<DAErrorMessage>(OnDAError);
             Message.AddListener<WearEquipmentMessage>(OnWearEquipment);
             Message.AddListener<ReloadDaSceneMessage>(OnReloadDaScene);
 
@@ -90,7 +90,7 @@ namespace Fxb.CMSVR
 
             Message.RemoveListener<DAObjStateChangeMessage>(OnObjStateChanged);
 
-            Message.RemoveListener<DAToolErrorMessage>(OnDAToolError);
+            Message.RemoveListener<DAErrorMessage>(OnDAError);
 
             Message.RemoveListener<PartsTableDropObjChangeMessage>(OnPartsTableDropObjChangeMessage);
 
@@ -103,6 +103,8 @@ namespace Fxb.CMSVR
             Message.RemoveListener<BatteryLiftDeviceStateChangeMessage>(OnBatteryLiftStateChanged);
 
             World.current.Injecter.UnRegist<ITaskModel>();
+            
+            World.current.Injecter.UnRegist<DAOrderObserver>();
 
             var sceneState = World.Get<DASceneState>();
 
@@ -122,14 +124,15 @@ namespace Fxb.CMSVR
             
             if (SceneState == null)
                 World.current.Injecter.Regist<DASceneState>();
-
-            if(OrderObserver == null)
-                World.current.Injecter.Regist<DAOrderObserver>();
         }
 
 #if UNITY_EDITOR
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log(RecordModel.FindRecord("208").Title);
+            }
             // DAConfig.ignoreWrenchConditionCheck = ignoreWrenchConditionCheck;
 
             // DAConfig.skipToolAnimation = skipDAToolAnimation;
@@ -239,20 +242,20 @@ namespace Fxb.CMSVR
             RecordModel.Record(recordType, msg.objCtr.ID);
         }
 
-        private void OnDAToolError(DAToolErrorMessage message)
+        private void OnDAError(DAErrorMessage message)
         {
             //Debug.LogWarning("Wrench use error tip:" + message.tipInfo);
 
             switch (message.daAnimType)
             {
                 case AbstractDAScript.DAAnimType.Disassemble:
-                    RecordModel.RecordError(RecordStepType.Dismantle, message.daObjID, ErrorRecordType.InvalidTools);
+                    RecordModel.RecordError(RecordStepType.Dismantle, message.daObjID, message.errorID);
                     break;
                 case AbstractDAScript.DAAnimType.Assemble:
-                    RecordModel.RecordError(RecordStepType.Assemble, message.daObjID, ErrorRecordType.InvalidTools);
+                    RecordModel.RecordError(RecordStepType.Assemble, message.daObjID, message.errorID);
                     break;
                 case AbstractDAScript.DAAnimType.Fix:
-                    RecordModel.RecordError(RecordStepType.Fix, message.daObjID, ErrorRecordType.InvalidTools);
+                    RecordModel.RecordError(RecordStepType.Fix, message.daObjID, message.errorID);
                     break;
             }
         }
@@ -305,7 +308,11 @@ namespace Fxb.CMSVR
 
             World.current.Injecter.Regist<ITaskModel>(new TaskModel(new string[] { newID })).Init();
 
+            World.current.Injecter.Regist<DAOrderObserver>();
+
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_TASKDETAIL);
+            
+            Message.Send(new ExtraToolPrepareMessage());
 
             Message.Send(new PrepareTaskMessage());
         }

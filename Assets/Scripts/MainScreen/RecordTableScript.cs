@@ -37,6 +37,10 @@ namespace Fxb.CMSVR
         void Awake() {
             Message.AddListener<ShowRecordMessage>(OnShow);
         }
+
+        private void OnDestroy() {
+            Message.RemoveListener<ShowRecordMessage>(OnShow);
+        }
         void Start() {
             this.gameObject.SetActive(false);
             records = new List<GameObject>();
