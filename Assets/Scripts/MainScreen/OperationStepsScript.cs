@@ -14,6 +14,8 @@ namespace Fxb.CMSVR
     {
         public GameObject Step;
         public GameObject Content;
+        public GameObject CompleteOperationSteps;
+        public GameObject RecordTable;
         private List<GameObject> steps;
         private int doneCount = 0;
         private Color DarkGray = Color.grey;
@@ -32,6 +34,7 @@ namespace Fxb.CMSVR
             Message.RemoveListener<RefreshRecordItemStateMessage>(Onrefresh);
         }
         void Start() {
+            this.gameObject.SetActive(false);
             steps = new List<GameObject>();
         }
 
@@ -65,6 +68,13 @@ namespace Fxb.CMSVR
         // 加载指定页面
         public void loadScreen() {
             // initialize
+            if(CompleteOperationSteps) {
+                CompleteOperationSteps.SetActive(false);
+            }
+            if(RecordTable) {
+                RecordTable.SetActive(false);
+            }
+            this.gameObject.SetActive(true);
             foreach(var item in steps) {
                 Destroy(item);
             }
@@ -83,17 +93,6 @@ namespace Fxb.CMSVR
                     steps.Add(tmpStep);
                 }
             }
-            // for (int i = 0; i < stepGroups.Count; i++) {
-            //     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
-            //     tmpStep.GetComponentInChildren<Text>().text = (i+1).ToString() + ". " + taskModel.GetStepGroupDescription(stepGroups[i].id);
-            //     if(!hasFirstUndo && !taskModel.CheckStepGroupCompleted(stepGroups[i].id)) {
-            //         tmpStep.GetComponentInChildren<Text>().fontSize = (int)((double)tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
-            //         hasFirstUndo = true;
-            //     }
-            //     checkStepState(tmpStep, taskModel.CheckStepGroupCompleted(stepGroups[i].id));
-            //     tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * i);
-            //     steps.Add(tmpStep);
-            // }
 
             Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * stepGroups.Count);
             foreach(var item in GetComponentsInChildren<Text>()) {

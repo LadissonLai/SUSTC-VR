@@ -725,7 +725,7 @@ MonoBehaviour:
   enginePos: {fileID: 1859452029}
   ignoreWrenchConditionCheck: 0
   skipDAToolAnimation: 0
-  taskID: 1
+  taskID: 3
   taskState: 2
 --- !u!1 &261332365
 GameObject:
@@ -12532,6 +12532,7 @@ MonoBehaviour:
   autoLoadSetup: 1
   setups:
   - {fileID: 4332842051880308821}
+  - {fileID: 4332607140425825395}
   excludeTargetGroups: 
   persistOnLoad: 0
 --- !u!114 &4332691670416346451

@@ -15,6 +15,8 @@ namespace Fxb.CMSVR
         public GameObject DownBtn;
         public GameObject Step;
         public GameObject Content;
+        public GameObject OperationSteps;
+        public GameObject RecordTable;
         private int curPage = 0;
         private int maxPageIndex;
         private List<GameObject> steps;
@@ -36,7 +38,6 @@ namespace Fxb.CMSVR
             steps = new List<GameObject>();
         }
         private void OnShow(ShowStepMessage msg) {
-            this.gameObject.SetActive(true);
             var taskModel = World.Get<ITaskModel>();
             var index = int.Parse(taskModel.GetData()[0].taskID) - 1;
             if(index >= 0 && index < maxPageIndex) {
@@ -69,6 +70,13 @@ namespace Fxb.CMSVR
         // 加载指定页面
         public void loadScreen(int index) {
             // initialize
+            if(OperationSteps) {
+                OperationSteps.SetActive(false);
+            }
+            if(RecordTable) {
+                RecordTable.SetActive(false);
+            }
+            this.gameObject.SetActive(true);
             foreach(var item in steps) {
                 Destroy(item);
             }

@@ -21,6 +21,8 @@ namespace Fxb.CMSVR
         public GameObject RecordContent;
         public GameObject RecordError;
         public GameObject ScoreContent;
+        public GameObject CompleteOperationSteps;
+        public GameObject OperationSteps;
         private int maxPageIndex;
         private List<GameObject> records;
         IRecordModel recordModel;
@@ -34,11 +36,19 @@ namespace Fxb.CMSVR
             Message.AddListener<PrepareTaskMessage>(RecordMessage);
         }
         void Start() {
+            this.gameObject.SetActive(false);
             records = new List<GameObject>();
         }
         // 暴露的接口
         public void loadScreen() {
             // initialize
+            if(OperationSteps) {
+                OperationSteps.SetActive(false);
+            }
+            if(CompleteOperationSteps) {
+                CompleteOperationSteps.SetActive(false);
+            }
+            this.gameObject.SetActive(true);
             foreach(var item in records) {
                 Destroy(item);
             }
