@@ -93,20 +93,22 @@ namespace Fxb.CMSVR
 
                 // section的error
                 foreach(var record in taskModel.GetChildStepIDs(stepGroup.id)) {
-                    // GameObject tmpError = Instantiate(RecordError, Content.transform) as GameObject;
-                    // foreach(var item in tmpError.GetComponentsInChildren<Text>()) {
-                    //     if(item.name == "Title") {
-                    //         item.text = err.index.ToString() + ". " + err.description;
-                    //     }
-                    //     if(item.name == "Score") {
-                    //         item.text = err.punishment.ToString();
-                    //         score += err.punishment;
-                    //     }  
-                    // }
-                    // tmpError.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 * recordCount);
-                    // records.Add(tmpError);
-                    // recordCount++;
-                    // Debug.Log("gsd" + recordModel.GetRecordAllErrors(record));
+                    var error = recordModel.GetRecordAllErrors(record);
+                    var punishment = recordModel.GetRecordErrorScoreDeducting(record).ToString();
+                    GameObject tmpError = Instantiate(RecordError, Content.transform) as GameObject;
+                    foreach(var item in tmpError.GetComponentsInChildren<Text>()) {
+                        if(item.name == "Title") {
+                            item.text = error;
+                        }
+                        if(item.name == "Score") {
+                            item.text = punishment;
+                            score += float.Parse(punishment);
+                        }  
+                    }
+                    tmpError.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 * recordCount);
+                    records.Add(tmpError);
+                    recordCount++;
+                    Debug.Log("gsd" + recordModel.GetRecordAllErrors(record));
                 }
             }
             // 总成绩

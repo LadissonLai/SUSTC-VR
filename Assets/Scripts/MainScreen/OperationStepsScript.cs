@@ -32,6 +32,10 @@ namespace Fxb.CMSVR
         void OnDestroy(){
             Message.RemoveListener<PrepareTaskMessage>(OnprepareTaskMessage);
             Message.RemoveListener<RefreshRecordItemStateMessage>(Onrefresh);
+            foreach(var item in steps) {
+                Destroy(item);
+            }
+            steps.Clear();
         }
         void Start() {
             this.gameObject.SetActive(false);
@@ -89,9 +93,12 @@ namespace Fxb.CMSVR
             var stepGroups = curPage.stepGroups;
             // load new steps
             foreach(var stepGroup in stepGroups) {
-                Debug.Log("gsd group " + stepGroup.id);
                 foreach(var stepID in taskModel.GetChildStepIDs(stepGroup.id)) {
                     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
+                    // Debug.Log("gsd record null? " + recordModel == null);
+                    // Debug.Log("gsd record title null? " + recordModel.FindRecord(stepID).Title + "  " + stepID);
+                    // Debug.Log("gsd tmpStep null? " + tmpStep == null);
+                    // Debug.Log("gsd text null? " + tmpStep.GetComponentInChildren<Text>() == null);
                     tmpStep.GetComponentInChildren<Text>().text = (steps.Count + 1).ToString() + ". " + recordModel.FindRecord(stepID).Title;
                     if(!recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID) && !hasFirstUndo) {
                         tmpStep.GetComponentInChildren<Text>().fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
