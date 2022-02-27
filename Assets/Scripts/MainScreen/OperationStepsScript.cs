@@ -19,8 +19,8 @@ namespace Fxb.CMSVR
         private Color DarkGray = Color.grey;
         private Color Black = Color.black;
         private bool hasFirstUndo = false;
-        TaskCsvConfig taskCfg;
         ITaskModel taskModel;
+        IRecordModel recordModel;
         // Start is called before the first frame update
         void Awake() {
             Message.AddListener<PrepareTaskMessage>(OnprepareTaskMessage);
@@ -28,7 +28,6 @@ namespace Fxb.CMSVR
         }
         
         void OnDestroy(){
-            
             Message.RemoveListener<PrepareTaskMessage>(OnprepareTaskMessage);
             Message.RemoveListener<RefreshRecordItemStateMessage>(Onrefresh);
         }
@@ -38,10 +37,13 @@ namespace Fxb.CMSVR
 
         void OnprepareTaskMessage(PrepareTaskMessage msg) {
             taskModel = World.Get<ITaskModel>();
+            recordModel = World.Get<IRecordModel>();
             loadScreen();
         }
         void Onrefresh(RefreshRecordItemStateMessage msg) {
             taskModel = World.Get<ITaskModel>();
+            recordModel = World.Get<IRecordModel>();
+            Debug.Log("second gsd");
             loadScreen();
         }
 
@@ -57,7 +59,6 @@ namespace Fxb.CMSVR
                 step.GetComponentInChildren<Text>().color = Black;
                 step.GetComponentInChildren<Image>().color = new Color(imgColor.r, imgColor.g, imgColor.b,0);
             }
-
         }
 
         // 暴露出的接口
@@ -68,22 +69,32 @@ namespace Fxb.CMSVR
             foreach(var item in steps) {
                 Destroy(item);
             }
-            hasFirstUndo = false;
+            steps.Clear();
             doneCount = 0;
             var curPage = taskModel.GetData()[0];
             var stepGroups = curPage.stepGroups;
             // load new steps
-            for (int i = 0; i < stepGroups.Count; i++) {
-                GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
-                tmpStep.GetComponentInChildren<Text>().text = (i+1).ToString() + ". " + taskModel.GetStepGroupDescription(stepGroups[i].id);
-                if(!hasFirstUndo && !taskModel.CheckStepGroupCompleted(stepGroups[i].id)) {
-                    tmpStep.GetComponentInChildren<Text>().fontSize = (int)((double)tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
-                    hasFirstUndo = true;
+            foreach(var stepGroup in stepGroups) {
+                Debug.Log("gsd group " + stepGroup.id);
+                foreach(var stepID in taskModel.GetChildStepIDs(stepGroup.id)) {
+                    GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
+                    tmpStep.GetComponentInChildren<Text>().text = (steps.Count + 1).ToString() + ". " + recordModel.FindRecord(stepID).Title;
+                    checkStepState(tmpStep, recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID));
+                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * steps.Count);
+                    steps.Add(tmpStep);
                 }
-                checkStepState(tmpStep, taskModel.CheckStepGroupCompleted(stepGroups[i].id));
-                tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * i);
-                steps.Add(tmpStep);
             }
+            // for (int i = 0; i < stepGroups.Count; i++) {
+            //     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
+            //     tmpStep.GetComponentInChildren<Text>().text = (i+1).ToString() + ". " + taskModel.GetStepGroupDescription(stepGroups[i].id);
+            //     if(!hasFirstUndo && !taskModel.CheckStepGroupCompleted(stepGroups[i].id)) {
+            //         tmpStep.GetComponentInChildren<Text>().fontSize = (int)((double)tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+            //         hasFirstUndo = true;
+            //     }
+            //     checkStepState(tmpStep, taskModel.CheckStepGroupCompleted(stepGroups[i].id));
+            //     tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * i);
+            //     steps.Add(tmpStep);
+            // }
 
             Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * stepGroups.Count);
             foreach(var item in GetComponentsInChildren<Text>()) {
@@ -94,7 +105,7 @@ namespace Fxb.CMSVR
                     item.text = "操作步骤";
                 }
                 if(item.name == "DoneCount") {
-                    item.text = doneCount.ToString() + "/" + stepGroups.Count;
+                    item.text = doneCount.ToString() + "/" + steps.Count;
                 }
             }
         }
