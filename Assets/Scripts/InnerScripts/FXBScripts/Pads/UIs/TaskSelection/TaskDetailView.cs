@@ -173,6 +173,8 @@ namespace Fxb.CMSVR
             submitBtn.gameObject.SetActive(false);
 
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_RECORD); 
+
+            Message.Send(new ShowRecordMessage());
         }
 
         void ShowStep()

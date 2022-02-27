@@ -32,8 +32,14 @@ namespace Fxb.CMSVR
             taskModel = World.Get<ITaskModel>();
             // loadScreen();
         }
+        private void OnShow(ShowRecordMessage msg) {
+            recordModel = World.Get<IRecordModel>();
+            taskModel = World.Get<ITaskModel>();
+            loadScreen();
+        }
         void Awake() {
             Message.AddListener<PrepareTaskMessage>(RecordMessage);
+            Message.AddListener<ShowRecordMessage>(OnShow);
         }
         void Start() {
             this.gameObject.SetActive(false);
