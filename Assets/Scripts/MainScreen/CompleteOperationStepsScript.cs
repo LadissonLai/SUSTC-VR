@@ -24,19 +24,24 @@ namespace Fxb.CMSVR
         void Awake() {
             Message.AddListener<ShowStepMessage>(OnShow);
         }
+        void Destroy() {
+            Message.RemoveListener<ShowStepMessage>(OnShow);
+        }
         void Start() {
+            this.gameObject.SetActive(false);
             stepCfgs = World.Get<TaskStepGroupCsvConfig>();
             taskCfg = World.Get<TaskCsvConfig>();
             recordCfgs = World.Get<RecordCsvConfig>();
             maxPageIndex = taskCfg.DataArray.Count;
             steps = new List<GameObject>();
-            if(maxPageIndex > 0) {
-                loadScreen(0);
-            }
-            checkInteractable();
         }
         private void OnShow(ShowStepMessage msg) {
-            Debug.Log("gsd get message");
+            this.gameObject.SetActive(true);
+            var taskModel = World.Get<ITaskModel>();
+            var index = int.Parse(taskModel.GetData()[0].taskID) - 1;
+            if(index >= 0 && index < maxPageIndex) {
+                loadScreen(index);
+            }
         }
         void checkInteractable() {
             if(curPage > 0) {
@@ -53,12 +58,10 @@ namespace Fxb.CMSVR
         public void onClickPageUp() {
             curPage = (curPage + 1 + maxPageIndex) % maxPageIndex;
             loadScreen(curPage);
-            checkInteractable();
         }
         public void onClickPageDown() {
             curPage = (curPage - 1 + maxPageIndex) % maxPageIndex;
             loadScreen(curPage);
-            checkInteractable();
         }
 
         // 暴露出的接口
@@ -102,7 +105,7 @@ namespace Fxb.CMSVR
             }
             UpBtn.SetActive(true);
             DownBtn.SetActive(true);
-            
+            checkInteractable();
         }
     }
 }

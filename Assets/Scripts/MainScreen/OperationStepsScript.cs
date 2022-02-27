@@ -43,7 +43,6 @@ namespace Fxb.CMSVR
         void Onrefresh(RefreshRecordItemStateMessage msg) {
             taskModel = World.Get<ITaskModel>();
             recordModel = World.Get<IRecordModel>();
-            Debug.Log("second gsd");
             loadScreen();
         }
 

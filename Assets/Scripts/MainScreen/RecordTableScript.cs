@@ -28,7 +28,7 @@ namespace Fxb.CMSVR
         private void RecordMessage(PrepareTaskMessage msg) {
             recordModel = World.Get<IRecordModel>();
             taskModel = World.Get<ITaskModel>();
-            loadScreen();
+            // loadScreen();
         }
         void Awake() {
             Message.AddListener<PrepareTaskMessage>(RecordMessage);
@@ -37,15 +37,6 @@ namespace Fxb.CMSVR
             records = new List<GameObject>();
         }
         // 暴露的接口
-
-        // // ！！请在load前先写好error信息！
-        // public void insertError(int pageIndex, int sectionIndex, int stepIndex, string description, double punishment) {
-        //     RecordError err = new RecordError();
-        //     err.index = stepIndex;
-        //     err.description = description;
-        //     err.punishment = punishment;
-        //     obj.pages[pageIndex].sections[sectionIndex].errors.Add(err);
-        // }
         public void loadScreen() {
             // initialize
             foreach(var item in records) {
@@ -103,7 +94,7 @@ namespace Fxb.CMSVR
                     // tmpError.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 * recordCount);
                     // records.Add(tmpError);
                     // recordCount++;
-                    Debug.Log("gsd" + recordModel.GetRecordAllErrors(record));
+                    // Debug.Log("gsd" + recordModel.GetRecordAllErrors(record));
                 }
             }
             // 总成绩

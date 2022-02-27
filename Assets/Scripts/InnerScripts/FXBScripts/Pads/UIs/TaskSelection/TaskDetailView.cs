@@ -14,7 +14,6 @@ namespace Fxb.CMSVR
     public class TaskDetailView : PadViewBase
     {
         // public Transform taskTemplate;
-
         public TextMeshProUGUI title;
 
         // public TextMeshProUGUI description;
@@ -178,7 +177,7 @@ namespace Fxb.CMSVR
 
         void ShowStep()
         {
-            //todo gsd interface
+            Message.Send(new ShowStepMessage());
         }
     }
 }

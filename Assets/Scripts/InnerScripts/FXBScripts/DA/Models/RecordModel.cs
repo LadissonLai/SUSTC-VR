@@ -301,4 +301,5 @@ namespace Fxb.CMSVR
 
 
     public class RefreshRecordItemStateMessage : Message { }
+    public class ShowStepMessage : Message { }
 }
