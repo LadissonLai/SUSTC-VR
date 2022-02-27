@@ -94,12 +94,12 @@ namespace Fxb.CMSVR
                     // Debug.Log("gsd " + stepID + " !! " + recordCfgs.FindRowDatas(stepID).Title);
                     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
                     tmpStep.GetComponentInChildren<Text>().text = (steps.Count + 1).ToString() + ". " + recordCfgs.FindRowDatas(stepID).Title;
-                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * steps.Count);
+                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (30) * steps.Count);
                     steps.Add(tmpStep);
                 }
             }
 
-            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * stepNames.Length);
+            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 30 * stepNames.Length);
             foreach(var item in GetComponentsInChildren<Text>()) {
                 if(item.name == "Title") {
                     item.text = curPage.Title;

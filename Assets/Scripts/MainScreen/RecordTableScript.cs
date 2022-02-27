@@ -27,18 +27,14 @@ namespace Fxb.CMSVR
         private List<GameObject> records;
         IRecordModel recordModel;
         ITaskModel taskModel;
-        private void RecordMessage(PrepareTaskMessage msg) {
-            recordModel = World.Get<IRecordModel>();
-            taskModel = World.Get<ITaskModel>();
-            // loadScreen();
-        }
         private void OnShow(ShowRecordMessage msg) {
             recordModel = World.Get<IRecordModel>();
             taskModel = World.Get<ITaskModel>();
-            loadScreen();
+            if(int.Parse(taskModel.GetData()[0].taskID) > 0) {
+                loadScreen();
+            }
         }
         void Awake() {
-            Message.AddListener<PrepareTaskMessage>(RecordMessage);
             Message.AddListener<ShowRecordMessage>(OnShow);
         }
         void Start() {

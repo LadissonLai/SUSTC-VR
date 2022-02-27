@@ -41,12 +41,16 @@ namespace Fxb.CMSVR
         void OnprepareTaskMessage(PrepareTaskMessage msg) {
             taskModel = World.Get<ITaskModel>();
             recordModel = World.Get<IRecordModel>();
-            loadScreen();
+            if(int.Parse(taskModel.GetData()[0].taskID) > 0) {
+                loadScreen();
+            }
         }
         void Onrefresh(RefreshRecordItemStateMessage msg) {
             taskModel = World.Get<ITaskModel>();
             recordModel = World.Get<IRecordModel>();
-            loadScreen();
+            if(int.Parse(taskModel.GetData()[0].taskID) > 0) {
+                loadScreen();
+            }
         }
 
         private void checkStepState(GameObject step, bool done) {
@@ -80,6 +84,7 @@ namespace Fxb.CMSVR
             }
             steps.Clear();
             doneCount = 0;
+            hasFirstUndo = false;
             var curPage = taskModel.GetData()[0];
             var stepGroups = curPage.stepGroups;
             // load new steps
@@ -88,13 +93,18 @@ namespace Fxb.CMSVR
                 foreach(var stepID in taskModel.GetChildStepIDs(stepGroup.id)) {
                     GameObject tmpStep = Instantiate(Step, Content.transform) as GameObject;
                     tmpStep.GetComponentInChildren<Text>().text = (steps.Count + 1).ToString() + ". " + recordModel.FindRecord(stepID).Title;
+                    if(!recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID) && !hasFirstUndo) {
+                        tmpStep.GetComponentInChildren<Text>().fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                        tmpStep.GetComponentInChildren<Text>().fontStyle = FontStyle.Bold;
+                        hasFirstUndo = true;
+                    }
                     checkStepState(tmpStep, recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID));
-                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (50) * steps.Count);
+                    tmpStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30 - (30) * steps.Count);
                     steps.Add(tmpStep);
                 }
             }
 
-            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 50 * stepGroups.Count);
+            Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, 30 * stepGroups.Count);
             foreach(var item in GetComponentsInChildren<Text>()) {
                 if(item.name == "Title") {
                     item.text = curPage.taskTitle;
