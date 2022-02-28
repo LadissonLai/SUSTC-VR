@@ -97,9 +97,9 @@ namespace Fxb.CMSVR
                     texts[0].text = (steps.Count + 1).ToString() + ". ";
                     texts[1].text = recordModel.FindRecord(stepID).Title;
                     if(!recordModel.CheckRecordCompleted(recordModel.FindRecord(stepID).ID) && !hasFirstUndo) {
-                        texts[0].fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                        texts[0].fontSize = 21;
                         texts[0].fontStyle = FontStyle.Bold;
-                        texts[1].fontSize = (int)(tmpStep.GetComponentInChildren<Text>().fontSize * 1.5);
+                        texts[1].fontSize = 21;
                         texts[1].fontStyle = FontStyle.Bold;
                         hasFirstUndo = true;
                     }

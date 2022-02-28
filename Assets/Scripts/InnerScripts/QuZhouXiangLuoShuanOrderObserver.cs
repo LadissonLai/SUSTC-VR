@@ -15,7 +15,7 @@ namespace Fxb.CMSVR
         // Start is called before the first frame update
         void Start()
         {
-            if(EntrySetting.Instance.behaviour == Enums.Behaviour.Disassembly)
+            if(EntrySetting.Instance != null && EntrySetting.Instance.behaviour == Enums.Behaviour.Disassembly)
             {
                 disassembledIDs = new HashSet<string>();
                 Message.AddListener<DAObjStateChangeMessage>(OnDAObjStateChangeMessage);

@@ -10,6 +10,7 @@ namespace Fxb.CMSVR
         // Start is called before the first frame update
         private void Awake() {
             Message.AddListener<ExtraToolPrepareMessage>(OnExtraToolPrepareMessage);
+            gameObject.SetActive(false);
         }
 
         private void OnDestroy() {

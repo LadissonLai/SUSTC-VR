@@ -119,10 +119,8 @@ namespace Fxb.CMSVR
             // taskTemplate.gameObject.SetActive(false);
 
             submitBtn.gameObject.SetActive(true);
-            if(EntrySetting.Instance != null && EntrySetting.Instance.runMode != Enums.RunMode.Exam)
-            {
-                stepBtn.gameObject.SetActive(true);
-            }
+            // Debug.Log($"World.Get<DASceneState>()?.taskMode :  {World.Get<DASceneState>()?.taskMode}");
+            stepBtn.gameObject.SetActive(World.Get<DASceneState>()?.taskMode != DaTaskMode.Examination);
 
             // UpdateCompletedAmount(data.stepGroups.Count);
 
@@ -179,7 +177,7 @@ namespace Fxb.CMSVR
 
             UIView.ShowView(DoozyNamesDB.VIEW_CATEGORY_PAD, DoozyNamesDB.VIEW_PAD_RECORD); 
 
-            if(EntrySetting.Instance != null && EntrySetting.Instance.runMode != Enums.RunMode.Exercise)
+            if(World.Get<DASceneState>()?.taskMode != DaTaskMode.Teching)
             {
                 Message.Send(new ShowRecordMessage());
             }
