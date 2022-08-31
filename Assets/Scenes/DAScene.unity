@@ -2049,6 +2049,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas - VRFaceCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8696585892480271827, guid: 7fa27e26c0b44c340aee4225d4df2559,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8696585892480271839, guid: 7fa27e26c0b44c340aee4225d4df2559,
         type: 3}
       propertyPath: m_LocalPosition.x
